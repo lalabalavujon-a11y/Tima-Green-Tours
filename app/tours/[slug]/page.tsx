@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return { title, description };
 }
 
+export async function generateStaticParams() {
+  const tours = await import('@/content/tours.json');
+  return tours.default.map((tour) => ({
+    slug: tour.slug,
+  }));
+}
+
 export default async function TourPage({ params }: { params: { slug: string } }) {
   const tour = await getTourBySlug(params.slug);
   if (!tour) return notFound();
