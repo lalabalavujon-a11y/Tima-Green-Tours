@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MobileNav from './MobileNav';
 
 export default function Navbar() {
   return (
@@ -15,6 +16,7 @@ export default function Navbar() {
             Contact
           </Link>
         </div>
+        <MobileNav />
       </nav>
     </header>
   );

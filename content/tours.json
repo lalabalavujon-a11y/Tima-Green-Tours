@@ -1,41 +1,162 @@
 [
   {
-    "slug": "village-life-kava-ceremony",
-    "title": "Village Life & Kava Ceremony",
-    "summary": "A day immersed in village culture culminating in a respectful kava ceremony with elders.",
-    "duration": "Full day",
+    "slug": "biausevu-waterfall-tour",
+    "title": "Biausevu Waterfall Tour",
+    "summary": "Immerse yourself in the wonder of the Biausevu Waterfall on our exclusive guided tour with traditional kava ceremony and light lunch.",
+    "duration": "Half Day (4-5 hours)",
     "eco_rating": 5,
+    "price": "FJD 90 per adult",
+    "child_price": "FJD 45 (ages 4-13)",
+    "group_size": "Max 12 people",
     "highlights": [
-      "Traditional welcome & village protocols",
-      "Kava ceremony (yaqona) led by elders",
-      "Local lunch featuring seasonal produce",
-      "Storytelling and meke rhythms"
+      "30-minute stroll through lush landscape",
+      "Traditional kava ceremony",
+      "Swim in refreshing natural pool",
+      "Delicious light lunch included",
+      "Expert local guide",
+      "Entry fee included"
+    ],
+    "description": "Let our expert guide lead you on a leisurely 30-minute stroll through the lush landscape to the majestic waterfall, where you can bask in the beauty of the cascading waters and connect with nature in a truly unique way. The journey takes you through verdant rainforest, across gentle streams, and past traditional Fijian villages where you'll experience the warm hospitality that Fiji is famous for.",
+    "includes": [
+      "Entry fee to waterfall",
+      "Traditional kava ceremony",
+      "Light lunch",
+      "Expert local guide",
+      "Return transportation",
+      "Safety briefing"
     ]
   },
   {
-    "slug": "eco-adventure-waterfalls",
-    "title": "Eco-Adventure to Waterfalls",
-    "summary": "Guided rainforest hike with swims in hidden falls and biodiversity insights.",
-    "duration": "Half day",
+    "slug": "sigatoka-valley-lawai-pottery",
+    "title": "Sigatoka Valley Drive & Lawai Pottery Village",
+    "summary": "Experience the lush beauty and rich cultural heritage of Fiji with a visit to Sigatoka Valley Drive and Lawai Pottery Village.",
+    "duration": "Half Day (5-6 hours)",
+    "eco_rating": 5,
+    "price": "FJD 75 per adult",
+    "child_price": "FJD 37.50 (ages 2-13)",
+    "group_size": "Max 10 people",
+    "highlights": [
+      "Scenic valley drive through 'Salad Bowl of Fiji'",
+      "Traditional pottery demonstration",
+      "Cultural immersion experience",
+      "Traditional kava ceremony",
+      "Local cuisine lunch",
+      "Breathtaking views of Sigatoka River"
+    ],
+    "description": "Journey through one of Fiji's most picturesque regions, known as the 'Salad Bowl of Fiji' for its lush agricultural landscapes. Witness the ancient art of Fijian pottery making, passed down through generations, and participate in a traditional kava ceremony that welcomes visitors and fosters community bonds.",
+    "includes": [
+      "Scenic valley drive",
+      "Pottery demonstration",
+      "Traditional kava ceremony",
+      "Local cuisine lunch",
+      "Cultural insights",
+      "Return transportation"
+    ]
+  },
+  {
+    "slug": "lomawai-salt-natadola-horse-riding",
+    "title": "Lomawai Salt Making Village & Horse Riding at Natadola Beach",
+    "summary": "Experience the ancient art of salt making and embark on a thrilling horseback ride along the stunning shores of Natadola Beach.",
+    "duration": "Full Day (8-9 hours)",
     "eco_rating": 4,
+    "price": "FJD 86 per adult",
+    "child_price": "FJD 43 (children half price)",
+    "group_size": "Max 8 people",
     "highlights": [
-      "Rainforest trail interpretation",
-      "Swim at secluded waterfall pools",
-      "Native flora & fauna briefing",
-      "Leave-no-trace practices"
+      "Ancient salt making tradition",
+      "Traditional methods demonstration",
+      "Horseback ride on Natadola Beach",
+      "Panoramic ocean views",
+      "Cultural heritage insights",
+      "Coastal ecosystem education"
+    ],
+    "description": "Experience the ancient art of salt making at the picturesque Lomawai Salt Making Village, where you'll witness traditional methods passed down through generations. Then embark on a thrilling horseback ride along the stunning shores of Natadola Beach, named one of the most beautiful beaches in the world.",
+    "includes": [
+      "Salt making demonstration",
+      "Horseback riding experience",
+      "Comfortable transportation",
+      "Refreshments",
+      "All necessary equipment",
+      "Expert guides"
     ]
   },
   {
-    "slug": "dance-craft-workshop",
-    "title": "Cultural Dance & Craft Workshop",
-    "summary": "Hands-on workshop with local artisans and dancers.",
-    "duration": "Half day",
-    "eco_rating": 5,
+    "slug": "sabeto-mudpool-nadi-temple",
+    "title": "Sabeto Mudpool and Nadi Temple/Shopping Tour",
+    "summary": "Experience the ultimate adventure with Nadi Temple visit, rejuvenating Sabeto Mudpool, and local market shopping.",
+    "duration": "Full Day (8 hours)",
+    "eco_rating": 3,
+    "price": "FJD 100 per adult",
+    "child_price": "FJD 50 (children half price)",
+    "group_size": "Max 15 people",
     "highlights": [
-      "Meke rhythm basics",
-      "Weaving or carving session",
-      "Cultural etiquette & meanings",
-      "Community artisan marketplace"
+      "Nadi Temple visit (largest in Southern Hemisphere)",
+      "Sabeto Mudpool therapeutic experience",
+      "Local market shopping",
+      "Cultural heritage insights",
+      "Handicrafts and souvenirs",
+      "8am departure"
+    ],
+    "description": "Step into a world of wonder as we take you on a journey to explore the awe-inspiring Nadi Temple, relax in the rejuvenating Sabeto Mudpool, and partake in a shopping extravaganza. The therapeutic properties of the mud are said to draw impurities from the skin and provide relief for various ailments.",
+    "includes": [
+      "Nadi Temple visit",
+      "Sabeto Mudpool experience",
+      "Local market shopping",
+      "Transportation",
+      "Cultural insights",
+      "Shopping guidance"
+    ]
+  },
+  {
+    "slug": "shark-diving-beqa-lagoon",
+    "title": "Shark Diving in Beqa Lagoon",
+    "summary": "Dive with Danger: Experience the thrill of shark diving in the pristine waters of Beqa Lagoon, Fiji Islands!",
+    "duration": "Full Day (6-8 hours)",
+    "eco_rating": 4,
+    "price": "Contact for Pricing",
+    "group_size": "Max 6 people",
+    "highlights": [
+      "Face-to-face with tiger sharks",
+      "Reef sharks and other species",
+      "Expert professional guidance",
+      "Safety briefings and supervision",
+      "Bucket-list experience",
+      "Pristine Beqa Lagoon waters"
+    ],
+    "description": "Embark on the ultimate adrenaline-pumping adventure of shark diving in the crystal-clear waters of Beqa Lagoon. Dare to come face-to-face with the majestic tiger sharks, reef sharks, and a variety of other shark species in their natural habitat. Guided by experienced professionals, you will witness these incredible creatures up close and personal.",
+    "includes": [
+      "Professional dive guidance",
+      "Safety equipment",
+      "Comprehensive briefings",
+      "Constant supervision",
+      "Transportation",
+      "Custom arrangements"
+    ]
+  },
+  {
+    "slug": "malolo-island-getaway",
+    "title": "Malolo Island 3 Nights Get-Away",
+    "summary": "Escape to Serenity on Malolo Lailai Island, Fiji! Experience paradise with pristine beaches and crystal clear waters.",
+    "duration": "3 Nights",
+    "eco_rating": 5,
+    "price": "Contact for Pricing",
+    "group_size": "Custom",
+    "highlights": [
+      "Pristine white sandy beaches",
+      "Crystal clear turquoise waters",
+      "Water sports activities",
+      "Traditional Fijian ceremonies",
+      "Luxury accommodations",
+      "Spa treatments"
+    ],
+    "description": "Experience paradise like never before on the breathtaking shores of Malolo Lailai Island. Nestled in the heart of the Mamanuca Islands, this tropical oasis offers peace and tranquility for those looking to unwind and rejuvenate. From snorkelling vibrant coral reefs to kayaking crystal waters, adventure awaits at every turn.",
+    "includes": [
+      "Luxury accommodations",
+      "Exquisite cuisine",
+      "Water sports activities",
+      "Cultural experiences",
+      "Spa treatments",
+      "Custom itinerary"
     ]
   }
 ]
