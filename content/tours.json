@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "village-life-kava-ceremony",
+    "title": "Village Life & Kava Ceremony",
+    "summary": "A day immersed in village culture culminating in a respectful kava ceremony with elders.",
+    "duration": "Full day",
+    "eco_rating": 5,
+    "highlights": [
+      "Traditional welcome & village protocols",
+      "Kava ceremony (yaqona) led by elders",
+      "Local lunch featuring seasonal produce",
+      "Storytelling and meke rhythms"
+    ]
+  },
+  {
+    "slug": "eco-adventure-waterfalls",
+    "title": "Eco-Adventure to Waterfalls",
+    "summary": "Guided rainforest hike with swims in hidden falls and biodiversity insights.",
+    "duration": "Half day",
+    "eco_rating": 4,
+    "highlights": [
+      "Rainforest trail interpretation",
+      "Swim at secluded waterfall pools",
+      "Native flora & fauna briefing",
+      "Leave-no-trace practices"
+    ]
+  },
+  {
+    "slug": "dance-craft-workshop",
+    "title": "Cultural Dance & Craft Workshop",
+    "summary": "Hands-on workshop with local artisans and dancers.",
+    "duration": "Half day",
+    "eco_rating": 5,
+    "highlights": [
+      "Meke rhythm basics",
+      "Weaving or carving session",
+      "Cultural etiquette & meanings",
+      "Community artisan marketplace"
+    ]
+  }
+]
