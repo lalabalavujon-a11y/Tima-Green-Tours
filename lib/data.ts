@@ -182,7 +182,7 @@ function generateHeroImage(slug: string): any {
   
   // Fallback to placeholder
   return {
-    src: `/og-default.jpg`,
+    src: `/tours/placeholder.jpg`,
     alt: `Hero image for ${slug}`,
     width: 1200,
     height: 675
@@ -204,19 +204,19 @@ function generateGallery(slug: string): any[] {
   // Fallback to placeholder images
   return [
     {
-      src: `/og-default.jpg`,
+      src: `/tours/placeholder.jpg`,
       alt: `Gallery image 1 for ${slug}`,
       width: 800,
       height: 600
     },
     {
-      src: `/og-default.jpg`,
+      src: `/tours/placeholder.jpg`,
       alt: `Gallery image 2 for ${slug}`,
       width: 800,
       height: 600
     },
     {
-      src: `/og-default.jpg`,
+      src: `/tours/placeholder.jpg`,
       alt: `Gallery image 3 for ${slug}`,
       width: 800,
       height: 600

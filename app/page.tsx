@@ -11,7 +11,7 @@ export default function HomePage() {
     <>
       {/* Enhanced Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-sand to-white">
-        <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5"></div>
+        <div className="absolute inset-0 opacity-5"></div>
         <Container>
           <div className="py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
             <div className="relative z-10">
@@ -60,7 +60,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="rounded-2xl bg-white shadow-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform duration-300">
                 <img
-                  src="/hero-fiji.jpg"
+                  src="/tours/placeholder.jpg"
                   alt="Fiji waterfalls and rainforest"
                   className="w-full h-auto rounded-xl"
                 />
