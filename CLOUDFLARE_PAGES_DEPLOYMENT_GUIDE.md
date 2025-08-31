@@ -22,7 +22,7 @@
 ```
 Project name: tima-green-tours
 Production branch: main
-Framework preset: Next.js
+Framework preset: Next.js (auto-detected)
 Build command: npm run build
 Build output directory: .next
 Root directory: / (leave empty)
@@ -54,6 +54,14 @@ CONTACT_FROM=web@timagreentours.com
 
 ---
 
+## **✅ FIXED: Build Output Directory**
+- **Previous Issue**: Cloudflare was looking for `out` directory
+- **Solution**: Removed `wrangler.toml` for auto-detection
+- **Correct Setting**: Build output directory = `.next`
+- **Status**: ✅ Ready for deployment
+
+---
+
 ## **Expected Results:**
 - ✅ **App deployed** at https://tima-green-tours.pages.dev
 - ✅ **Custom domain** working at https://app.timagreentours.com
@@ -67,4 +75,4 @@ CONTACT_FROM=web@timagreentours.com
 - **Domain not working**: Wait 5-10 minutes for DNS propagation
 - **404 errors**: Check build output directory setting
 
-**Ready to deploy? Let's get this live! 🚀**
+**✅ FIXED AND READY TO DEPLOY! 🚀**
