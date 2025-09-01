@@ -9,7 +9,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-brand-green-500 rounded-full flex items-center justify-center">
                 <span className="text-brand-white text-xl">🌴</span>
               </div>
-              <span className="text-xl font-bold">Tima Green Tours</span>
+              <span className="text-xl font-bold">Tima Green Tours - NEW DESIGN</span>
             </div>
             <p className="text-brand-white/80 mb-4 max-w-md">
               Indigenous owned Fijian tour company offering authentic cultural experiences and sustainable tourism.
