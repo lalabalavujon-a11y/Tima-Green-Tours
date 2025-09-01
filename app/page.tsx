@@ -4,6 +4,7 @@ import Section from '@/components/Section';
 import TourCard from '@/components/TourCard';
 import { getRelatedTours } from '@/lib/data';
 
+// Updated with new branding - green, black, and white color scheme
 export default function HomePage() {
   const featuredTours = getRelatedTours('biausevu-waterfall-tour');
 
