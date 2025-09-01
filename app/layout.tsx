@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       'Authentic eco-cultural experiences across Fiji. Travel that connects: people, land, and tradition.',
     url: 'https://timagreentours.com',
     siteName: 'Tima Green Tours',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/tours/placeholder.jpg', width: 1200, height: 630 }],
     locale: 'en_US',
     type: 'website'
   },

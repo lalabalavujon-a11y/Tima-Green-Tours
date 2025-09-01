@@ -24,7 +24,7 @@ interface SEOHeadProps {
 export default function SEOHead({ title, description, url, image, tourData }: SEOHeadProps) {
   const baseUrl = 'https://timagreentours.com';
   const fullUrl = `${baseUrl}${url}`;
-  const imageUrl = image ? `${baseUrl}${image.src}` : `${baseUrl}/og-default.jpg`;
+  const imageUrl = image ? `${baseUrl}${image.src}` : `${baseUrl}/tours/placeholder.jpg`;
 
   // Structured data for tour pages
   const structuredData = tourData ? {
