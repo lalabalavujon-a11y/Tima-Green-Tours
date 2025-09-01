@@ -1,235 +1,142 @@
 import Link from 'next/link';
-import Section from '@/components/Section';
 import Container from '@/components/Container';
-import tours from '@/content/tours.json';
+import Section from '@/components/Section';
+import TourCard from '@/components/TourCard';
+import { getRelatedTours } from '@/lib/data';
 
 export default function HomePage() {
-  // Get the first 3 tours for the homepage
-  const featuredTours = tours.slice(0, 3);
+  const featuredTours = getRelatedTours('biausevu-waterfall-tour');
 
   return (
-    <>
-      {/* Enhanced Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-sand to-white">
-        <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5"></div>
-        <Container>
-          <div className="py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-6">
-                🌿 Indigenous Owned Company
-              </div>
-              <h1 className="text-display-sm md:text-display font-bold leading-tight bg-gradient-to-r from-lagoon to-deepsea bg-clip-text text-transparent">
-                Your Gateway to Fijian Wonders
-              </h1>
-              <p className="mt-6 text-xl text-slate-700 leading-relaxed">
-                Experience the beauty and rich culture of Fiji with our locally-owned business, 
-                based in the charming town of Sigatoka. With over 20 years of combined experience, 
-                we specialise in showcasing the best of Fiji.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/tours"
-                  className="rounded-xl bg-lagoon px-8 py-4 text-white font-semibold hover:bg-deepsea transition-colors shadow-md hover:shadow-lg"
-                >
-                  Explore Our Tours
-                </Link>
-                <Link
-                  href="/contact"
-                  className="rounded-xl border-2 border-lagoon px-8 py-4 text-lagoon font-semibold hover:bg-lagoon/5 transition-colors"
-                >
-                  Plan Your Trip
-                </Link>
-              </div>
-              <div className="mt-8 p-4 bg-white/80 rounded-lg backdrop-blur">
-                <ul className="text-sm text-slate-700 space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span className="text-brand-green">✓</span>
-                    Indigenous owned & operated
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-brand-green">✓</span>
-                    20+ years combined experience
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-brand-green">✓</span>
-                    Budget-friendly packages
-                  </li>
-                </ul>
-              </div>
+    <div>
+      {/* Hero Section */}
+      <section className="section-hero bg-gradient-to-br from-brand-green-600 via-brand-green-700 to-brand-green-800 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div className="container-base relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-hero mb-6">
+              Your Gateway to Fijian Wonders
+            </h1>
+            <p className="text-subtitle mb-8 max-w-2xl mx-auto">
+              Experience the beauty and rich culture of Fiji with our locally-owned business, based in the charming town of Sigatoka. With over 20 years of combined experience, we specialise in showcasing the best of Fiji.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/tours" className="btn-primary text-lg px-8 py-4">
+                Explore Our Tours
+              </Link>
+              <Link href="/contact" className="btn-secondary text-lg px-8 py-4">
+                Plan Your Trip
+              </Link>
             </div>
-            <div className="relative">
-              <div className="rounded-2xl bg-white shadow-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform duration-300">
-                <img
-                  src="/hero-fiji.jpg"
-                  alt="Fiji waterfalls and rainforest"
-                  className="w-full h-auto rounded-xl"
-                />
-                <div className="mt-4 flex items-center justify-between text-sm text-slate-600">
-                  <span>📍 Sigatoka, Fiji</span>
-                  <span>📸 @tima_green_tours</span>
-                </div>
+          </div>
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-brand-white to-transparent"></div>
+      </section>
+
+      {/* Features Section */}
+      <section className="section-content">
+        <Container>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🌿</span>
               </div>
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 bg-brand-teal text-white p-3 rounded-full shadow-lg">
-                <span className="text-sm font-semibold">5★</span>
+              <h3 className="text-xl font-semibold text-brand-black mb-2">Indigenous owned & operated</h3>
+              <p className="text-accent-gray-600">Authentic experiences from local experts</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">⏰</span>
               </div>
+              <h3 className="text-xl font-semibold text-brand-black mb-2">20+ years combined experience</h3>
+              <p className="text-accent-gray-600">Deep knowledge of Fiji's hidden gems</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">💰</span>
+              </div>
+              <h3 className="text-xl font-semibold text-brand-black mb-2">Budget-friendly packages</h3>
+              <p className="text-accent-gray-600">Quality experiences at fair prices</p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Enhanced Signature Experiences */}
+      {/* Featured Tours */}
       <Section
         overline="Signature Experiences"
         title="Eco-Cultural Tours curated by locals"
         subtitle="Small groups, real connections, measurable impact."
       >
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredTours.map((tour) => (
-            <article key={tour.slug} className="group rounded-xl border border-slate-200 p-6 bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="text-3xl mb-4">
-                {tour.slug.includes('waterfall') ? '🌊' : 
-                 tour.slug.includes('pottery') ? '🏺' : 
-                 tour.slug.includes('horse') ? '🐎' : '🏝️'}
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{tour.title}</h3>
-              <p className="text-slate-700 mb-4">{tour.summary}</p>
-              <div className="flex items-center justify-between text-sm text-slate-600 mb-4">
-                <span>⏱️ {tour.duration}</span>
-                <span className="font-semibold text-brand-green">{tour.price}</span>
-              </div>
-              <div className="text-xs text-slate-500 mb-4">
-                👥 {tour.group_size} • 🌿 Eco Rating: {tour.eco_rating}/5
-              </div>
-              <Link href="/tours" className="inline-flex items-center text-brand-green font-medium group-hover:gap-2 transition-all">
-                View details 
-                <span className="ml-1">→</span>
-              </Link>
-            </article>
+            <TourCard key={tour.slug} tour={tour} />
           ))}
         </div>
-      </Section>
-
-      {/* Enhanced Stats Section */}
-      <Section
-        overline="Our Promise"
-        title="Travel that enriches guests and hosts"
-        subtitle="We measure success in smiles and stewardship."
-      >
-        <div className="grid md:grid-cols-4 gap-6">
-          <Stat label="Years Experience" value="20+" icon="🌟" />
-          <Stat label="Local Partners" value="30+" icon="🤝" />
-          <Stat label="Eco Rating" value="5/5" icon="🌿" />
-          <Stat label="Guest Satisfaction" value="98%" icon="⭐" />
+        <div className="text-center mt-12">
+          <Link href="/tours" className="btn-primary text-lg px-8 py-4">
+            View All Tours
+          </Link>
         </div>
       </Section>
 
-      {/* New Testimonials Section */}
-      <Section
-        overline="Guest Stories"
-        title="What our visitors say"
-        subtitle="Real experiences from real people."
-      >
-        <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              quote: "Absolutely incredible! Timaima Green Tours & Transfers showed us the best of Fiji and made our vacation truly unforgettable. Their knowledge of hidden spots and attention to detail exceeded all expectations.",
-              author: "Sarah & James",
-              location: "UK",
-              rating: 5
-            },
-            {
-              quote: "If you want to see the real Fiji, look no further than Timaima Green Tours & Transfers. From the moment we booked, we knew we were in good hands. Their passion for hospitality shone through every step of the way.",
-              author: "David Thompson",
-              location: "Australia",
-              rating: 5
-            }
-          ].map((t) => (
-            <blockquote key={t.author} className="bg-brand-sand/30 p-6 rounded-xl">
-              <div className="flex gap-1 mb-3">
-                {[...Array(t.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-500">★</span>
-                ))}
-              </div>
-              <p className="text-lg italic mb-4">"{t.quote}"</p>
-              <footer className="text-sm text-slate-600">
-                <strong>{t.author}</strong> • {t.location}
-              </footer>
-            </blockquote>
-          ))}
-        </div>
-      </Section>
-
-      {/* New About Section */}
-      <Section
-        overline="Who We Are"
-        title="Indigenous owned company with deep roots"
-        subtitle="We're your gateway to Fijian wonders, with a deep commitment to sustainable tourism."
-      >
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-              Tima Green Tours and Transfers is recognised as an indigenous owned company established 
-              to provide unique and unforgettable experiences for first-time travellers in Fiji. 
-              With roots in the local community and a passion for sharing our beautiful island home 
-              with visitors, we strive to create experiences that benefit both our guests and the 
-              indigenous communities we work with.
+      {/* Stats Section */}
+      <section className="section-dark">
+        <Container>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-4">
+              Our Promise
+            </h2>
+            <p className="text-xl text-brand-white/80 max-w-2xl mx-auto">
+              Travel that enriches guests and hosts. We measure success in smiles and stewardship.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="text-brand-green text-xl">🌿</div>
-                <div>
-                  <h4 className="font-semibold">Sustainable Tourism</h4>
-                  <p className="text-sm text-slate-600">Our commitment to responsible tourism means that your adventure with us helps support local employment and preservation of natural resources.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="text-brand-green text-xl">🤝</div>
-                <div>
-                  <h4 className="font-semibold">Local Expertise</h4>
-                  <p className="text-sm text-slate-600">Our team of knowledgeable guides specialises in highlighting the best that Fiji has to offer, from its breathtaking natural scenery to its vibrant cultural traditions.</p>
-                </div>
-              </div>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-brand-green-400 mb-2">20+</div>
+              <div className="text-brand-white/80">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-brand-green-400 mb-2">30+</div>
+              <div className="text-brand-white/80">Local Partners</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-brand-green-400 mb-2">5/5</div>
+              <div className="text-brand-white/80">Eco Rating</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-brand-green-400 mb-2">98%</div>
+              <div className="text-brand-white/80">Guest Satisfaction</div>
             </div>
           </div>
-          <div className="bg-brand-sand/30 rounded-xl p-8">
-            <h3 className="text-xl font-semibold mb-4">Our Services</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-                <div>
-                  <h4 className="font-medium">Tour Bookings</h4>
-                  <p className="text-sm text-slate-600">Comprehensive tours showcasing Fiji's natural beauty and cultural heritage</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-                <div>
-                  <h4 className="font-medium">Transfer Services</h4>
-                  <p className="text-sm text-slate-600">Airport pick-up, drop-off, and hotel transfers throughout Fiji</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-                <div>
-                  <h4 className="font-medium">Budget-Friendly Packages</h4>
-                  <p className="text-sm text-slate-600">Affordable prices tailored to fit your budget with bundled tours</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-    </>
-  );
-}
+        </Container>
+      </section>
 
-function Stat({ label, value, icon }: { label: string; value: string; icon: string }) {
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-brand-sand to-white p-6 text-center border border-slate-200">
-      <div className="text-2xl mb-2">{icon}</div>
-      <div className="text-3xl font-bold text-brand-green">{value}</div>
-      <div className="mt-1 text-sm text-slate-600 font-medium">{label}</div>
+      {/* CTA Section */}
+      <section className="section-content bg-brand-green-50">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
+              Ready to Experience Fiji?
+            </h2>
+            <p className="text-xl text-accent-gray-600 mb-8">
+              Join us for an unforgettable journey through the heart of the Pacific.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/tours" className="btn-primary text-lg px-8 py-4">
+                Browse Tours
+              </Link>
+              <Link href="/contact" className="btn-outline text-lg px-8 py-4">
+                Get in Touch
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
     </div>
   );
 }

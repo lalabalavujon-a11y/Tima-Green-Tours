@@ -12,14 +12,24 @@ export default function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="py-16">
+    <section className="section-content">
       <Container>
-        <div className="max-w-3xl">
-          {overline && <div className="text-brand-green font-medium">{overline}</div>}
-          <h2 className="mt-1 text-2xl md:text-3xl font-semibold">{title}</h2>
-          {subtitle && <p className="mt-2 text-slate-700">{subtitle}</p>}
+        <div className="max-w-3xl mb-12">
+          {overline && (
+            <div className="text-brand-green-600 font-medium text-sm uppercase tracking-wide mb-2">
+              {overline}
+            </div>
+          )}
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-xl text-accent-gray-600 leading-relaxed">
+              {subtitle}
+            </p>
+          )}
         </div>
-        <div className="mt-8">{children}</div>
+        <div>{children}</div>
       </Container>
     </section>
   );

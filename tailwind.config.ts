@@ -9,20 +9,40 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Primary brand colors from main website
         brand: {
-          green: "#118a7e",
-          teal: "#17a2a0",
-          sand: "#f5efe6",
-          night: "#0b1b1b"
+          green: {
+            50: '#f0fdf4',   // Very light green
+            100: '#dcfce7',  // Light muted green (header background)
+            200: '#bbf7d0',  // Light green
+            300: '#86efac',  // Medium light green
+            400: '#4ade80',  // Medium green
+            500: '#22c55e',  // Vibrant emerald (CTA button)
+            600: '#16a34a',  // Darker green
+            700: '#15803d',  // Dark green
+            800: '#166534',  // Very dark green
+            900: '#14532d',  // Forest green
+          },
+          black: '#000000',  // Pure black for text and accents
+          white: '#ffffff',  // Clean white for backgrounds
         },
-        // New Fiji-inspired palette from upgrade plan
-        lagoon: "#0EA5E9",
-        deepsea: "#075985",
-        coral: "#F97316",
-        palm: "#10B981",
-        sand: "#F3F4F6",
-        kava: "#7C5A42",
-        ink: "#0B1220"
+        // Supporting colors from main website
+        accent: {
+          navy: '#1e3a8a',   // Deep navy blue
+          teal: '#0d9488',   // Blue-green transition
+          gray: {
+            50: '#f9fafb',   // Very light gray
+            100: '#f3f4f6',  // Light gray
+            200: '#e5e7eb',  // Medium light gray
+            300: '#d1d5db',  // Medium gray
+            400: '#9ca3af',  // Darker gray
+            500: '#6b7280',  // Dark gray
+            600: '#4b5563',  // Very dark gray
+            700: '#374151',  // Almost black
+            800: '#1f2937',  // Dark charcoal
+            900: '#111827',  // Near black
+          }
+        }
       },
       borderRadius: {
         xl: '20px',

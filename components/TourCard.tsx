@@ -1,85 +1,94 @@
 import Link from 'next/link';
+import type { Tour } from '@/lib/types/tour';
 
-interface Tour {
-  slug: string;
-  title: string;
-  summary: string;
-  duration: string;
-  eco_rating: number;
-  price: string;
-  group_size: string;
-  highlights: string[];
-  description: string;
-  includes: string[];
+interface TourCardProps {
+  tour: Tour;
 }
 
-export default function TourCard({ tour }: { tour: Tour }) {
+export default function TourCard({ tour }: TourCardProps) {
   const getIcon = (slug: string) => {
-    if (slug.includes('village')) return '🏘️';
-    if (slug.includes('rainforest')) return '🌿';
-    if (slug.includes('dance')) return '💃';
-    if (slug.includes('island')) return '🏝️';
-    if (slug.includes('farming')) return '🌾';
-    return '🌊';
+    if (slug.includes('waterfall')) return '🌊';
+    if (slug.includes('pottery')) return '🏺';
+    if (slug.includes('horse')) return '🐎';
+    if (slug.includes('mudpool')) return '♨️';
+    if (slug.includes('shark')) return '🦈';
+    if (slug.includes('malolo')) return '🏝️';
+    return '🌴';
   };
 
   return (
-    <article className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      {/* Header with icon and eco rating */}
-      <div className="p-6 pb-4">
-        <div className="flex items-start justify-between mb-4">
-          <div className="text-4xl">{getIcon(tour.slug)}</div>
-          <div className="flex items-center gap-1 bg-brand-green/10 px-2 py-1 rounded-full">
-            <span className="text-brand-green text-sm font-medium">🌿 {tour.eco_rating}/5</span>
-          </div>
+    <article className="card group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      {/* Tour Image */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img
+          src={tour.heroImage.src}
+          alt={tour.heroImage.alt}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        {/* Price Badge */}
+        <div className="absolute top-4 right-4 bg-brand-green-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+          From {tour.currency} {tour.priceFromFJD}
         </div>
-        
-        <h3 className="text-xl font-semibold mb-2 text-slate-900">{tour.title}</h3>
-        <p className="text-slate-700 mb-4 leading-relaxed">{tour.summary}</p>
-        
-        {/* Key details */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-slate-600">⏱️ Duration</span>
-            <span className="font-medium">{tour.duration}</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-slate-600">👥 Group Size</span>
-            <span className="font-medium">{tour.group_size}</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-slate-600">💰 Price</span>
-            <span className="font-semibold text-brand-green">{tour.price}</span>
-          </div>
+        {/* Duration Badge */}
+        <div className="absolute top-4 left-4 bg-brand-black/80 text-brand-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur">
+          ⏱️ {tour.durationHours}h
         </div>
       </div>
-      
-      {/* Highlights */}
-      <div className="px-6 pb-4">
-        <h4 className="text-sm font-semibold text-slate-900 mb-3">Highlights:</h4>
-        <ul className="space-y-1">
-          {tour.highlights.slice(0, 3).map((highlight, index) => (
-            <li key={index} className="text-sm text-slate-700 flex items-start gap-2">
-              <span className="text-brand-green mt-0.5">•</span>
-              {highlight}
-            </li>
-          ))}
-          {tour.highlights.length > 3 && (
-            <li className="text-sm text-slate-500 italic">
-              +{tour.highlights.length - 3} more highlights
-            </li>
+
+      {/* Tour Content */}
+      <div className="p-6">
+        {/* Icon and Title */}
+        <div className="flex items-start gap-3 mb-4">
+          <div className="text-3xl">{getIcon(tour.slug)}</div>
+          <div className="flex-1">
+            <h3 className="text-xl font-semibold text-brand-black mb-2 group-hover:text-brand-green-600 transition-colors">
+              {tour.name}
+            </h3>
+            <p className="text-accent-gray-600 text-sm leading-relaxed">
+              {tour.shortDescription}
+            </p>
+          </div>
+        </div>
+
+        {/* Tour Details */}
+        <div className="space-y-3 mb-6">
+          <div className="flex items-center gap-2 text-sm text-accent-gray-600">
+            <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+            <span>📍 {tour.departure}</span>
+          </div>
+          {tour.groupSizeMax && (
+            <div className="flex items-center gap-2 text-sm text-accent-gray-600">
+              <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+              <span>👥 Max {tour.groupSizeMax} people</span>
+            </div>
           )}
-        </ul>
-      </div>
-      
-      {/* Footer with CTA */}
-      <div className="px-6 py-4 bg-slate-50 border-t border-slate-200">
-        <Link 
+          <div className="flex items-center gap-2 text-sm text-accent-gray-600">
+            <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+            <span>🌿 Eco Rating: 5/5</span>
+          </div>
+        </div>
+
+        {/* Highlights */}
+        <div className="mb-6">
+          <h4 className="font-medium text-brand-black mb-2">Highlights:</h4>
+          <div className="flex flex-wrap gap-1">
+            {tour.highlights.slice(0, 3).map((highlight, index) => (
+              <span
+                key={index}
+                className="inline-block bg-brand-green-100 text-brand-green-700 text-xs px-2 py-1 rounded-full"
+              >
+                {highlight}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <Link
           href={`/tours/${tour.slug}`}
-          className="inline-flex items-center justify-center w-full text-brand-green font-semibold hover:text-brand-green/80 transition-colors"
+          className="btn-primary w-full text-center group-hover:bg-brand-green-600 transition-colors"
         >
-          View Full Details
-          <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+          View Details →
         </Link>
       </div>
     </article>

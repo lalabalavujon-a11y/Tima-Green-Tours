@@ -3,19 +3,23 @@ import MobileNav from './MobileNav';
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-      <nav className="container-base flex items-center justify-between h-14">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <img src="/logo.svg" alt="Tima Green Tours" className="h-7 w-7" />
-          <span>Tima Green Tours</span>
+    <header className="sticky top-0 z-50 bg-brand-green-100/95 backdrop-blur border-b border-brand-green-200">
+      <nav className="container-base flex items-center justify-between h-16">
+        <Link href="/" className="flex items-center gap-3 font-bold text-brand-black hover:text-brand-green-700 transition-colors">
+          <div className="w-10 h-10 bg-brand-green-500 rounded-full flex items-center justify-center">
+            <span className="text-brand-white text-xl">🌴</span>
+          </div>
+          <span className="text-xl">Tima Green Tours</span>
         </Link>
-        <div className="flex items-center gap-6 text-sm">
-          <Link href="/tours" className="hover:text-brand-green">Tours</Link>
-          <Link href="/about" className="hover:text-brand-green">About</Link>
-          <Link href="/contact" className="rounded-md bg-brand-green text-white px-3 py-1.5 hover:opacity-90">
+        
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <Link href="/tours" className="text-brand-black hover:text-brand-green-600 transition-colors">Tours</Link>
+          <Link href="/about" className="text-brand-black hover:text-brand-green-600 transition-colors">About</Link>
+          <Link href="/contact" className="btn-primary">
             Contact
           </Link>
         </div>
+        
         <MobileNav />
       </nav>
     </header>
