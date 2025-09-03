@@ -1,0 +1,32 @@
+
+> tima-green-tours@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 7.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 41.2s (522 modules)
+ GET / 200 in 44169ms
+ GET / 200 in 379ms
+ ○ Compiling /tours ...
+ ✓ Compiled /tours in 33.6s (515 modules)
+ GET /tours 200 in 35876ms
+ GET /tours 200 in 352ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 2.3s (505 modules)
+ GET /about 200 in 3631ms
+ GET /about 200 in 27ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 2.3s (514 modules)
+ GET /contact 200 in 3892ms
+ GET /contact 200 in 203ms
+ GET / 200 in 445ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1317ms (506 modules)
+ GET /photos/sigatoka/valley-scenic.jpg 404 in 1775ms
+ GET /photos/lomawai/salt-making.jpg 404 in 1737ms
+ GET /og-default.jpg 404 in 1742ms
+ ✓ Compiled in 5.9s (263 modules)
