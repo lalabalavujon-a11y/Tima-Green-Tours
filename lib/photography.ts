@@ -21,10 +21,10 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'biausevu-waterfall-tour': [
     {
       id: 'bw-001',
-      src: '/photos/biausevu/waterfall-main.jpg',
+      src: '/tours/placeholder.jpg',
       alt: 'Biausevu Waterfall cascading into natural pool',
-      width: 2400,
-      height: 1350,
+      width: 1600,
+      height: 900,
       caption: 'The majestic Biausevu Waterfall - a perfect spot for swimming and photography',
       location: 'Biausevu Village, Sigatoka',
       photographer: 'Tima Green Tours',
@@ -64,10 +64,10 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'sigatoka-valley-lawai-pottery': [
     {
       id: 'sv-001',
-      src: '/photos/sigatoka/valley-scenic.jpg',
+      src: '/tours/placeholder.jpg',
       alt: 'Scenic view of Sigatoka Valley known as the Salad Bowl of Fiji',
-      width: 2400,
-      height: 1350,
+      width: 1600,
+      height: 900,
       caption: 'The lush Sigatoka Valley - Fiji\'s agricultural heartland',
       location: 'Sigatoka Valley, Coral Coast',
       photographer: 'Tima Green Tours',
@@ -93,10 +93,10 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'lomawai-salt-natadola-horse-riding': [
     {
       id: 'ls-001',
-      src: '/photos/lomawai/salt-making.jpg',
+      src: '/tours/placeholder.jpg',
       alt: 'Traditional salt making process at Lomawai Village',
-      width: 2400,
-      height: 1350,
+      width: 1600,
+      height: 900,
       caption: 'Ancient salt-making techniques passed down through generations',
       location: 'Lomawai Village, Coral Coast',
       photographer: 'Tima Green Tours',

@@ -30,7 +30,7 @@ export default function TourCard({ tour }: TourCardProps) {
   return (
     <article className="card group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       {/* Tour Image */}
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden">
         <Image
           src={tour.heroImage.src}
           alt={tour.heroImage.alt}

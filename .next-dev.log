@@ -65,3 +65,14 @@
  ✓ Compiled in 2.1s (517 modules)
  GET / 200 in 463ms
  ✓ Compiled in 1132ms (541 modules)
+ ○ Compiling /tours ...
+ ✓ Compiled /tours in 784ms (280 modules)
+ GET /tours 200 in 1640ms
+ GET /tours 200 in 441ms
+ ✓ Compiled /about in 161ms (283 modules)
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 13.5s
