@@ -96,13 +96,13 @@ export default async function TourPage({ params }: { params: { slug: string } })
               </div>
               <div className="flex gap-3">
                 <Link
-                  href="/contact"
+                  href={`/book/${tour.slug}`}
                   className="flex-1 bg-brand-green text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-green/90 transition-colors text-center"
                 >
                   Book Now
                 </Link>
                 <Link
-                  href="/contact"
+                  href={`/book/${tour.slug}`}
                   className="flex-1 border-2 border-brand-green text-brand-green py-3 px-6 rounded-lg font-semibold hover:bg-brand-green/5 transition-colors text-center"
                 >
                   Enquire

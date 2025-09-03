@@ -6,7 +6,13 @@ const schema = z.object({
   name: z.string().min(1),
   email: z.string().email(),
   whatsapp: z.string().optional(),
-  message: z.string().min(10)
+  message: z.string().min(3).optional(),
+  // Booking-specific optional fields
+  booking: z.union([z.boolean(), z.string()]).optional(),
+  tourSlug: z.string().optional(),
+  tourName: z.string().optional(),
+  date: z.string().optional(),
+  groupSize: z.string().optional()
 });
 
 export async function POST(req: Request) {
@@ -27,14 +33,18 @@ export async function POST(req: Request) {
 
   const resend = new Resend(resendKey);
 
-  const { name, email, whatsapp, message } = parsed.data;
-  const subject = `New Tour Inquiry — ${name}`;
+  const { name, email, whatsapp, message, booking, tourSlug, tourName, date, groupSize } = parsed.data as any;
+  const isBooking = booking === true || booking === 'true';
+  const subject = isBooking ? `New Booking Request — ${tourName ?? tourSlug ?? 'Tour'} — ${name}` : `New Tour Inquiry — ${name}`;
   const html = `
-    <h2>New Inquiry</h2>
+    <h2>${isBooking ? 'New Booking Request' : 'New Inquiry'}</h2>
+    ${isBooking ? `<p><strong>Tour:</strong> ${tourName ?? 'N/A'} (${tourSlug ?? 'n/a'})</p>` : ''}
+    ${isBooking ? `<p><strong>Date:</strong> ${date ?? 'N/A'}</p>` : ''}
+    ${isBooking ? `<p><strong>Group Size:</strong> ${groupSize ?? 'N/A'}</p>` : ''}
     <p><strong>Name:</strong> ${name}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>WhatsApp:</strong> ${whatsapp ?? 'N/A'}</p>
-    <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
+    ${message ? `<p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>` : ''}
   `;
 
   try {

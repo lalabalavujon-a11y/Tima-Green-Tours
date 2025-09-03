@@ -40,13 +40,13 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug }
           </div>
           <div className="flex gap-2">
             <Link
-              href="/contact"
+              href={`/book/${tourSlug}`}
               className="bg-brand-green text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-green/90 transition-colors whitespace-nowrap"
             >
               Book Now
             </Link>
             <Link
-              href="/contact"
+              href={`/book/${tourSlug}`}
               className="border border-brand-green text-brand-green px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-green/5 transition-colors whitespace-nowrap"
             >
               Enquire
@@ -67,13 +67,13 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug }
           </div>
           <div className="space-y-3">
             <Link
-              href="/contact"
+              href={`/book/${tourSlug}`}
               className="w-full bg-brand-green text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-green/90 transition-colors text-center block"
             >
               Book This Tour
             </Link>
             <Link
-              href="/contact"
+              href={`/book/${tourSlug}`}
               className="w-full border-2 border-brand-green text-brand-green py-3 px-6 rounded-xl font-semibold hover:bg-brand-green/5 transition-colors text-center block"
             >
               Ask Questions
