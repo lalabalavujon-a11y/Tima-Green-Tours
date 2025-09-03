@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Container from '@/components/Container';
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  const router = useRouter();
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -93,28 +95,33 @@ export default function ContactPage() {
                   id="tour"
                   name="tour"
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  onChange={(e) => {
+                    const slug = e.target.value;
+                    if (slug && slug !== 'custom') {
+                      router.push(`/book/${slug}`);
+                    }
+                  }}
                 >
                   <option value="">Select a tour</option>
-                  <option value="biausevu-waterfall">Biausevu Waterfall Tour</option>
-                  <option value="sigatoka-valley">Sigatoka Valley Drive & Lawai Pottery Village</option>
-                  <option value="lomawai-salt">Lomawai Salt Making Village & Horse Riding</option>
-                  <option value="sabeto-mudpool">Sabeto Mudpool and Nadi Temple Tour</option>
-                  <option value="shark-diving">Shark Diving in Beqa Lagoon</option>
-                  <option value="malolo-island">Malolo Island 3 Nights Get-Away</option>
+                  <option value="biausevu-waterfall-tour">Biausevu Waterfall Tour</option>
+                  <option value="sigatoka-valley-lawai-pottery">Sigatoka Valley Drive & Lawai Pottery Village</option>
+                  <option value="lomawai-salt-natadola-horse-riding">Lomawai Salt Making Village & Horse Riding</option>
+                  <option value="sabeto-mudpool-nadi-temple">Sabeto Mudpool and Nadi Temple/Shopping</option>
+                  <option value="shark-diving-beqa-lagoon">Shark Diving in Beqa Lagoon</option>
+                  <option value="malolo-island-getaway">Malolo Island 3 Nights Get-Away</option>
                   <option value="custom">Custom Tour</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="dates" className="block text-sm font-medium text-slate-700 mb-2">
-                  Preferred Dates
+                <label htmlFor="date" className="block text-sm font-medium text-slate-700 mb-2">
+                  Preferred Date
                 </label>
                 <input
-                  type="text"
-                  id="dates"
-                  name="dates"
+                  type="date"
+                  id="date"
+                  name="date"
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
-                  placeholder="e.g., March 15-20, 2024"
                 />
               </div>
 

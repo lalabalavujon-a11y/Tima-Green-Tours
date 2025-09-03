@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Container from '@/components/Container';
 import { getTourBySlug } from '@/lib/data';
 
@@ -9,6 +9,9 @@ export default function BookTourPage({ params }: { params: { slug: string } }) {
   const tour = useMemo(() => getTourBySlug(params.slug), [params.slug]);
   const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  const searchParams = useSearchParams();
+  const defaultDate = searchParams.get('date') ?? '';
+  const defaultGroupSize = searchParams.get('groupSize') ?? '';
 
   if (!tour) {
     if (typeof window !== 'undefined') router.replace('/tours');
@@ -71,11 +74,11 @@ export default function BookTourPage({ params }: { params: { slug: string } }) {
                   </div>
                   <div>
                     <label htmlFor="date" className="block text-sm font-medium text-slate-700 mb-2">Preferred Date</label>
-                    <input id="date" name="date" type="date" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent" />
+                    <input id="date" name="date" type="date" defaultValue={defaultDate} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent" />
                   </div>
                   <div>
                     <label htmlFor="groupSize" className="block text-sm font-medium text-slate-700 mb-2">Group Size</label>
-                    <select id="groupSize" name="groupSize" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent">
+                    <select id="groupSize" name="groupSize" defaultValue={defaultGroupSize} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent">
                       <option value="">Select</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
