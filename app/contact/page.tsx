@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/Container';
+import DatePicker from '@/components/DatePicker';
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
@@ -117,12 +118,7 @@ export default function ContactPage() {
                 <label htmlFor="date" className="block text-sm font-medium text-slate-700 mb-2">
                   Preferred Date
                 </label>
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
-                />
+                <DatePicker id="date" name="date" />
               </div>
 
               <div>
