@@ -16,15 +16,15 @@ body {
 
 /* Custom button styles matching main website */
 .btn-primary {
-  @apply bg-brand-green-500 hover:bg-brand-green-600 text-brand-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg;
+  @apply bg-brand-emerald-600 hover:bg-brand-emerald-700 text-brand-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-emerald-300 focus:ring-offset-2 focus:ring-offset-white;
 }
 
 .btn-secondary {
-  @apply bg-brand-black hover:bg-accent-gray-800 text-brand-white font-semibold py-3 px-6 rounded-lg border-2 border-brand-green-500 transition-all duration-200 hover:border-brand-green-400;
+  @apply bg-brand-black hover:bg-accent-gray-800 text-brand-white font-semibold py-3 px-6 rounded-lg border-2 border-brand-emerald-500 transition-all duration-200 hover:border-brand-emerald-400 focus:outline-none focus:ring-2 focus:ring-brand-emerald-300 focus:ring-offset-2 focus:ring-offset-white;
 }
 
 .btn-outline {
-  @apply bg-transparent hover:bg-brand-green-500 text-brand-green-500 hover:text-brand-white font-semibold py-3 px-6 rounded-lg border-2 border-brand-green-500 transition-all duration-200;
+  @apply bg-transparent hover:bg-brand-emerald-50 text-brand-emerald-600 hover:text-brand-emerald-700 font-semibold py-3 px-6 rounded-lg border-2 border-brand-emerald-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-emerald-300 focus:ring-offset-2 focus:ring-offset-white;
 }
 
 /* Custom card styles */

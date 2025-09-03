@@ -29,7 +29,7 @@ export default function ContactPage() {
       <div className="py-14">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-brand-emerald mb-6">
             Contact Us
           </h1>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                     placeholder="Your full name"
                   />
                 </div>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                   type="tel"
                   id="whatsapp"
                   name="whatsapp"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                   placeholder="+679 XXX XXXX"
                 />
               </div>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 <select
                   id="tour"
                   name="tour"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                 >
                   <option value="">Select a tour</option>
                   <option value="biausevu-waterfall">Biausevu Waterfall Tour</option>
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   type="text"
                   id="dates"
                   name="dates"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                   placeholder="e.g., March 15-20, 2024"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 <select
                   id="group-size"
                   name="groupSize"
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                 >
                   <option value="">Select group size</option>
                   <option value="1-2">1-2 people</option>
@@ -144,14 +144,14 @@ export default function ContactPage() {
                   name="message"
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                   placeholder="Tell us about your travel plans, special requirements, or any questions you have..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-brand-green text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-green/90 transition-colors"
+                className="w-full bg-brand-emerald text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors"
               >
                 Send Message
               </button>
@@ -178,25 +178,25 @@ export default function ContactPage() {
                 <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="text-brand-green text-xl">📧</div>
+                    <div className="text-brand-emerald text-xl">📧</div>
                     <div>
                       <h4 className="font-medium">Email Us</h4>
-                      <a href="mailto:info@timaimagreentours.com" className="text-brand-green hover:underline">
+                      <a href="mailto:info@timaimagreentours.com" className="text-brand-emerald hover:underline">
                         info@timaimagreentours.com
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="text-brand-green text-xl">📞</div>
+                    <div className="text-brand-emerald text-xl">📞</div>
                     <div>
                       <h4 className="font-medium">Call Us</h4>
-                      <a href="tel:+679XXXXXXX" className="text-brand-green hover:underline">
+                      <a href="tel:+679XXXXXXX" className="text-brand-emerald hover:underline">
                         +679 XXX XXXX
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="text-brand-green text-xl">📍</div>
+                    <div className="text-brand-emerald text-xl">📍</div>
                     <div>
                       <h4 className="font-medium">Visit Us</h4>
                       <p className="text-slate-700">Sigatoka, Fiji Islands</p>
@@ -209,23 +209,23 @@ export default function ContactPage() {
                 <h3 className="text-lg font-semibold mb-4">Why Choose Timaima Green Tours?</h3>
                 <ul className="space-y-3 text-sm text-slate-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-brand-green mt-1">✓</span>
+                    <span className="text-brand-emerald mt-1">✓</span>
                     <span>Indigenous owned and operated</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-brand-green mt-1">✓</span>
+                    <span className="text-brand-emerald mt-1">✓</span>
                     <span>20+ years of combined experience</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-brand-green mt-1">✓</span>
+                    <span className="text-brand-emerald mt-1">✓</span>
                     <span>Budget-friendly packages</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-brand-green mt-1">✓</span>
+                    <span className="text-brand-emerald mt-1">✓</span>
                     <span>Personalized service and attention</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-brand-green mt-1">✓</span>
+                    <span className="text-brand-emerald mt-1">✓</span>
                     <span>Support for local communities</span>
                   </li>
                 </ul>

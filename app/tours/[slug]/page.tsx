@@ -45,9 +45,9 @@ export default async function TourPage({ params }: { params: { slug: string } })
       <div className="py-8">
         {/* Breadcrumbs */}
         <nav className="mb-8 text-sm text-slate-600">
-          <Link href="/" className="hover:text-brand-green">Home</Link>
+          <Link href="/" className="hover:text-brand-emerald">Home</Link>
           <span className="mx-2">→</span>
-          <Link href="/tours" className="hover:text-brand-green">Tours</Link>
+          <Link href="/tours" className="hover:text-brand-emerald">Tours</Link>
           <span className="mx-2">→</span>
           <span className="text-slate-900">{tour.name}</span>
         </nav>
@@ -65,16 +65,16 @@ export default async function TourPage({ params }: { params: { slug: string } })
             {/* Key Facts */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <div className="flex items-center gap-2 text-sm text-slate-600">
-                <span className="text-brand-green">⏱️</span>
+                <span className="text-brand-emerald">⏱️</span>
                 <span>{tour.durationHours} hours</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600">
-                <span className="text-brand-green">📍</span>
+                <span className="text-brand-emerald">📍</span>
                 <span>{tour.departure}</span>
               </div>
               {tour.groupSizeMax && (
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="text-brand-green">👥</span>
+                  <span className="text-brand-emerald">👥</span>
                   <span>Max {tour.groupSizeMax}</span>
                 </div>
               )}
@@ -84,7 +84,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
             <div className="bg-brand-sand/30 rounded-xl p-6 mb-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="text-2xl font-bold text-brand-green">
+                  <div className="text-2xl font-bold text-brand-emerald">
                     From {tour.currency} {tour.priceFromFJD}
                   </div>
                   <div className="text-sm text-slate-600">per person</div>
@@ -97,13 +97,13 @@ export default async function TourPage({ params }: { params: { slug: string } })
               <div className="flex gap-3">
                 <Link
                   href="/contact"
-                  className="flex-1 bg-brand-green text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-green/90 transition-colors text-center"
+                  className="flex-1 bg-brand-emerald text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors text-center"
                 >
                   Book Now
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex-1 border-2 border-brand-green text-brand-green py-3 px-6 rounded-lg font-semibold hover:bg-brand-green/5 transition-colors text-center"
+                  className="flex-1 border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/5 transition-colors text-center"
                 >
                   Enquire
                 </Link>
@@ -129,7 +129,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
           <ul className="grid gap-3 md:grid-cols-2">
             {tour.highlights.map((highlight) => (
               <li key={highlight} className="flex items-start gap-3">
-                <span className="text-brand-green mt-1">✓</span>
+                <span className="text-brand-emerald mt-1">✓</span>
                 <span className="text-slate-700">{highlight}</span>
               </li>
             ))}
@@ -143,7 +143,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
             {tour.itinerary.map((step, idx) => (
               <li key={idx} className="rounded-xl border border-slate-200 p-6 bg-white">
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                  <div className="w-8 h-8 bg-brand-emerald rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {idx + 1}
                   </div>
                   <div className="flex-1">
@@ -166,7 +166,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
             <ul className="space-y-3">
               {tour.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-brand-green">✓</span>
+                  <span className="text-brand-emerald">✓</span>
                   <span className="text-slate-700">{item}</span>
                 </li>
               ))}
@@ -204,7 +204,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
               <ul className="grid gap-2 md:grid-cols-2">
                 {tour.whatToBring.map((item) => (
                   <li key={item} className="flex items-center gap-2">
-                    <span className="text-brand-green">•</span>
+                    <span className="text-brand-emerald">•</span>
                     <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
@@ -220,7 +220,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
             <div className="space-y-4">
               {tour.faqs.map((faq, index) => (
                 <details key={index} className="bg-white rounded-xl border border-slate-200 p-6">
-                  <summary className="cursor-pointer font-semibold text-slate-900 hover:text-brand-green transition-colors">
+                  <summary className="cursor-pointer font-semibold text-slate-900 hover:text-brand-emerald transition-colors">
                     {faq.q}
                   </summary>
                   <p className="mt-3 text-slate-700">{faq.a}</p>
@@ -251,7 +251,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
                   </div>
                   <div className="font-semibold text-slate-900 mb-2">{r.name}</div>
                   <div className="text-sm text-slate-600 mb-2">{r.tagline}</div>
-                  <div className="text-brand-green font-semibold">
+                  <div className="text-brand-emerald font-semibold">
                     From {r.currency} {r.priceFromFJD}
                   </div>
                 </Link>

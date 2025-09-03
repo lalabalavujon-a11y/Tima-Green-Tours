@@ -8,7 +8,7 @@ export default function AboutPage() {
       <div className="py-14">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-brand-emerald mb-6">
             About Tima Green Tours
           </h1>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
@@ -45,28 +45,28 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold mb-6">Why Choose Us</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="text-brand-green text-xl">🤝</div>
+                  <div className="text-brand-emerald text-xl">🤝</div>
                   <div>
                     <h4 className="font-semibold">Friendly and Dependable Service</h4>
                     <p className="text-sm text-slate-600">Our team is known for warm Fijian hospitality and reliable service that ensures your journey is smooth and enjoyable.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="text-brand-green text-xl">💰</div>
+                  <div className="text-brand-emerald text-xl">💰</div>
                   <div>
                     <h4 className="font-semibold">Affordable Prices</h4>
                     <p className="text-sm text-slate-600">We offer competitive rates without compromising on quality, making Fijian adventures accessible to travellers with various budgets.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="text-brand-green text-xl">🌟</div>
+                  <div className="text-brand-emerald text-xl">🌟</div>
                   <div>
                     <h4 className="font-semibold">Experts in Fiji Local Tours</h4>
                     <p className="text-sm text-slate-600">With over two decades of combined experience, our guides know the hidden gems and cultural nuances that make for truly authentic experiences.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="text-brand-green text-xl">🌿</div>
+                  <div className="text-brand-emerald text-xl">🌿</div>
                   <div>
                     <h4 className="font-semibold">Support for Indigenous Communities</h4>
                     <p className="text-sm text-slate-600">By choosing us, you're directly contributing to the wellbeing of Fiji's indigenous communities through sustainable tourism practices.</p>
@@ -82,7 +82,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-slate-900 mb-8">What We Do</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-6 border border-slate-200">
-              <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">1</div>
+              <div className="w-12 h-12 bg-brand-emerald rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">1</div>
               <h3 className="text-xl font-semibold mb-3">Tour Bookings</h3>
               <p className="text-slate-700">
                 We specialise in arranging comprehensive tours for tourists, showcasing the best of 
@@ -91,7 +91,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-slate-200">
-              <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">2</div>
+              <div className="w-12 h-12 bg-brand-emerald rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">2</div>
               <h3 className="text-xl font-semibold mb-3">Transfer Services</h3>
               <p className="text-slate-700">
                 We provide convenient airport pick-up and drop-off services, as well as hotel 
@@ -100,7 +100,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-slate-200">
-              <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">3</div>
+              <div className="w-12 h-12 bg-brand-emerald rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">3</div>
               <h3 className="text-xl font-semibold mb-3">Budget-Friendly Packages</h3>
               <p className="text-slate-700">
                 Our affordable prices are tailored to fit your budget, offering bundled tours 
@@ -164,7 +164,7 @@ export default function AboutPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-6 border border-slate-200 text-center">
-              <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">T</div>
+              <div className="w-20 h-20 bg-brand-emerald rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">T</div>
               <h3 className="text-xl font-semibold mb-2">Tima - Director</h3>
               <p className="text-slate-700">
                 Leading with a love for Fiji and its people, Tima brings passion and vision to 
@@ -174,7 +174,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-slate-200 text-center">
-              <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">E</div>
+              <div className="w-20 h-20 bg-brand-emerald rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">E</div>
               <h3 className="text-xl font-semibold mb-2">Eroni - Tour Organiser</h3>
               <p className="text-slate-700">
                 Crafting the perfect itinerary for your adventure, Eroni combines his extensive 
@@ -183,7 +183,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-slate-200 text-center">
-              <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">S</div>
+              <div className="w-20 h-20 bg-brand-emerald rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">S</div>
               <h3 className="text-xl font-semibold mb-2">Savenaca - Transport Coordinator</h3>
               <p className="text-slate-700">
                 Ensuring seamless and comfortable travels throughout your Fijian adventure, 
@@ -203,7 +203,7 @@ export default function AboutPage() {
           </p>
           <a 
             href="/contact" 
-            className="inline-block bg-brand-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-green/90 transition-colors"
+            className="inline-block bg-brand-emerald text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors"
           >
             Contact Us Today
           </a>

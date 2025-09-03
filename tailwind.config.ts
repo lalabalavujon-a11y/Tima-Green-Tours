@@ -12,16 +12,33 @@ export default {
         // Primary brand colors from main website
         brand: {
           green: {
-            50: '#f0fdf4',   // Very light green
-            100: '#dcfce7',  // Light muted green (header background)
-            200: '#bbf7d0',  // Light green
-            300: '#86efac',  // Medium light green
-            400: '#4ade80',  // Medium green
-            500: '#22c55e',  // Vibrant emerald (CTA button)
-            600: '#16a34a',  // Darker green
-            700: '#15803d',  // Dark green
-            800: '#166534',  // Very dark green
-            900: '#14532d',  // Forest green
+            DEFAULT: '#05ff5c', // Base brand green
+            50: '#f0fff7',    // Very light green (tint of #05ff5c)
+            100: '#d9ffe9',   // Light green
+            200: '#b0ffd1',   // Lighter green
+            300: '#88ffb9',   // Medium light green
+            400: '#3dff7b',   // Medium green (tint)
+            500: '#05ff5c',   // Brand green (CTA)
+            600: '#04d94f',   // Darker green
+            700: '#03b342',   // Dark green
+            800: '#028f36',   // Very dark green
+            900: '#026b29',   // Forest green
+            950: '#013d19',   // Deep forest green
+          },
+          // Alternative, more natural emerald scale for muted uses
+          emerald: {
+            DEFAULT: '#10b981',
+            50: '#ecfdf5',
+            100: '#d1fae5',
+            200: '#a7f3d0',
+            300: '#6ee7b7',
+            400: '#34d399',
+            500: '#10b981',
+            600: '#059669',
+            700: '#047857',
+            800: '#065f46',
+            900: '#064e3b',
+            950: '#022c22'
           },
           black: '#000000',  // Pure black for text and accents
           white: '#ffffff',  // Clean white for backgrounds

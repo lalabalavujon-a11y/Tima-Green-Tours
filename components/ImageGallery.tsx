@@ -76,7 +76,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
               key={image.src}
               onClick={() => setCurrentIndex(index)}
               className={`relative aspect-square overflow-hidden rounded-lg transition-opacity ${
-                index === currentIndex ? 'ring-2 ring-brand-green' : 'hover:opacity-80'
+                index === currentIndex ? 'ring-2 ring-brand-emerald' : 'hover:opacity-80'
               }`}
             >
               <Image 

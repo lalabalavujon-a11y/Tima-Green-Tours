@@ -16,7 +16,7 @@ export default function Section({
       <Container>
         <div className="max-w-3xl mb-12">
           {overline && (
-            <div className="text-brand-green-600 font-medium text-sm uppercase tracking-wide mb-2">
+            <div className="text-brand-emerald-600 font-medium text-sm uppercase tracking-wide mb-2">
               {overline}
             </div>
           )}

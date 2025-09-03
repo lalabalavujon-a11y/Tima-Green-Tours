@@ -1,0 +1,57 @@
+{
+  "name": "super-debug-agent",
+  "version": "0.1.0",
+  "description": "Super Debug Agent: real-time code quality monitoring, autofix, and CLI installer",
+  "bin": {
+    "super-debug": "bin/super-debug.js"
+  },
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "bin/",
+    "scripts/",
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "node scripts/install.js --postinstall",
+    "start": "node index.js",
+    "lint": "eslint .",
+    "debug:start": "eslint .",
+    "debug:fix": "eslint . --fix",
+    "debug:monitor": "node index.js --monitor"
+  },
+  "keywords": [
+    "lint",
+    "eslint",
+    "monitor",
+    "cli",
+    "quality"
+  ],
+  "author": "Super Debug Team",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "execa": "^8.0.1",
+    "picocolors": "^1.0.0",
+    "which": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.3.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=9",
+    "typescript": ">=5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

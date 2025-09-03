@@ -26,7 +26,7 @@ export default function TourCard({ tour }: TourCardProps) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {/* Price Badge */}
-        <div className="absolute top-4 right-4 bg-brand-green-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+        <div className="absolute top-4 right-4 bg-brand-emerald-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
           From {tour.currency} {tour.priceFromFJD}
         </div>
         {/* Duration Badge */}
@@ -41,7 +41,7 @@ export default function TourCard({ tour }: TourCardProps) {
         <div className="flex items-start gap-3 mb-4">
           <div className="text-3xl">{getIcon(tour.slug)}</div>
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-brand-black mb-2 group-hover:text-brand-green-600 transition-colors">
+            <h3 className="text-xl font-semibold text-brand-black mb-2 group-hover:text-brand-emerald-600 transition-colors">
               {tour.name}
             </h3>
             <p className="text-accent-gray-600 text-sm leading-relaxed">
@@ -53,17 +53,17 @@ export default function TourCard({ tour }: TourCardProps) {
         {/* Tour Details */}
         <div className="space-y-3 mb-6">
           <div className="flex items-center gap-2 text-sm text-accent-gray-600">
-            <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+            <span className="w-2 h-2 bg-brand-emerald-400 rounded-full"></span>
             <span>📍 {tour.departure}</span>
           </div>
           {tour.groupSizeMax && (
             <div className="flex items-center gap-2 text-sm text-accent-gray-600">
-              <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+              <span className="w-2 h-2 bg-brand-emerald-400 rounded-full"></span>
               <span>👥 Max {tour.groupSizeMax} people</span>
             </div>
           )}
           <div className="flex items-center gap-2 text-sm text-accent-gray-600">
-            <span className="w-2 h-2 bg-brand-green-400 rounded-full"></span>
+            <span className="w-2 h-2 bg-brand-emerald-400 rounded-full"></span>
             <span>🌿 Eco Rating: 5/5</span>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function TourCard({ tour }: TourCardProps) {
             {tour.highlights.slice(0, 3).map((highlight, index) => (
               <span
                 key={index}
-                className="inline-block bg-brand-green-100 text-brand-green-700 text-xs px-2 py-1 rounded-full"
+                className="inline-block bg-brand-emerald-100 text-brand-emerald-700 text-xs px-2 py-1 rounded-full"
               >
                 {highlight}
               </span>
@@ -86,7 +86,7 @@ export default function TourCard({ tour }: TourCardProps) {
         {/* CTA Button */}
         <Link
           href={`/tours/${tour.slug}`}
-          className="btn-primary w-full text-center group-hover:bg-brand-green-600 transition-colors"
+          className="btn-primary w-full text-center group-hover:bg-brand-emerald-600 transition-colors"
         >
           View Details →
         </Link>
