@@ -26,6 +26,8 @@ async function ensureLocalInstallScript(cwd) {
 
 async function main() {
   const cwd = process.cwd();
+  const pkgRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const indexJs = path.join(pkgRoot, 'index.js');
   if (command === 'install') {
     const script = await ensureLocalInstallScript(cwd);
     if (script) {
@@ -36,15 +38,15 @@ async function main() {
     return;
   }
   if (command === 'start') {
-    await run('node', ['index.js']);
+    await run('node', [indexJs]);
     return;
   }
   if (command === 'fix') {
-    await run('node', ['index.js', '--fix']);
+    await run('node', [indexJs, '--fix']);
     return;
   }
   if (command === 'monitor') {
-    await run('node', ['index.js', '--monitor']);
+    await run('node', [indexJs, '--monitor']);
     return;
   }
   // help
