@@ -253,7 +253,7 @@ function generateReviews(slug: string): Array<{ name: string; rating: number; qu
     {
       name: 'Happy Guest',
       rating: 5,
-      quote: 'Absolutely incredible experience with Timaima Green Tours!',
+      quote: 'Absolutely incredible experience with Tima Green Tours!',
       date: '2024-01-01'
     }
   ];

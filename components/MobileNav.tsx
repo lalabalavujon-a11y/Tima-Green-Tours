@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function MobileNav() {
           {/* Menu Header */}
           <div className="flex items-center justify-between p-6 border-b border-slate-200">
             <div className="flex items-center gap-2 font-semibold text-lg">
-              <img src="/logo.svg" alt="Tima Green Tours" className="h-8 w-8" />
+              <Image src="/logo.svg" alt="Tima Green Tours" width={32} height={32} />
               <span>Tima Green Tours</span>
             </div>
             <button
@@ -109,7 +110,7 @@ export default function MobileNav() {
             {/* Contact Info */}
             <div className="mt-6 pt-6 border-t border-slate-200">
               <div className="text-sm text-slate-600 space-y-2">
-                <div>📧 info@timaimagreentours.com</div>
+                <div>📧 info@timagreentours.com</div>
                 <div>📞 +679 XXX XXXX</div>
                 <div>📍 Sigatoka, Fiji</div>
               </div>

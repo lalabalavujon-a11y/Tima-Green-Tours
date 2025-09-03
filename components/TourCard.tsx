@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Tour } from '@/lib/types/tour';
+import Image from 'next/image';
 
 interface TourCardProps {
   tour: Tour;
@@ -20,10 +21,12 @@ export default function TourCard({ tour }: TourCardProps) {
     <article className="card group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       {/* Tour Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img
+        <Image
           src={tour.heroImage.src}
           alt={tour.heroImage.alt}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {/* Price Badge */}
         <div className="absolute top-4 right-4 bg-brand-green-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">

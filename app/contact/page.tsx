@@ -37,7 +37,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Your Gateway to Fiji's Wonders - Embark on an unforgettable journey through the stunning 
-            landscapes and vibrant culture of Fiji with Timaima Green Tours and Transfers.
+            landscapes and vibrant culture of Fiji with Tima Green Tours and Transfers.
           </p>
         </div>
 
@@ -184,8 +184,8 @@ export default function ContactPage() {
                     <div className="text-brand-green text-xl">📧</div>
                     <div>
                       <h4 className="font-medium">Email Us</h4>
-                      <a href="mailto:info@timaimagreentours.com" className="text-brand-green hover:underline">
-                        info@timaimagreentours.com
+                      <a href="mailto:info@timagreentours.com" className="text-brand-green hover:underline">
+                        info@timagreentours.com
                       </a>
                     </div>
                   </div>

@@ -71,7 +71,7 @@ export default function SEOHead({ title, description, url, image, tourData }: SE
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@timaimagreentours.com',
+      email: 'info@timagreentours.com',
       contactType: 'customer service'
     }
   };

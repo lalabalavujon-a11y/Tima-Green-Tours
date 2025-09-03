@@ -157,7 +157,7 @@ export default function AboutPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-8">Our Staff</h2>
           <p className="text-lg text-slate-700 mb-8 leading-relaxed">
-            Experience the beauty and warmth of Fiji with Timaima Green Tours and Transfers! 
+            Experience the beauty and warmth of Fiji with Tima Green Tours and Transfers! 
             Our dedicated team has over 20 years of combined experience in showcasing the best 
             of Fiji's culture and attractions. Located in the vibrant cities of Lautoka and Suva, 
             we offer budget-friendly tours that guarantee an unforgettable experience.
