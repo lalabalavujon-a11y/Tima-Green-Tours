@@ -1,0 +1,4 @@
+{
+  "monitor": { "paths": ["**/*.{js,jsx,ts,tsx}"], "ignore": ["**/node_modules/**"] },
+  "autofix": true
+}
