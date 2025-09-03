@@ -30,3 +30,38 @@
  GET /photos/lomawai/salt-making.jpg 404 in 1737ms
  GET /og-default.jpg 404 in 1742ms
  ✓ Compiled in 5.9s (263 modules)
+ GET / 200 in 740ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.3s (506 modules)
+ GET /photos/sigatoka/valley-scenic.jpg 404 in 2701ms
+ GET /photos/lomawai/salt-making.jpg 404 in 2706ms
+ GET /og-default.jpg 404 in 2709ms
+ ✓ Compiled in 9.6s (555 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.6s (544 modules)
+ GET /photos/sigatoka/valley-scenic.jpg 404 in 4812ms
+ ⨯ The requested resource isn't a valid image for /photos/sigatoka/valley-scenic.jpg received text/html; charset=utf-8
+ GET /photos/lomawai/salt-making.jpg 404 in 4787ms
+ ⨯ The requested resource isn't a valid image for /photos/lomawai/salt-making.jpg received text/html; charset=utf-8
+ GET /og-default.jpg 404 in 4805ms
+ ⨯ The requested resource isn't a valid image for /og-default.jpg received text/html; charset=utf-8
+ ✓ Compiled in 1429ms (280 modules)
+ ✓ Compiled in 2.7s (558 modules)
+ ✓ Compiled in 2.6s (517 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.2s (506 modules)
+ GET /photos/sigatoka/valley-scenic.jpg 404 in 2532ms
+ GET /photos/lomawai/salt-making.jpg 404 in 2532ms
+ GET /og-default.jpg 404 in 1843ms
+ ✓ Compiled in 2.3s (254 modules)
+ ✓ Compiled in 2s (517 modules)
+ ✓ Compiled in 1702ms (517 modules)
+ GET / 200 in 1619ms
+ ✓ Compiled in 2.8s (517 modules)
+ ✓ Compiled in 897ms (254 modules)
+ ✓ Compiled in 4.2s (517 modules)
+ ✓ Compiled in 991ms (517 modules)
+ GET / 200 in 2311ms
+ ✓ Compiled in 2.1s (517 modules)
+ GET / 200 in 463ms
+ ✓ Compiled in 1132ms (541 modules)

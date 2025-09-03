@@ -32,20 +32,20 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="py-20 bg-white">
         <Container>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-start">
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🌿</span>
               </div>
               <h3 className="text-xl font-semibold text-black mb-2">Indigenous owned & operated</h3>
-              <p className="text-gray-600">Authentic experiences from local experts</p>
+              <p className="text-gray-600">Authentic experiences with local experts</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">⏰</span>
               </div>
               <h3 className="text-xl font-semibold text-black mb-2">20+ years combined experience</h3>
-              <p className="text-gray-600">Deep knowledge of Fiji's hidden gems</p>
+              <p className="text-gray-600">Guides who know Fiji’s hidden gems</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

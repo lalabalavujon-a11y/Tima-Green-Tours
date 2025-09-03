@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Tour } from '@/lib/types/tour';
 
 interface TourCardProps {
@@ -6,6 +7,16 @@ interface TourCardProps {
 }
 
 export default function TourCard({ tour }: TourCardProps) {
+  const getFormattedPrice = (): string => {
+    if (!tour.priceFromFJD || tour.priceFromFJD <= 0) return 'Contact for Pricing';
+    const formatted = new Intl.NumberFormat('en-US').format(tour.priceFromFJD);
+    return `From ${tour.currency} ${formatted}`;
+  };
+
+  const getShortCopy = (text: string, limit: number = 140): string => {
+    if (!text) return '';
+    return text.length > limit ? `${text.slice(0, limit)}…` : text;
+  };
   const getIcon = (slug: string) => {
     if (slug.includes('waterfall')) return '🌊';
     if (slug.includes('pottery')) return '🏺';
@@ -20,14 +31,17 @@ export default function TourCard({ tour }: TourCardProps) {
     <article className="card group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       {/* Tour Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img
+        <Image
           src={tour.heroImage.src}
           alt={tour.heroImage.alt}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+          priority={false}
         />
         {/* Price Badge */}
         <div className="absolute top-4 right-4 bg-brand-emerald-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-          From {tour.currency} {tour.priceFromFJD}
+          {getFormattedPrice()}
         </div>
         {/* Duration Badge */}
         <div className="absolute top-4 left-4 bg-brand-black/80 text-brand-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur">
@@ -45,7 +59,7 @@ export default function TourCard({ tour }: TourCardProps) {
               {tour.name}
             </h3>
             <p className="text-accent-gray-600 text-sm leading-relaxed">
-              {tour.shortDescription}
+              {getShortCopy(tour.shortDescription, 140)}
             </p>
           </div>
         </div>

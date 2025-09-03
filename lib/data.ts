@@ -65,7 +65,8 @@ function extractGroupSize(groupSize: string): number {
 
 function extractPrice(price: string): number {
   if (price === 'Contact for Pricing') return 0;
-  const match = price.match(/(\d+)/);
+  // Robustly parse first integer in the price string
+  const match = price.replace(/[,]/g, '').match(/(\d+)/);
   return match ? parseInt(match[1]) : 100;
 }
 
@@ -171,32 +172,36 @@ function generateCultureNotes(slug: string): string[] {
 
 function generateHeroImage(slug: string): any {
   const heroPhoto = getTourHeroPhoto(slug);
+  // Use placeholder until real photos are available locally/CDN
+  const placeholderSrc = '/tours/placeholder.jpg';
   if (heroPhoto) {
+    const src = heroPhoto.src.startsWith('/photos/') ? placeholderSrc : heroPhoto.src;
     return {
-      src: heroPhoto.src,
+      src,
       alt: heroPhoto.alt,
-      width: heroPhoto.width,
-      height: heroPhoto.height
+      width: heroPhoto.width || 1600,
+      height: heroPhoto.height || 900
     };
   }
-  
+
   // Fallback to placeholder
   return {
-    src: `/og-default.jpg`,
+    src: placeholderSrc,
     alt: `Hero image for ${slug}`,
-    width: 1200,
-    height: 675
+    width: 1600,
+    height: 900
   };
 }
 
 function generateGallery(slug: string): any[] {
   const galleryPhotos = getTourGalleryPhotos(slug);
   if (galleryPhotos.length > 0) {
+    const placeholderSrc = '/tours/placeholder.jpg';
     return galleryPhotos.map(photo => ({
-      src: photo.src,
+      src: photo.src.startsWith('/photos/') ? placeholderSrc : photo.src,
       alt: photo.alt,
-      width: photo.width,
-      height: photo.height,
+      width: photo.width || 1200,
+      height: photo.height || 800,
       caption: photo.caption
     }));
   }
@@ -204,22 +209,22 @@ function generateGallery(slug: string): any[] {
   // Fallback to placeholder images
   return [
     {
-      src: `/og-default.jpg`,
+      src: '/tours/placeholder.jpg',
       alt: `Gallery image 1 for ${slug}`,
-      width: 800,
-      height: 600
+      width: 1200,
+      height: 800
     },
     {
-      src: `/og-default.jpg`,
+      src: '/tours/placeholder.jpg',
       alt: `Gallery image 2 for ${slug}`,
-      width: 800,
-      height: 600
+      width: 1200,
+      height: 800
     },
     {
-      src: `/og-default.jpg`,
+      src: '/tours/placeholder.jpg',
       alt: `Gallery image 3 for ${slug}`,
-      width: 800,
-      height: 600
+      width: 1200,
+      height: 800
     }
   ];
 }
