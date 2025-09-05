@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://timagreentours.com';
+  const base = 'https://app.timagreentours.com';
   return [
     { url: `${base}/`, priority: 1 },
     { url: `${base}/about`, priority: 0.8 },
