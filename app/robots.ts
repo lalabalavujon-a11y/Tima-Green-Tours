@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/'
     },
-    sitemap: 'https://timagreentours.com/sitemap.xml'
+    sitemap: 'https://app.timagreentours.com/sitemap.xml'
   };
 }

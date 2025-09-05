@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     title: "Tima Green Tours — Fiji's Premier Eco-Cultural Tours",
     description:
       'Authentic eco-cultural experiences across Fiji. Travel that connects: people, land, and tradition.',
-    url: 'https://timagreentours.com',
+    url: 'https://app.timagreentours.com',
     siteName: 'Tima Green Tours',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630 }],
     locale: 'en_US',
     type: 'website'
   },
-  metadataBase: new URL('https://timagreentours.com'),
+  metadataBase: new URL('https://app.timagreentours.com'),
   icons: { icon: '/favicon.ico' }
 };
 
