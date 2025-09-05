@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import TourCard from '@/components/TourCard';
@@ -9,22 +10,40 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-green-600 via-green-700 to-green-800 text-white text-center">
-        <div className="container-base">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Your Gateway to Fijian Wonders
+      {/* Hero Section with imagery (Gamma-like) */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/tours/placeholder.jpg"
+            alt="Fiji rainforest canopy"
+            fill
+            priority
+            className="object-cover object-center opacity-70"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        </div>
+        <div className="container-base text-center text-white py-24 md:py-32">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            Discover Fiji with Tima Green Tours
           </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Experience the beauty and rich culture of Fiji with our locally-owned business, based in the charming town of Sigatoka.
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/90">
+            Indigenous-owned eco‑cultural experiences across Viti Levu. Waterfalls, village hospitality, kava ceremonies, craft workshops, and island getaways.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/tours" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg">
               Explore Our Tours
             </Link>
-            <Link href="/contact" className="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg border-2 border-green-500">
+            <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg border-2 border-white/40">
               Plan Your Trip
             </Link>
+            <a
+              href="https://wa.me/6790000000?text=Hi%20Tima%2C%20I%27d%20love%20to%20book%20a%20tour!"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>
@@ -75,6 +94,17 @@ export default function HomePage() {
           </Link>
         </div>
       </Section>
+
+      {/* Image strip */}
+      <section className="py-12 bg-white">
+        <div className="container-base grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1,2,3,4].map((i) => (
+            <div key={i} className="relative h-28 md:h-40 rounded-lg overflow-hidden">
+              <Image src="/tours/placeholder.jpg" alt="Fiji scene" fill className="object-cover" />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Stats Section */}
       <section className="py-20 bg-black text-white">
