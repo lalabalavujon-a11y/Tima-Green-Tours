@@ -1,4 +1,5 @@
 # Tima Green Tours — Fiji's Premier Eco-Cultural Tours
+<!-- no-op: trigger CI + push purge fallback -->
 
 A fast, accessible, SEO-friendly website built with Next.js 14 + Tailwind.
 
