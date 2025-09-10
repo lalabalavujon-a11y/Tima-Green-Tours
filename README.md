@@ -7,6 +7,8 @@
   - `nvm use` (auto-picks 22)
   - `nvm install --lts` (if first time)
 
+<!-- no-op: trigger push-based Cloudflare purge -->
+
 ## Vercel Build Settings
 - Node version: `22.x` (tracked in `.vercel/project.json`)
 - Build command: `npm run vercel:build`
