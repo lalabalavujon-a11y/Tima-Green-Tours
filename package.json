@@ -9,6 +9,7 @@
     "verify:node": "node scripts/check-node-alignment.mjs",
     "dev": "next dev",
     "build": "next build",
+    "vercel:build": "npm run verify:node && npm run build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",

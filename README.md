@@ -7,6 +7,12 @@
   - `nvm use` (auto-picks 22)
   - `nvm install --lts` (if first time)
 
+## Vercel Build Settings
+- Node version: `22.x` (tracked in `.vercel/project.json`)
+- Build command: `npm run vercel:build`
+  - Runs `npm run verify:node` to ensure Node versions align across `.nvmrc`, `package.json` engines, and Vercel
+  - Then runs the regular `npm run build`
+
 
 A fast, accessible, SEO-friendly website built with Next.js 14 + Tailwind.
 
