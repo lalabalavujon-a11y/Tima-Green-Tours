@@ -39,7 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-<<<<<<< Current (Your changes)
-=======
+
+# local debug logs
 .super-debug.log
->>>>>>> Incoming (Background Agent changes)
+.next-dev.log

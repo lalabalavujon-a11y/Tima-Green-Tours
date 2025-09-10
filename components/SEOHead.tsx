@@ -71,7 +71,7 @@ export default function SEOHead({ title, description, url, image, tourData }: SE
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@timaimagreentours.com',
+      email: 'info@timagreentours.com',
       contactType: 'customer service'
     }
   };
@@ -112,7 +112,7 @@ export default function SEOHead({ title, description, url, image, tourData }: SE
       
       {/* Geo Tags */}
       <meta name="geo.region" content="FJ" />
-      <meta name="geo.placename" content="Sigatoka, Fiji" />
+      <meta name="geo.placename" content="Navua, Fiji" />
       
       {/* Structured Data */}
       <script

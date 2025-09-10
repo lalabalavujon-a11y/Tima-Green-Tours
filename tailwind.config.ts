@@ -25,20 +25,20 @@ export default {
             900: '#026b29',   // Forest green
             950: '#013d19',   // Deep forest green
           },
-          // Use the image's natural greens (Tailwind green scale around #22c55e)
+          // Brand palette aligned to requested hues
           emerald: {
-            DEFAULT: '#22c55e',
-            50: '#f0fdf4',
-            100: '#dcfce7',
-            200: '#bbf7d0',
-            300: '#86efac',
-            400: '#4ade80',
-            500: '#22c55e',
-            600: '#16a34a',
-            700: '#15803d',
-            800: '#166534',
-            900: '#14532d',
-            950: '#052e17'
+            DEFAULT: '#6fde15', // primary brand green
+            50: '#f2fde6',
+            100: '#e4fbcf',
+            200: '#c7f6a1',
+            300: '#a9f072',
+            400: '#8ceb44',
+            500: '#6fde15', // requested
+            600: '#4fb20a', // darker step for hover
+            700: '#247141', // requested deep green
+            800: '#1d5b34',
+            900: '#154327',
+            950: '#0b2415'
           },
           black: '#000000',  // Pure black for text and accents
           white: '#ffffff',  // Clean white for backgrounds

@@ -4,12 +4,14 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import TourCard from '@/components/TourCard';
 import { getRelatedTours } from '@/lib/data';
+import { CONTACT_URL } from '@/lib/config';
 
 export default function HomePage() {
   const featuredTours = getRelatedTours('biausevu-waterfall-tour');
 
   return (
     <div>
+<<<<<<< HEAD
       {/* Hero Section with imagery (Gamma-like) */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -25,15 +27,26 @@ export default function HomePage() {
         <div className="container-base text-center text-white py-24 md:py-32">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Discover Fiji with Tima Green Tours
+=======
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-brand-emerald-600 via-brand-emerald-700 to-brand-emerald-800 text-white text-center">
+        <div className="container-base">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Your Gateway to Fijian Wonders
+>>>>>>> 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/90">
             Indigenous-owned eco‑cultural experiences across Viti Levu. Waterfalls, village hospitality, kava ceremonies, craft workshops, and island getaways.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/tours" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg">
+            <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
               Explore Our Tours
             </Link>
+<<<<<<< HEAD
             <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg border-2 border-white/40">
+=======
+            <Link href={CONTACT_URL} className="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg border-2 border-green-500">
+>>>>>>> 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
               Plan Your Trip
             </Link>
             <a
@@ -89,7 +102,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Link href="/tours" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg">
+          <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
             View All Tours
           </Link>
         </div>
@@ -149,10 +162,10 @@ export default function HomePage() {
               Join us for an unforgettable journey through the heart of the Pacific.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/tours" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg">
+              <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
                 Browse Tours
               </Link>
-              <Link href="/contact" className="bg-transparent hover:bg-green-500 text-green-500 hover:text-white font-semibold py-3 px-6 rounded-lg border-2 border-green-500">
+              <Link href={CONTACT_URL} className="bg-transparent hover:bg-brand-emerald-500 text-brand-emerald-600 hover:text-white font-semibold py-3 px-6 rounded-lg border-2 border-brand-emerald-500">
                 Get in Touch
               </Link>
             </div>

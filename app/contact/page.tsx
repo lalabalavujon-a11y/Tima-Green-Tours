@@ -157,7 +157,7 @@ export default function ContactPage() {
               </button>
 
               {status === 'ok' && (
-                <p className="text-green-600 text-center">
+                <p className="text-brand-emerald-700 text-center">
                   Thank you! We'll get back to you soon.
                 </p>
               )}
@@ -181,25 +181,30 @@ export default function ContactPage() {
                     <div className="text-brand-emerald text-xl">📧</div>
                     <div>
                       <h4 className="font-medium">Email Us</h4>
-                      <a href="mailto:info@timaimagreentours.com" className="text-brand-emerald hover:underline">
-                        info@timaimagreentours.com
+                      <a href="mailto:info@timagreentours.com" className="text-brand-emerald hover:underline">
+                        info@timagreentours.com
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="text-brand-emerald text-xl">📞</div>
                     <div>
-                      <h4 className="font-medium">Call Us</h4>
-                      <a href="tel:+679XXXXXXX" className="text-brand-emerald hover:underline">
-                        +679 XXX XXXX
-                      </a>
+                      <h4 className="font-medium">Call or WhatsApp</h4>
+                      <div className="space-y-1">
+                        <a href="tel:+6799189902" className="text-brand-emerald hover:underline block">
+                          +679 9189902 (click-to-call)
+                        </a>
+                        <a href="https://wa.me/6799189902" className="text-brand-emerald hover:underline block">
+                          WhatsApp: +679 9189902
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="text-brand-emerald text-xl">📍</div>
                     <div>
-                      <h4 className="font-medium">Visit Us</h4>
-                      <p className="text-slate-700">Sigatoka, Fiji Islands</p>
+                      <h4 className="font-medium">Based</h4>
+                      <p className="text-slate-700">Navua, Fiji Islands</p>
                     </div>
                   </div>
                 </div>

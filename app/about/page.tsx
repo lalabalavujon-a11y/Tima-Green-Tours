@@ -1,4 +1,5 @@
 import Container from '@/components/Container';
+import { CONTACT_URL } from '@/lib/config';
 
 export const metadata = { title: 'About Us' };
 
@@ -202,7 +203,7 @@ export default function AboutPage() {
             Our team's combined expertise and genuine hospitality ensure that your experience with us will be truly unforgettable.
           </p>
           <a 
-            href="/contact" 
+            href={CONTACT_URL} 
             className="inline-block bg-brand-emerald text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors"
           >
             Contact Us Today

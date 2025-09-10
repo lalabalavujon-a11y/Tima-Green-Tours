@@ -7,6 +7,7 @@ import { getTourBySlug, getRelatedTours } from '@/lib/data';
 import StickyBookingCTA from '@/components/StickyBookingCTA';
 import ImageGallery from '@/components/ImageGallery';
 import SEOHead from '@/components/SEOHead';
+import { isPaymentLive, PAYMENT_MODE, CONTACT_URL } from '@/lib/config';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const tour = await getTourBySlug(params.slug);
@@ -85,8 +86,22 @@ export default async function TourPage({ params }: { params: { slug: string } })
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <div className="text-2xl font-bold text-brand-emerald">
-                    From {tour.currency} {tour.priceFromFJD}
+                    {tour.childPriceFromFJD
+                      ? (
+                        <span>
+                          Adult {tour.currency} {tour.priceFromFJD}{' '}
+                          <span className="text-slate-600 text-base">• Child {tour.currency} {tour.childPriceFromFJD}</span>
+                        </span>
+                      )
+                      : (
+                        <span>From {tour.currency} {tour.priceFromFJD}</span>
+                      )}
                   </div>
+                  {!isPaymentLive && (
+                    <div className="text-xs mt-1 inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
+                      Test Mode — Stripe links are for testing
+                    </div>
+                  )}
                   <div className="text-sm text-slate-600">per person</div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -94,19 +109,44 @@ export default async function TourPage({ params }: { params: { slug: string } })
                   <span className="ml-2 text-sm font-medium">5.0</span>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <Link
-                  href="/contact"
-                  className="flex-1 bg-brand-emerald text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors text-center"
-                >
-                  Book Now
-                </Link>
-                <Link
-                  href="/contact"
-                  className="flex-1 border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/5 transition-colors text-center"
-                >
-                  Enquire
-                </Link>
+              <div className="flex gap-3 flex-wrap">
+                {tour.paymentLinks?.adult ? (
+                  <Link
+                    href={tour.paymentLinks.adult}
+                    target="_blank"
+                    rel="noopener nofollow"
+                    className="flex-1 bg-brand-emerald text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors text-center"
+                  >
+                    Buy Adult{!isPaymentLive ? ' (Test)' : ''}
+                  </Link>
+                ) : (
+                  <Link
+                    href={CONTACT_URL}
+                    title="No Stripe link configured yet. Opens contact form."
+                    className="flex-1 bg-brand-emerald text-white py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/90 transition-colors text-center"
+                  >
+                    Buy Adult (Contact)
+                  </Link>
+                )}
+
+                {tour.paymentLinks?.child ? (
+                  <Link
+                    href={tour.paymentLinks.child}
+                    target="_blank"
+                    rel="noopener nofollow"
+                    className="flex-1 border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/5 transition-colors text-center"
+                  >
+                    Buy Child{!isPaymentLive ? ' (Test)' : ''}
+                  </Link>
+                ) : (
+                  <Link
+                    href={CONTACT_URL}
+                    title="No Stripe link configured yet. Opens contact form."
+                    className="flex-1 border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-lg font-semibold hover:bg-brand-emerald/5 transition-colors text-center"
+                  >
+                    Buy Child (Contact)
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -268,6 +308,8 @@ export default async function TourPage({ params }: { params: { slug: string } })
           price={tour.priceFromFJD.toString()}
           currency={tour.currency}
           tourSlug={tour.slug}
+          childPrice={tour.childPriceFromFJD ? tour.childPriceFromFJD.toString() : undefined}
+          paymentLinks={tour.paymentLinks}
         />
       )}
     </Container>

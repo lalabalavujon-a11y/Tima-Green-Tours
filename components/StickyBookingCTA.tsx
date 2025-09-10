@@ -2,15 +2,21 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { isPaymentLive, CONTACT_URL } from '@/lib/config';
 
 interface StickyBookingCTAProps {
   tourName: string;
   price: string;
   currency: string;
   tourSlug: string;
+  childPrice?: string;
+  paymentLinks?: {
+    adult?: string;
+    child?: string;
+  };
 }
 
-export default function StickyBookingCTA({ tourName, price, currency, tourSlug }: StickyBookingCTAProps) {
+export default function StickyBookingCTA({ tourName, price, currency, tourSlug, childPrice, paymentLinks }: StickyBookingCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -34,23 +40,51 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug }
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1">
             <div className="text-sm font-semibold text-slate-900 truncate">{tourName}</div>
-            <div className="text-lg font-bold text-brand-emerald">
-              From {currency} {price}
-            </div>
+            {childPrice ? (
+              <div className="text-lg font-bold text-brand-emerald">
+                Adult {currency} {price} <span className="text-slate-600 text-base">• Child {currency} {childPrice}</span>
+              </div>
+            ) : (
+              <div className="text-lg font-bold text-brand-emerald">From {currency} {price}</div>
+            )}
           </div>
           <div className="flex gap-2">
-            <Link
-              href="/contact"
-              className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
-            >
-              Book Now
-            </Link>
-            <Link
-              href="/contact"
-              className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
-            >
-              Enquire
-            </Link>
+            {paymentLinks?.adult ? (
+              <Link
+                href={paymentLinks.adult}
+                target="_blank"
+                rel="noopener nofollow"
+                className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
+              >
+                Buy Adult{!isPaymentLive ? ' (Test)' : ''}
+              </Link>
+            ) : (
+              <Link
+                href={CONTACT_URL}
+                title="No Stripe link configured yet. Opens contact form."
+                className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
+              >
+                Buy Adult (Contact)
+              </Link>
+            )}
+            {paymentLinks?.child ? (
+              <Link
+                href={paymentLinks.child}
+                target="_blank"
+                rel="noopener nofollow"
+                className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
+              >
+                Buy Child{!isPaymentLive ? ' (Test)' : ''}
+              </Link>
+            ) : (
+              <Link
+                href={CONTACT_URL}
+                title="No Stripe link configured yet. Opens contact form."
+                className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
+              >
+                Buy Child (Contact)
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -60,24 +94,52 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug }
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 max-w-sm">
           <div className="text-center mb-4">
             <div className="text-lg font-semibold text-slate-900 mb-1">{tourName}</div>
-            <div className="text-2xl font-bold text-brand-emerald mb-3">
-              From {currency} {price}
-            </div>
+            {childPrice ? (
+              <div className="text-2xl font-bold text-brand-emerald mb-3">
+                Adult {currency} {price} <span className="text-slate-600 text-lg">• Child {currency} {childPrice}</span>
+              </div>
+            ) : (
+              <div className="text-2xl font-bold text-brand-emerald mb-3">From {currency} {price}</div>
+            )}
             <div className="text-sm text-slate-600">per person</div>
           </div>
           <div className="space-y-3">
-            <Link
-              href="/contact"
-              className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
-            >
-              Book This Tour
-            </Link>
-            <Link
-              href="/contact"
-              className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
-            >
-              Ask Questions
-            </Link>
+            {paymentLinks?.adult ? (
+              <Link
+                href={paymentLinks.adult}
+                target="_blank"
+                rel="noopener nofollow"
+                className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
+              >
+                Buy Adult{!isPaymentLive ? ' (Test)' : ''}
+              </Link>
+            ) : (
+              <Link
+                href={CONTACT_URL}
+                title="No Stripe link configured yet. Opens contact form."
+                className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
+              >
+                Buy Adult (Contact)
+              </Link>
+            )}
+            {paymentLinks?.child ? (
+              <Link
+                href={paymentLinks.child}
+                target="_blank"
+                rel="noopener nofollow"
+                className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
+              >
+                Buy Child{!isPaymentLive ? ' (Test)' : ''}
+              </Link>
+            ) : (
+              <Link
+                href={CONTACT_URL}
+                title="No Stripe link configured yet. Opens contact form."
+                className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
+              >
+                Buy Child (Contact)
+              </Link>
+            )}
           </div>
         </div>
       </div>

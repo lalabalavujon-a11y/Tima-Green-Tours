@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { CONTACT_URL } from '@/lib/config';
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +44,9 @@ export default function MobileNav() {
           {/* Menu Header */}
           <div className="flex items-center justify-between p-6 border-b border-slate-200">
             <div className="flex items-center gap-2 font-semibold text-lg">
-              <img src="/logo.svg" alt="Tima Green Tours" className="h-8 w-8" />
+              <div className="relative h-8 w-8">
+                <Image src="/logo.png" alt="Tima Green Tours" fill sizes="32px" className="object-contain" />
+              </div>
               <span>Tima Green Tours</span>
             </div>
             <button
@@ -86,7 +90,7 @@ export default function MobileNav() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href={CONTACT_URL}
                   onClick={toggleMenu}
                   className="block text-lg font-medium text-slate-900 hover:text-lagoon transition-colors"
                 >
@@ -98,7 +102,7 @@ export default function MobileNav() {
             {/* CTA Button */}
             <div className="mt-8 pt-6 border-t border-slate-200">
               <Link
-                href="/contact"
+                href={CONTACT_URL}
                 onClick={toggleMenu}
                 className="block w-full bg-lagoon text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-deepsea transition-colors"
               >
@@ -109,9 +113,10 @@ export default function MobileNav() {
             {/* Contact Info */}
             <div className="mt-6 pt-6 border-t border-slate-200">
               <div className="text-sm text-slate-600 space-y-2">
-                <div>📧 info@timaimagreentours.com</div>
-                <div>📞 +679 XXX XXXX</div>
-                <div>📍 Sigatoka, Fiji</div>
+                <div>📧 info@timagreentours.com</div>
+                <div>📞 +679 9189902</div>
+                <div>📱 WhatsApp: +679 9189902</div>
+                <div>📍 Based: Navua, Fiji Islands</div>
               </div>
             </div>
           </nav>

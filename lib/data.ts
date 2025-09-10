@@ -1,25 +1,23 @@
 import tours from '@/content/tours.json';
 import type { Tour } from '@/lib/types/tour';
 import { getTourHeroPhoto, getTourGalleryPhotos } from '@/lib/photography';
+import { paymentLinks } from '@/lib/paymentLinks';
 
 // Convert the existing tours.json to the new Tour interface format
-export function getTourBySlug(slug: string): Tour | null {
-  const tour = tours.find(t => t.slug === slug);
-  if (!tour) return null;
-
-  // Convert to new format with enhanced data
+function toTour(tour: any): Tour {
   return {
     slug: tour.slug,
     name: tour.title,
     tagline: tour.summary,
     shortDescription: tour.description || tour.summary,
     durationHours: extractHours(tour.duration),
-    departure: 'Nadi', // Default, can be enhanced
+    departure: 'Nadi',
     availability: 'Daily',
     groupSizeMax: extractGroupSize(tour.group_size),
     languages: ['English', 'Fijian'],
     cancellationPolicy: 'Free cancellation up to 24 hours before tour',
-    priceFromFJD: extractPrice(tour.price),
+    priceFromFJD: extractPriceFloat(tour.price),
+    childPriceFromFJD: tour.child_price ? extractPriceFloat(tour.child_price) : undefined,
     currency: 'FJD',
     locations: extractLocations(tour.slug),
     highlights: tour.highlights,
@@ -31,8 +29,19 @@ export function getTourBySlug(slug: string): Tour | null {
     heroImage: generateHeroImage(tour.slug),
     gallery: generateGallery(tour.slug),
     reviews: generateReviews(tour.slug),
-    faqs: generateFAQs(tour.slug)
+    faqs: generateFAQs(tour.slug),
+    paymentLinks: paymentLinks[tour.slug] || {}
   };
+}
+
+export function getTourBySlug(slug: string): Tour | null {
+  const tour = tours.find(t => t.slug === slug);
+  if (!tour) return null;
+  return toTour(tour);
+}
+
+export function getAllTours(): Tour[] {
+  return (tours as any[]).map(toTour);
 }
 
 export function getRelatedTours(currentSlug: string): Tour[] {
@@ -63,11 +72,11 @@ function extractGroupSize(groupSize: string): number {
   return match ? parseInt(match[1]) : 12;
 }
 
-function extractPrice(price: string): number {
-  if (price === 'Contact for Pricing') return 0;
-  // Robustly parse first integer in the price string
-  const match = price.replace(/[,]/g, '').match(/(\d+)/);
-  return match ? parseInt(match[1]) : 100;
+function extractPriceFloat(price: string): number {
+  if (!price || price === 'Contact for Pricing') return 0;
+  const cleaned = price.replace(/[,]/g, '');
+  const match = cleaned.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : 0;
 }
 
 function extractLocations(slug: string): string[] {
@@ -170,12 +179,17 @@ function generateCultureNotes(slug: string): string[] {
   ];
 }
 
+const useLocalPhotos = process.env.NEXT_PUBLIC_USE_LOCAL_TOUR_PHOTOS === 'true';
+
 function generateHeroImage(slug: string): any {
   const heroPhoto = getTourHeroPhoto(slug);
   // Use placeholder until real photos are available locally/CDN
   const placeholderSrc = '/tours/placeholder.jpg';
   if (heroPhoto) {
-    const src = heroPhoto.src.startsWith('/photos/') ? placeholderSrc : heroPhoto.src;
+    // Use local photo when enabled; otherwise fall back if path points to /photos/
+    const src = !useLocalPhotos && heroPhoto.src.startsWith('/photos/')
+      ? placeholderSrc
+      : heroPhoto.src;
     return {
       src,
       alt: heroPhoto.alt,
@@ -198,7 +212,7 @@ function generateGallery(slug: string): any[] {
   if (galleryPhotos.length > 0) {
     const placeholderSrc = '/tours/placeholder.jpg';
     return galleryPhotos.map(photo => ({
-      src: photo.src.startsWith('/photos/') ? placeholderSrc : photo.src,
+      src: !useLocalPhotos && photo.src.startsWith('/photos/') ? placeholderSrc : photo.src,
       alt: photo.alt,
       width: photo.width || 1200,
       height: photo.height || 800,

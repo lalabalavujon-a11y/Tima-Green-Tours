@@ -21,8 +21,8 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'biausevu-waterfall-tour': [
     {
       id: 'bw-001',
-      src: '/tours/placeholder.jpg',
-      alt: 'Biausevu Waterfall cascading into natural pool',
+      src: '/photos/biausevu/waterfall-group.jpg',
+      alt: 'Guests relaxing at the base of Biausevu Waterfall natural pool',
       width: 1600,
       height: 900,
       caption: 'The majestic Biausevu Waterfall - a perfect spot for swimming and photography',
@@ -64,8 +64,8 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'sigatoka-valley-lawai-pottery': [
     {
       id: 'sv-001',
-      src: '/tours/placeholder.jpg',
-      alt: 'Scenic view of Sigatoka Valley known as the Salad Bowl of Fiji',
+      src: '/photos/sigatoka/valley-overlook.jpg',
+      alt: 'Scenic view over the Sigatoka Valley and river - Salad Bowl of Fiji',
       width: 1600,
       height: 900,
       caption: 'The lush Sigatoka Valley - Fiji\'s agricultural heartland',
@@ -93,16 +93,16 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'lomawai-salt-natadola-horse-riding': [
     {
       id: 'ls-001',
-      src: '/tours/placeholder.jpg',
-      alt: 'Traditional salt making process at Lomawai Village',
+      src: '/photos/natadola/horse-riding.jpg',
+      alt: 'Horseback riding along the pristine shores of Natadola Beach',
       width: 1600,
       height: 900,
-      caption: 'Ancient salt-making techniques passed down through generations',
-      location: 'Lomawai Village, Coral Coast',
+      caption: 'Guided horseback ride on one of the world\'s most beautiful beaches',
+      location: 'Natadola Beach, Coral Coast',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-01-20',
-      consentRef: 'CONSENT-2024-004',
-      tags: ['salt', 'traditional', 'village', 'culture'],
+      consentRef: 'CONSENT-2024-005',
+      tags: ['horse-riding', 'beach', 'natadola', 'adventure'],
       tourSlug: 'lomawai-salt-natadola-horse-riding'
     },
     {
@@ -118,6 +118,51 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
       consentRef: 'CONSENT-2024-005',
       tags: ['horse-riding', 'beach', 'natadola', 'adventure'],
       tourSlug: 'lomawai-salt-natadola-horse-riding'
+    }
+  ],
+  'sabeto-mudpool-nadi-temple': [
+    {
+      id: 'sm-001',
+      src: '/photos/sabeto/mudpool-group.jpg',
+      alt: 'Guests covered in therapeutic mud at the Sabeto Mud Pool',
+      width: 1600,
+      height: 900,
+      caption: 'Rejuvenating fun at the famous Sabeto Mud Pool & Hot Springs',
+      location: 'Sabeto, Nadi',
+      photographer: 'Tima Green Tours',
+      dateTaken: '2024-03-12',
+      tags: ['mudpool', 'hotspring', 'wellness', 'sabeto'],
+      tourSlug: 'sabeto-mudpool-nadi-temple'
+    }
+  ],
+  'shark-diving-beqa-lagoon': [
+    {
+      id: 'sd-001',
+      src: '/photos/beqa/shark-diving.jpg',
+      alt: 'Divers observing a shark encounter at Beqa Lagoon',
+      width: 1600,
+      height: 900,
+      caption: 'Bucket-list shark diving experience with expert guides',
+      location: 'Beqa Lagoon, Viti Levu',
+      photographer: 'Tima Green Tours',
+      dateTaken: '2024-04-05',
+      tags: ['shark', 'diving', 'adventure', 'beqa'],
+      tourSlug: 'shark-diving-beqa-lagoon'
+    }
+  ],
+  'malolo-island-getaway': [
+    {
+      id: 'mi-001',
+      src: '/photos/malolo/island-jetty.jpg',
+      alt: 'Island jetty extending into turquoise waters at Malolo Lailai',
+      width: 1600,
+      height: 900,
+      caption: 'Paradise scenes on Malolo Lailai Island getaway',
+      location: 'Malolo Lailai, Mamanuca Islands',
+      photographer: 'Tima Green Tours',
+      dateTaken: '2024-05-10',
+      tags: ['island', 'beach', 'jetty', 'mamanuca'],
+      tourSlug: 'malolo-island-getaway'
     }
   ]
 };

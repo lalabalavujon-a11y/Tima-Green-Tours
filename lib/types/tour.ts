@@ -10,6 +10,7 @@ export interface Tour {
   languages?: string[];
   cancellationPolicy: string;
   priceFromFJD: number;
+  childPriceFromFJD?: number;
   currency: 'FJD' | 'USD' | 'AUD' | 'NZD';
   locations: string[]; // tags: Nadi, Sabeto, Sigatoka, Mamanuca, etc.
   highlights: string[];
@@ -24,6 +25,10 @@ export interface Tour {
   reviews?: Array<{ name: string; rating: number; quote: string; date?: string }>;
   faqs?: Array<{ q: string; a: string }>;
   bookingCode?: string; // your PMS/booking system code
+  paymentLinks?: {
+    adult?: string;
+    child?: string;
+  };
 }
 
 export interface ImageAsset {
