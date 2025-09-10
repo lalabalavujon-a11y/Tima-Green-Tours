@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "debug:start": "next lint",
     "debug:fix": "next lint --fix",
-    "debug:monitor": "super-debug monitor"
+    "debug:monitor": "super-debug monitor",
+    "cf:purge:app": "node scripts/purge-cloudflare.mjs app.timagreentours.com",
+    "cf:purge:all": "CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs"
   },
   "dependencies": {
     "clsx": "2.1.1",
