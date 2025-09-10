@@ -2,11 +2,23 @@ name: Purge Cloudflare on Vercel Production
 
 on:
   deployment_status:
+  workflow_dispatch:
+    inputs:
+      purge_all:
+        description: Purge entire zone (true/false)
+        required: false
+        type: boolean
+        default: false
+      hosts:
+        description: Space-separated hostnames to purge
+        required: false
+        default: "app.timagreentours.com timagreentours.com"
 
 jobs:
   purge:
     if: >
-      ${{ github.event.deployment_status.state == 'success' &&
+      ${{ github.event_name == 'deployment_status' &&
+          github.event.deployment_status.state == 'success' &&
           (github.event.deployment.environment == 'Production' || github.event.deployment.environment == 'production') }}
     runs-on: ubuntu-latest
     permissions:
@@ -31,3 +43,30 @@ jobs:
           node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com \
             || CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs
 
+  manual:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Purge via inputs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          HOSTS="${{ github.event.inputs.hosts }}"
+          PURGE_ALL="${{ github.event.inputs.purge_all }}"
+          echo "Hosts: $HOSTS | Purge all: $PURGE_ALL"
+          if [ "$PURGE_ALL" = "true" ]; then
+            CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs
+          else
+            node scripts/purge-cloudflare.mjs $HOSTS
+          fi
