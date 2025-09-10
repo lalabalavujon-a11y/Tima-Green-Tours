@@ -6,6 +6,7 @@
     "node": ">=22 <23"
   },
   "scripts": {
+    "verify:node": "node scripts/check-node-alignment.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
