@@ -44,9 +44,8 @@ jobs:
           echo "Deployment ${GITHUB_SHA} for environment: ${{ github.event.deployment.environment }}"
           if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then echo "[workflow] CLOUDFLARE_API_TOKEN missing"; exit 1; fi
           if [ -z "${CLOUDFLARE_ZONE_ID:-}" ]; then echo "[workflow] CLOUDFLARE_ZONE_ID missing"; exit 1; fi
-          # Try host-level purge for both app + apex; fall back to full-zone purge if unsupported
-          node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com \
-            || CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs
+          # Host-level purge only for app + apex
+          node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com
 
   manual:
     if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -106,5 +105,4 @@ jobs:
           set -e
           if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then echo "[workflow] CLOUDFLARE_API_TOKEN missing"; exit 1; fi
           if [ -z "${CLOUDFLARE_ZONE_ID:-}" ]; then echo "[workflow] CLOUDFLARE_ZONE_ID missing"; exit 1; fi
-          node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com \
-            || CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs
+          node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com
