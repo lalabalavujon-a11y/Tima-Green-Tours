@@ -1,0 +1,42 @@
+name: Purge Cloudflare on Push
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: purge-on-push-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  purge_on_push:
+    name: Purge after push to main
+    environment: Production
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Wait for Vercel deploy to propagate
+        run: |
+          # Simple delay to allow Vercel production deploy to complete
+          sleep 75
+
+      - name: Purge Cloudflare cache (hosts, fallback to full zone)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN || secrets.TGT_4cfapiT || vars.CLOUDFLARE_API_TOKEN || vars.TGT_4cfapiT }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID || secrets.TGT_4cfziD || vars.CLOUDFLARE_ZONE_ID || vars.TGT_4cfziD }}
+        run: |
+          set -e
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then echo "[workflow] CLOUDFLARE_API_TOKEN missing"; exit 1; fi
+          if [ -z "${CLOUDFLARE_ZONE_ID:-}" ]; then echo "[workflow] CLOUDFLARE_ZONE_ID missing"; exit 1; fi
+          node scripts/purge-cloudflare.mjs app.timagreentours.com timagreentours.com \
+            || CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs
+

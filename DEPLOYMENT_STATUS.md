@@ -125,6 +125,9 @@ git push -u origin main
 
 - Triggered a no-op commit to run CI, Vercel production deploy, and post-deploy Cloudflare purge automation.
   - Timestamp (UTC): 2025-09-10T12:10:00Z
+
+- Push fallback added: automatic purge on every push to `main` after a short delay.
+  - Timestamp (UTC): 2025-09-10T13:20:00Z
 - [ ] Security headers applied
 - [ ] Performance optimized
 
