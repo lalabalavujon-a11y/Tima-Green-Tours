@@ -1,5 +1,12 @@
 # Tima Green Tours — Fiji's Premier Eco-Cultural Tours
-<!-- no-op: trigger CI + push purge fallback -->
+
+## Node Version
+- Required Node: 22.x (LTS)
+- Repo pinned via `.nvmrc` → `22`
+- Recommended: use `nvm` (already configured)
+  - `nvm use` (auto-picks 22)
+  - `nvm install --lts` (if first time)
+
 
 A fast, accessible, SEO-friendly website built with Next.js 14 + Tailwind.
 
