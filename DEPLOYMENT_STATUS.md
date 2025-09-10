@@ -118,6 +118,13 @@ git push -u origin main
 ### **After Deployment:**
 - [ ] App accessible at app.timagreentours.com
 - [ ] SSL/TLS working
+
+---
+
+## CI Trigger Notes
+
+- Triggered a no-op commit to run CI, Vercel production deploy, and post-deploy Cloudflare purge automation.
+  - Timestamp (UTC): 2025-09-10T12:10:00Z
 - [ ] Security headers applied
 - [ ] Performance optimized
 
