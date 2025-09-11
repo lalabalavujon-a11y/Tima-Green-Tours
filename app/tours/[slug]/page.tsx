@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Container from '@/components/Container';
 import { getTourBySlug, getRelatedTours } from '@/lib/data';
-import StickyBookingCTA from '@/components/StickyBookingCTA';
 import ImageGallery from '@/components/ImageGallery';
 import SEOHead from '@/components/SEOHead';
 import { isPaymentLive, PAYMENT_MODE, CONTACT_URL } from '@/lib/config';
@@ -63,6 +62,9 @@ export default async function TourPage({ params }: { params: { slug: string } })
             <p className="text-xl text-slate-700 mb-6 leading-relaxed">
               {tour.tagline}
             </p>
+            <div className="mb-6">
+              <a href="#book" className="btn-outline">Book Group</a>
+            </div>
             
             {/* Key Facts */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -270,17 +272,7 @@ export default async function TourPage({ params }: { params: { slug: string } })
         )}
       </div>
       
-      {/* Sticky Booking CTA */}
-      {tour && (
-        <StickyBookingCTA 
-          tourName={tour.name}
-          price={tour.priceFromFJD.toString()}
-          currency={tour.currency}
-          tourSlug={tour.slug}
-          childPrice={tour.childPriceFromFJD ? tour.childPriceFromFJD.toString() : undefined}
-          paymentLinks={tour.paymentLinks}
-        />
-      )}
+      {/* Sticky Booking CTA removed per request. Web chat bubble (Sia) is globally mounted. */}
     </Container>
     </>
   );

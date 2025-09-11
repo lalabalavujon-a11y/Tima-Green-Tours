@@ -119,11 +119,11 @@ export default function SiaAssistantsChat() {
     <>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed right-6 md:bottom-6 bottom-24 z-50 rounded-full shadow-lg text-white w-14 h-14 flex items-center justify-center"
+        className="fixed right-6 md:bottom-6 bottom-24 z-50 rounded-full shadow-lg text-white h-14 px-4 flex items-center justify-center gap-2"
         style={{ backgroundColor: '#00ee5e' }}
         aria-label="Open Sia chat (Assistants)"
       >
-        <span className="font-semibold">S</span>
+        <span className="font-semibold">Sia</span>
       </button>
 
       {open && (

@@ -196,7 +196,7 @@ function fileExistsUnderPublic(publicPath: string): boolean {
 function generateHeroImage(slug: string): any {
   const heroPhoto = getTourHeroPhoto(slug);
   // Use placeholder until real photos are available locally/CDN
-  const placeholderSrc = '/tours/placeholder.jpg';
+  const placeholderSrc = '/tours/placeholder.svg';
   if (heroPhoto) {
     // Prefer local photo when enabled and present; otherwise fall back to placeholder
     let src = heroPhoto.src;
@@ -226,7 +226,7 @@ function generateHeroImage(slug: string): any {
 function generateGallery(slug: string): any[] {
   const galleryPhotos = getTourGalleryPhotos(slug);
   if (galleryPhotos.length > 0) {
-    const placeholderSrc = '/tours/placeholder.jpg';
+    const placeholderSrc = '/tours/placeholder.svg';
     return galleryPhotos.map(photo => {
       let src = photo.src;
       if (photo.src.startsWith('/photos/')) {

@@ -6,12 +6,15 @@
   color-scheme: light;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
   @apply bg-brand-white text-brand-black antialiased;
 }
 
 .container-base {
-  @apply max-w-6xl mx-auto px-6;
+  /* Standardized responsive gutters to align inner cards across pages */
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
 /* Custom button styles matching main website */
