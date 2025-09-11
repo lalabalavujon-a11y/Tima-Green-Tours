@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Logo from '@/components/Logo';
 import { CONTACT_URL } from '@/lib/config';
 import MobileNav from './MobileNav';
 
@@ -8,9 +9,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-brand-emerald-100/95 backdrop-blur border-b border-brand-emerald-200">
       <nav className="container-base flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-3 font-bold text-brand-black hover:opacity-90 transition-colors">
-          <div className="relative w-10 h-10">
-            <Image src="/logo.svg" alt="Tima Green Tours logo" fill sizes="40px" className="object-contain" unoptimized />
-          </div>
+          <Logo className="relative w-10 h-10" alt="Tima Green Tours logo" sizes="40px" />
           <span className="text-xl">Tima Green Tours</span>
         </Link>
         

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Logo from '@/components/Logo';
 import { CONTACT_URL } from '@/lib/config';
 
 export default function MobileNav() {
@@ -44,9 +45,7 @@ export default function MobileNav() {
           {/* Menu Header */}
           <div className="flex items-center justify-between p-6 border-b border-slate-200">
             <div className="flex items-center gap-2 font-semibold text-lg">
-              <div className="relative h-8 w-8">
-                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="32px" className="object-contain" unoptimized />
-              </div>
+              <Logo className="relative h-8 w-8" alt="Tima Green Tours" sizes="32px" />
               <span>Tima Green Tours</span>
             </div>
             <button

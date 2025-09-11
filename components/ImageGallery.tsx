@@ -38,7 +38,6 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 60vw"
           className="object-cover"
           priority={currentIndex === 0}
-          unoptimized
         />
         
         {/* Navigation Arrows */}

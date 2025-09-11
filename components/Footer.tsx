@@ -1,6 +1,7 @@
 import { CONTACT_URL, SOCIAL_LINKS } from '@/lib/config';
 
 import Image from 'next/image';
+import Logo from '@/components/Logo';
 
 export default function Footer() {
   return (
@@ -10,9 +11,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10">
-                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="40px" className="object-contain" unoptimized />
-              </div>
+              <Logo className="relative w-10 h-10" alt="Tima Green Tours" sizes="40px" />
               <span className="text-xl font-bold">Tima Green Tours</span>
             </div>
             <p className="text-brand-white/80 mb-4 max-w-md">

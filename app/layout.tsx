@@ -4,9 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
-
-const SiaAssistantsChat = dynamic(() => import('@/components/SiaAssistantsChat'), { ssr: false });
-const SiaChat = dynamic(() => import('@/components/SiaChat'), { ssr: false });
+import ChatMount from '@/components/ChatMount';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />
-        {process.env.NEXT_PUBLIC_TGT_ASSISTANT_ID ? <SiaAssistantsChat /> : <SiaChat />}
+        <ChatMount />
       </body>
     </html>
   );
