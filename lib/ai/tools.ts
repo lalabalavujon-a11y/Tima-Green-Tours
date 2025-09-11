@@ -280,7 +280,11 @@ export const createStripePaymentIntent = new DynamicStructuredTool({
   schema: createPaymentIntentSchema,
   func: async (args: any) => {
     const { quoteId, amount, currency, email } = args as z.infer<typeof createPaymentIntentSchema>;
-    const key = process.env.STRIPE_SECRET_KEY;
+    const key =
+      process.env.STRIPE_SECRET_KEY ||
+      process.env.TGT_TEST_STRIPE_SECRET_KEY ||
+      process.env.TGT_LIVE_STRIPE_SECRET_KEY ||
+      process.env.TGT_STRIPE_SECRET_KEY;
     if (!key) return JSON.stringify({ ok: false, error: "Missing STRIPE_SECRET_KEY" });
     if (!process.env.GOOGLE_SHEETS_ID) {
       return JSON.stringify({ ok: false, error: "Quotes not configured (missing GOOGLE_SHEETS_ID)" });

@@ -34,7 +34,6 @@ export default function Footer() {
               <li><a href="/tours" className="text-brand-white/80 hover:text-brand-emerald-400 transition-colors">Tours</a></li>
               <li><a href="/about" className="text-brand-white/80 hover:text-brand-emerald-400 transition-colors">About</a></li>
               <li><a href={CONTACT_URL} className="text-brand-white/80 hover:text-brand-emerald-400 transition-colors">Contact</a></li>
-              <li><a href="/sitemap.xml" className="text-brand-white/80 hover:text-brand-emerald-400 transition-colors">Sitemap</a></li>
             </ul>
           </div>
 
@@ -88,7 +87,7 @@ export default function Footer() {
             )}
             <a href="/privacy" className="text-brand-white/60 hover:text-brand-emerald-400 transition-colors">Privacy</a>
             <a href="/terms" className="text-brand-white/60 hover:text-brand-emerald-400 transition-colors">Terms</a>
-            <a href="/sitemap.xml" className="text-brand-white/60 hover:text-brand-emerald-400 transition-colors">Sitemap</a>
+            <a href={CONTACT_URL} className="text-brand-white/60 hover:text-brand-emerald-400 transition-colors">Contact</a>
           </div>
         </div>
       </div>

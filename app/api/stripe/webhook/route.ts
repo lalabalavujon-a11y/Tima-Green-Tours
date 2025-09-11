@@ -26,7 +26,10 @@ function verifyStripeSignature(rawBody: string, sigHeader: string, secret: strin
 
 export async function POST(req: NextRequest) {
   try {
-    const secret = process.env.STRIPE_WEBHOOK_SECRET;
+    const secret =
+      process.env.STRIPE_WEBHOOK_SECRET ||
+      process.env.TGT_TEST_STRIPE_WEBHOOK_SECRET ||
+      (process.env.PAYMENT_MODE === 'live' ? process.env.TGT_LIVE_STRIPE_WEBHOOK_SECRET : undefined);
     if (!secret) return NextResponse.json({ ok: false, error: 'Missing STRIPE_WEBHOOK_SECRET' }, { status: 500 });
 
     const raw = await req.text();
@@ -47,9 +50,14 @@ export async function POST(req: NextRequest) {
       let slug: string | null = tour ? inferSlugFromText(tour) : null;
 
       // Optionally fetch line items to infer tour/product name and adult/child counts
-      if (!slug && s.id && process.env.STRIPE_SECRET_KEY) {
+      const stripeKey =
+        process.env.STRIPE_SECRET_KEY ||
+        process.env.TGT_TEST_STRIPE_SECRET_KEY ||
+        process.env.TGT_LIVE_STRIPE_SECRET_KEY ||
+        process.env.TGT_STRIPE_SECRET_KEY;
+      if (!slug && s.id && stripeKey) {
         try {
-          const items = await fetchLineItems(s.id, process.env.STRIPE_SECRET_KEY);
+          const items = await fetchLineItems(s.id, stripeKey);
           const descriptions: string[] = [];
           let adultQty = 0;
           let childQty = 0;

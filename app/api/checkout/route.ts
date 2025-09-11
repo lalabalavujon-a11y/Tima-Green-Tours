@@ -10,7 +10,11 @@ function toAmount(value: number) {
 
 export async function POST(req: NextRequest) {
   try {
-    const key = process.env.STRIPE_SECRET_KEY;
+    const key =
+      process.env.STRIPE_SECRET_KEY ||
+      process.env.TGT_TEST_STRIPE_SECRET_KEY ||
+      process.env.TGT_LIVE_STRIPE_SECRET_KEY ||
+      process.env.TGT_STRIPE_SECRET_KEY;
     if (!key) return NextResponse.json({ ok: false, error: 'Missing STRIPE_SECRET_KEY' }, { status: 500 });
 
     const body = await req.json().catch(() => ({}));
@@ -61,12 +65,12 @@ export async function POST(req: NextRequest) {
       // Metadata for webhook/ops
       ['metadata[slug]', tour.slug],
       ['metadata[tour]', tour.name],
-      ...(date ? [['metadata[date]', String(date)]] : []),
-      ...(pickup ? [['metadata[pickup]', String(pickup)]] : []),
-      ...(notes ? [['metadata[notes]', String(notes)]] : []),
       ['metadata[adults]', String(Math.max(0, adults || 0))],
       ['metadata[children]', String(Math.max(0, children || 0))],
     ];
+    if (date) params.push(['metadata[date]', String(date)]);
+    if (pickup) params.push(['metadata[pickup]', String(pickup)]);
+    if (notes) params.push(['metadata[notes]', String(notes)]);
 
     // Flatten items into params
     for (const kvs of items) params.push(...kvs);
@@ -88,4 +92,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: e?.message || String(e) }, { status: 500 });
   }
 }
-
