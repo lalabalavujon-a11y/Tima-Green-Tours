@@ -5,35 +5,18 @@ import Section from '@/components/Section';
 import TourCard from '@/components/TourCard';
 import { getRelatedTours } from '@/lib/data';
 import { CONTACT_URL } from '@/lib/config';
+import SiaChat from '@/components/SiaChat';
 
 export default function HomePage() {
   const featuredTours = getRelatedTours('biausevu-waterfall-tour');
 
   return (
     <div>
- HEAD
-      {/* Hero Section with imagery (Gamma-like) */}
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/tours/placeholder.jpg"
-            alt="Fiji rainforest canopy"
-            fill
-            priority
-            className="object-cover object-center opacity-70"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="container-base text-center text-white py-24 md:py-32">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Discover Fiji with Tima Green Tours
-
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-brand-emerald-600 via-brand-emerald-700 to-brand-emerald-800 text-white text-center">
         <div className="container-base">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Your Gateway to Fijian Wonders
- 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
+            Discover Fiji with Tima Green Tours
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/90">
             Indigenous-owned eco‑cultural experiences across Viti Levu. Waterfalls, village hospitality, kava ceremonies, craft workshops, and island getaways.
@@ -42,11 +25,7 @@ export default function HomePage() {
             <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
               Explore Our Tours
             </Link>
-<<<<<<< HEAD
-            <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg border-2 border-white/40">
-=======
             <Link href={CONTACT_URL} className="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg border-2 border-green-500">
->>>>>>> 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
               Plan Your Trip
             </Link>
             <a
@@ -172,6 +151,7 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+      {process.env.NEXT_PUBLIC_ENABLE_ASSISTANTS_WIDGET === 'true' ? null : <SiaChat />}
     </div>
   );
 }

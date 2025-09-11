@@ -54,6 +54,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 href={paymentLinks.adult}
                 target="_blank"
                 rel="noopener nofollow"
+                aria-label="Buy Adult ticket via Stripe Checkout"
+                data-cta="buy-adult"
                 className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
               >
                 Buy Adult{!isPaymentLive ? ' (Test)' : ''}
@@ -62,6 +64,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
               <Link
                 href={CONTACT_URL}
                 title="No Stripe link configured yet. Opens contact form."
+                aria-label="Enquire to buy Adult ticket"
+                data-cta="contact-adult"
                 className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
               >
                 Buy Adult (Contact)
@@ -72,6 +76,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 href={paymentLinks.child}
                 target="_blank"
                 rel="noopener nofollow"
+                aria-label="Buy Child ticket via Stripe Checkout"
+                data-cta="buy-child"
                 className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
               >
                 Buy Child{!isPaymentLive ? ' (Test)' : ''}
@@ -80,6 +86,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
               <Link
                 href={CONTACT_URL}
                 title="No Stripe link configured yet. Opens contact form."
+                aria-label="Enquire to buy Child ticket"
+                data-cta="contact-child"
                 className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
               >
                 Buy Child (Contact)
@@ -109,6 +117,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 href={paymentLinks.adult}
                 target="_blank"
                 rel="noopener nofollow"
+                aria-label="Buy Adult ticket via Stripe Checkout"
+                data-cta="buy-adult"
                 className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
               >
                 Buy Adult{!isPaymentLive ? ' (Test)' : ''}
@@ -117,6 +127,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
               <Link
                 href={CONTACT_URL}
                 title="No Stripe link configured yet. Opens contact form."
+                aria-label="Enquire to buy Adult ticket"
+                data-cta="contact-adult"
                 className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
               >
                 Buy Adult (Contact)
@@ -127,6 +139,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 href={paymentLinks.child}
                 target="_blank"
                 rel="noopener nofollow"
+                aria-label="Buy Child ticket via Stripe Checkout"
+                data-cta="buy-child"
                 className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
               >
                 Buy Child{!isPaymentLive ? ' (Test)' : ''}
@@ -135,6 +149,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
               <Link
                 href={CONTACT_URL}
                 title="No Stripe link configured yet. Opens contact form."
+                aria-label="Enquire to buy Child ticket"
+                data-cta="contact-child"
                 className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
               >
                 Buy Child (Contact)

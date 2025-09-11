@@ -219,28 +219,8 @@ function generateGallery(slug: string): any[] {
       caption: photo.caption
     }));
   }
-  
-  // Fallback to placeholder images
-  return [
-    {
-      src: '/tours/placeholder.jpg',
-      alt: `Gallery image 1 for ${slug}`,
-      width: 1200,
-      height: 800
-    },
-    {
-      src: '/tours/placeholder.jpg',
-      alt: `Gallery image 2 for ${slug}`,
-      width: 1200,
-      height: 800
-    },
-    {
-      src: '/tours/placeholder.jpg',
-      alt: `Gallery image 3 for ${slug}`,
-      width: 1200,
-      height: 800
-    }
-  ];
+  // No gallery photos yet → hide gallery section
+  return [];
 }
 
 function generateReviews(slug: string): Array<{ name: string; rating: number; quote: string; date?: string }> {

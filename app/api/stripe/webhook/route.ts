@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import { createCalendarEvent, isCalendarConfigured } from '@/lib/googleCalendar';
 import { fetchLineItems } from '@/lib/stripe';
 import { inferSlugFromText } from '@/lib/tourMap';
+import { findQuoteRowById, updateQuoteRow } from '@/lib/googleSheets';
 
 // Stripe webhook signature verification without SDK
 function verifyStripeSignature(rawBody: string, sigHeader: string, secret: string) {
@@ -76,6 +77,26 @@ export async function POST(req: NextRequest) {
         }
       }
       if (!tour) tour = paymentLink || 'Tour Booking';
+
+      // Update Quotes sheet if we have a quoteId
+      const quoteId = s.metadata?.quoteId as string | undefined;
+      if (quoteId && process.env.GOOGLE_SHEETS_ID) {
+        try {
+          const hit = await findQuoteRowById(quoteId);
+          if (hit) {
+            const amt = typeof amountTotal === 'number' ? String(Math.round(amountTotal * 100)) : hit.data['Amount'] || '';
+            await updateQuoteRow(hit.row, {
+              'Status': 'Paid',
+              'Stripe Session ID': s.id || hit.data['Stripe Session ID'] || '',
+              'Amount': amt,
+              'Currency': currency,
+              'Email': customerEmail || hit.data['Email'] || '',
+            });
+          }
+        } catch (e) {
+          console.warn('Quotes update failed', e);
+        }
+      }
 
       if (isCalendarConfigured()) {
         const calendarId = process.env.GOOGLE_CALENDAR_ID!;

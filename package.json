@@ -17,11 +17,16 @@
     "debug:fix": "next lint --fix",
     "debug:monitor": "super-debug monitor",
     "cf:purge:app": "node scripts/purge-cloudflare.mjs app.timagreentours.com",
-    "cf:purge:all": "CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs"
+    "cf:purge:all": "CF_PURGE_ALL=1 node scripts/purge-cloudflare.mjs",
+    "assistants:sync": "tsx scripts/sync-assistants.ts"
   },
   "dependencies": {
     "clsx": "2.1.1",
+    "@langchain/core": "^0.2.23",
+    "@langchain/openai": "^0.2.8",
     "next": "14.2.5",
+    "openai": "^4.59.0",
+    "yaml": "^2.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "resend": "3.4.0",
@@ -43,6 +48,7 @@
     "postcss": "8.4.38",
     "prettier": "^3.6.2",
     "tailwindcss": "3.4.7",
+    "tsx": "^4.19.0",
     "typescript": "5.4.5"
   }
 }

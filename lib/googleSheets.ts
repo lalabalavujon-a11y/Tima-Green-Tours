@@ -131,3 +131,121 @@ export async function appendSocialPost(values: any[]) {
   if (!res.ok) throw new Error(`Sheets append failed: ${res.status}`);
   return res.json();
 }
+
+// Quotes helpers (simple sheet-backed storage)
+export async function appendQuoteRow(values: any[]) {
+  // Ensure header exists on first use
+  try { await ensureQuotesHeader(); } catch { /* non-fatal */ }
+  const sheetId = process.env.GOOGLE_SHEETS_ID!;
+  const range = encodeURIComponent(process.env.QUOTES_SHEET_NAME || 'Quotes!A1');
+  const token = await getAccessToken();
+  const res = await fetch(`${SHEETS_URL}/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
+    body: JSON.stringify({ values: [values] }),
+  });
+  if (!res.ok) throw new Error(`Quotes append failed: ${res.status}`);
+  const json = await res.json();
+  // Try to parse updatedRange like 'Quotes!A13:H13' to get row number
+  const updatedRange: string = json.updates?.updatedRange || '';
+  const match = updatedRange.match(/!(?:[A-Z]+)(\d+):/);
+  const row = match ? parseInt(match[1], 10) : undefined;
+  return { ...json, row };
+}
+
+export async function listQuotesWithRows(limit = 500) {
+  const sheetId = process.env.GOOGLE_SHEETS_ID!;
+  const range = encodeURIComponent(process.env.QUOTES_SHEET_NAME || 'Quotes!A1:Z10000');
+  const token = await getAccessToken();
+  const res = await fetch(`${SHEETS_URL}/${sheetId}/values/${range}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(`Quotes read failed: ${res.status}`);
+  const data = await res.json();
+  const rows: string[][] = data.values || [];
+  const header = rows[0] || [];
+  return rows.slice(1, 1 + limit).map((r, idx) => ({
+    row: idx + 2,
+    data: Object.fromEntries(header.map((h: string, i: number) => [h, r[i] || ''])),
+  }));
+}
+
+export async function findQuoteRowById(quoteId: string) {
+  const rows = await listQuotesWithRows(2000);
+  const hit = rows.find(r => (r.data['Quote ID'] || r.data['QuoteId'] || r.data['quoteId']) === quoteId);
+  return hit || null;
+}
+
+export async function updateQuoteRow(rowNumber: number, updates: Record<string, string>) {
+  const sheetId = process.env.GOOGLE_SHEETS_ID!;
+  const sheetName = (process.env.QUOTES_SHEET_NAME || 'Quotes').replace(/!.*/, '');
+  const token = await getAccessToken();
+
+  // Read header to map columns
+  const headerRes = await fetch(`${SHEETS_URL}/${sheetId}/values/${encodeURIComponent(sheetName + '!1:1')}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!headerRes.ok) throw new Error(`Quotes header read failed: ${headerRes.status}`);
+  const headerData = await headerRes.json();
+  const header: string[] = (headerData.values && headerData.values[0]) || [];
+
+  // Read existing row
+  const rowRes = await fetch(`${SHEETS_URL}/${sheetId}/values/${encodeURIComponent(`${sheetName}!${rowNumber}:${rowNumber}`)}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!rowRes.ok) throw new Error(`Quotes row read failed: ${rowRes.status}`);
+  const rowData = await rowRes.json();
+  const rowValues: string[] = (rowData.values && rowData.values[0]) || [];
+
+  const width = Math.max(header.length, rowValues.length);
+  const newRow = new Array(width).fill('');
+  for (let i = 0; i < width; i++) newRow[i] = rowValues[i] || '';
+  for (const [k, v] of Object.entries(updates)) {
+    const idx = header.indexOf(k);
+    if (idx >= 0) newRow[idx] = v;
+  }
+
+  const updateRes = await fetch(`${SHEETS_URL}/${sheetId}/values/${encodeURIComponent(`${sheetName}!${rowNumber}:${rowNumber}`)}?valueInputOption=USER_ENTERED`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
+    body: JSON.stringify({ values: [newRow] }),
+  });
+  if (!updateRes.ok) throw new Error(`Quotes row update failed: ${updateRes.status}`);
+  return updateRes.json();
+}
+
+// Ensure Quotes sheet has a header row
+export async function ensureQuotesHeader() {
+  const sheetId = process.env.GOOGLE_SHEETS_ID!;
+  const sheetName = (process.env.QUOTES_SHEET_NAME || 'Quotes').replace(/!.*/, '');
+  const token = await getAccessToken();
+
+  const headerRes = await fetch(`${SHEETS_URL}/${sheetId}/values/${encodeURIComponent(sheetName + '!1:1')}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!headerRes.ok) throw new Error(`Quotes header read failed: ${headerRes.status}`);
+  const headerData = await headerRes.json();
+  const header: string[] = (headerData.values && headerData.values[0]) || [];
+  if (header.length > 0) return; // already has header
+
+  const desired = [
+    'Created At',
+    'Quote ID',
+    'Tour ID',
+    'Date',
+    'Pax',
+    'Currency',
+    'Amount',
+    'Email',
+    'Status',
+    'Stripe Session ID',
+    'Payment Link',
+    'Payment Intent ID',
+  ];
+  const put = await fetch(`${SHEETS_URL}/${sheetId}/values/${encodeURIComponent(`${sheetName}!1:1`)}?valueInputOption=USER_ENTERED`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
+    body: JSON.stringify({ values: [desired] }),
+  });
+  if (!put.ok) throw new Error(`Quotes header write failed: ${put.status}`);
+}

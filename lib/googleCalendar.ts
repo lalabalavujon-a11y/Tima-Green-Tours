@@ -87,3 +87,40 @@ export async function createCalendarEvent(input: CalendarEventInput) {
   return res.json();
 }
 
+export async function listCalendarEvents(input: {
+  calendarId: string;
+  timeMin?: string; // ISO
+  timeMax?: string; // ISO
+  maxResults?: number;
+}) {
+  const token = await getAccessToken();
+  const params = new URLSearchParams({
+    singleEvents: 'true',
+    orderBy: 'startTime',
+  });
+  if (input.maxResults) params.set('maxResults', String(input.maxResults));
+  if (input.timeMin) params.set('timeMin', input.timeMin);
+  if (input.timeMax) params.set('timeMax', input.timeMax);
+
+  const url = `${GCAL_EVENTS_URL}/${encodeURIComponent(input.calendarId)}/events?${params.toString()}`;
+  const res = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Failed to list events: ${res.status} ${txt}`);
+  }
+  const json = await res.json();
+  const items = (json.items || []) as any[];
+  return items.map((e) => ({
+    id: e.id,
+    status: e.status,
+    summary: e.summary,
+    description: e.description,
+    location: e.location,
+    start: e.start?.dateTime || e.start?.date,
+    end: e.end?.dateTime || e.end?.date,
+  }));
+}

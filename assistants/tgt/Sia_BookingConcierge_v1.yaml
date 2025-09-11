@@ -1,0 +1,135 @@
+name: "Sia – Booking Concierge"
+model: "gpt-4o-mini"
+temperature: 0.4
+instructions: |
+  You are Sia, the Fiji Tours expert for Tima Green Tours.
+  Objectives: qualify, recommend 3 options, confirm availability, take deposit.
+  Safety & policy first. Use tools instead of guessing.
+  Never ask for card numbers in chat; always create a Stripe Payment Intent link.
+tools:
+  - type: function
+    function:
+      name: search_tours
+      description: Search tours by free text with optional filters (location, maxHours, maxPriceFJD).
+      parameters:
+        type: object
+        properties:
+          query: { type: string }
+          location: { type: string }
+          maxHours: { type: number }
+          maxPriceFJD: { type: number }
+        required: [query]
+  - type: function
+    function:
+      name: check_availability
+      description: Check upcoming availability from Google Calendar within a date range.
+      parameters:
+        type: object
+        properties:
+          startISO: { type: string }
+          endISO: { type: string }
+          limit: { type: number }
+  - type: function
+    function:
+      name: create_quote
+      description: Create a provisional quote and hold seats.
+      parameters:
+        type: object
+        properties:
+          tourId: { type: string }
+          date: { type: string }
+          pax: { type: integer }
+          currency: { type: string }
+        required: [tourId, date, pax, currency]
+  - type: function
+    function:
+      name: create_stripe_payment_intent
+      description: Create a Stripe Payment Intent and return a pay link.
+      parameters:
+        type: object
+        properties:
+          quoteId: { type: string }
+          amount: { type: integer }
+          currency: { type: string }
+          email: { type: string }
+        required: [quoteId, amount, currency, email]
+  - type: function
+    function:
+      name: confirm_booking
+      description: Confirm booking after successful payment.
+      parameters:
+        type: object
+        properties:
+          quoteId: { type: string }
+          paymentIntentId: { type: string }
+        required: [quoteId, paymentIntentId]
+  - type: function
+    function:
+      name: create_crm_lead
+      description: Create/update lead in CRM with source and stage.
+      parameters:
+        type: object
+        properties:
+          name: { type: string }
+          email: { type: string }
+          phone: { type: string }
+          source: { type: string }
+          stage: { type: string }
+        required: [email, source]
+  - type: function
+    function:
+      name: update_crm_stage
+      description: Move lead to a new stage.
+      parameters:
+        type: object
+        properties:
+          leadId: { type: string }
+          stage: { type: string }
+        required: [leadId, stage]
+  - type: function
+    function:
+      name: send_confirmation
+      description: Send itinerary/receipt to the guest.
+      parameters:
+        type: object
+        properties:
+          bookingId: { type: string }
+          channel: { type: string, enum: ["email","sms","whatsapp"] }
+        required: [bookingId, channel]
+  - type: function
+    function:
+      name: post_slack_alert
+      description: Notify ops in Slack for edge cases or VIPs.
+      parameters:
+        type: object
+        properties:
+          channel: { type: string }
+          message: { type: string }
+        required: [channel, message]
+  - type: function
+    function:
+      name: run_post_booking
+      description: Run post-booking orchestration (enrich Quotes, calendar event, Slack, email). Traced in LangSmith.
+      parameters:
+        type: object
+        properties:
+          quoteId: { type: string }
+          bookingId: { type: string }
+          guest:
+            type: object
+            properties:
+              name: { type: string }
+              email: { type: string }
+              phone: { type: string }
+          tourId: { type: string }
+          date: { type: string }
+          pax: { type: integer }
+          currency: { type: string }
+          amount: { type: number }
+          payment:
+            type: object
+            properties:
+              sessionId: { type: string }
+              paymentIntentId: { type: string }
+              link: { type: string }
+        required: [quoteId]

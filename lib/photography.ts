@@ -18,116 +18,66 @@ export interface PhotoMetadata {
 
 // Sample photography data - replace with real images
 export const tourPhotos: Record<string, PhotoMetadata[]> = {
+  // Biausevu Waterfall Tour – group at the falls
   'biausevu-waterfall-tour': [
     {
       id: 'bw-001',
       src: '/photos/biausevu/waterfall-group.jpg',
-      alt: 'Guests relaxing at the base of Biausevu Waterfall natural pool',
+      alt: 'Guests at Biausevu Waterfall natural pool',
       width: 1600,
       height: 900,
-      caption: 'The majestic Biausevu Waterfall - a perfect spot for swimming and photography',
+      caption: 'Biausevu Waterfall natural pool',
       location: 'Biausevu Village, Sigatoka',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-01-15',
       tags: ['waterfall', 'swimming', 'nature', 'sigatoka'],
       tourSlug: 'biausevu-waterfall-tour'
-    },
-    {
-      id: 'bw-002',
-      src: '/photos/biausevu/village-welcome.jpg',
-      alt: 'Traditional Fijian village welcome ceremony',
-      width: 2400,
-      height: 1350,
-      caption: 'Guests receiving traditional welcome at Biausevu Village',
-      location: 'Biausevu Village, Sigatoka',
-      photographer: 'Tima Green Tours',
-      dateTaken: '2024-01-15',
-      consentRef: 'CONSENT-2024-001',
-      tags: ['village', 'culture', 'welcome', 'traditional'],
-      tourSlug: 'biausevu-waterfall-tour'
-    },
-    {
-      id: 'bw-003',
-      src: '/photos/biausevu/kava-ceremony.jpg',
-      alt: 'Traditional kava ceremony with village elders',
-      width: 2400,
-      height: 1350,
-      caption: 'Participating in the sacred kava ceremony with village elders',
-      location: 'Biausevu Village, Sigatoka',
-      photographer: 'Tima Green Tours',
-      dateTaken: '2024-01-15',
-      consentRef: 'CONSENT-2024-002',
-      tags: ['kava', 'ceremony', 'culture', 'elders'],
-      tourSlug: 'biausevu-waterfall-tour'
     }
   ],
+
+  // Sigatoka Valley & Lawai Pottery – valley scenic
   'sigatoka-valley-lawai-pottery': [
     {
       id: 'sv-001',
       src: '/photos/sigatoka/valley-overlook.jpg',
-      alt: 'Scenic view over the Sigatoka Valley and river - Salad Bowl of Fiji',
+      alt: 'Scenic Sigatoka Valley and river',
       width: 1600,
       height: 900,
-      caption: 'The lush Sigatoka Valley - Fiji\'s agricultural heartland',
+      caption: 'The lush Sigatoka Valley',
       location: 'Sigatoka Valley, Coral Coast',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-02-10',
       tags: ['valley', 'scenic', 'agriculture', 'coral-coast'],
       tourSlug: 'sigatoka-valley-lawai-pottery'
-    },
-    {
-      id: 'sv-002',
-      src: '/photos/sigatoka/pottery-making.jpg',
-      alt: 'Traditional Fijian pottery being crafted by local artisans',
-      width: 2400,
-      height: 1350,
-      caption: 'Skilled artisans demonstrating traditional pottery techniques',
-      location: 'Lawai Village, Sigatoka',
-      photographer: 'Tima Green Tours',
-      dateTaken: '2024-02-10',
-      consentRef: 'CONSENT-2024-003',
-      tags: ['pottery', 'crafts', 'artisans', 'traditional'],
-      tourSlug: 'sigatoka-valley-lawai-pottery'
     }
   ],
+
+  // Lomawai Salt + Natadola Horse Riding – horse riding image
   'lomawai-salt-natadola-horse-riding': [
     {
       id: 'ls-001',
       src: '/photos/natadola/horse-riding.jpg',
-      alt: 'Horseback riding along the pristine shores of Natadola Beach',
+      alt: 'Horseback riding at Natadola Beach',
       width: 1600,
       height: 900,
-      caption: 'Guided horseback ride on one of the world\'s most beautiful beaches',
+      caption: 'Horse riding on Natadola Beach',
       location: 'Natadola Beach, Coral Coast',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-01-20',
-      consentRef: 'CONSENT-2024-005',
-      tags: ['horse-riding', 'beach', 'natadola', 'adventure'],
-      tourSlug: 'lomawai-salt-natadola-horse-riding'
-    },
-    {
-      id: 'ls-002',
-      src: '/photos/natadola/horse-riding.jpg',
-      alt: 'Horseback riding along the pristine shores of Natadola Beach',
-      width: 2400,
-      height: 1350,
-      caption: 'Guided horseback ride on one of the world\'s most beautiful beaches',
-      location: 'Natadola Beach, Coral Coast',
-      photographer: 'Tima Green Tours',
-      dateTaken: '2024-01-20',
-      consentRef: 'CONSENT-2024-005',
       tags: ['horse-riding', 'beach', 'natadola', 'adventure'],
       tourSlug: 'lomawai-salt-natadola-horse-riding'
     }
   ],
+
+  // Sabeto Mud Pool – mud pool group
   'sabeto-mudpool-nadi-temple': [
     {
       id: 'sm-001',
       src: '/photos/sabeto/mudpool-group.jpg',
-      alt: 'Guests covered in therapeutic mud at the Sabeto Mud Pool',
+      alt: 'Guests at Sabeto Mud Pool & Hot Spring',
       width: 1600,
       height: 900,
-      caption: 'Rejuvenating fun at the famous Sabeto Mud Pool & Hot Springs',
+      caption: 'Sabeto Mud Pool & Hot Springs',
       location: 'Sabeto, Nadi',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-03-12',
@@ -135,14 +85,16 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
       tourSlug: 'sabeto-mudpool-nadi-temple'
     }
   ],
+
+  // Shark Diving – shark encounter
   'shark-diving-beqa-lagoon': [
     {
       id: 'sd-001',
       src: '/photos/beqa/shark-diving.jpg',
-      alt: 'Divers observing a shark encounter at Beqa Lagoon',
+      alt: 'Shark diving at Beqa Lagoon',
       width: 1600,
       height: 900,
-      caption: 'Bucket-list shark diving experience with expert guides',
+      caption: 'Shark diving at Beqa Lagoon',
       location: 'Beqa Lagoon, Viti Levu',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-04-05',
@@ -150,14 +102,16 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
       tourSlug: 'shark-diving-beqa-lagoon'
     }
   ],
+
+  // Malolo Island Getaway – island jetty
   'malolo-island-getaway': [
     {
       id: 'mi-001',
       src: '/photos/malolo/island-jetty.jpg',
-      alt: 'Island jetty extending into turquoise waters at Malolo Lailai',
+      alt: 'Island jetty at Malolo Lailai',
       width: 1600,
       height: 900,
-      caption: 'Paradise scenes on Malolo Lailai Island getaway',
+      caption: 'Malolo Lailai Island jetty',
       location: 'Malolo Lailai, Mamanuca Islands',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-05-10',
