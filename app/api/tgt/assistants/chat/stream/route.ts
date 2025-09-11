@@ -19,7 +19,10 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const client = new OpenAI({ apiKey: process.env.TGT_OPENAI_API_KEY! });
+function getClient() {
+  const apiKey = process.env.TGT_OPENAI_API_KEY || process.env.OPENAI_API_KEY || "";
+  return new OpenAI({ apiKey });
+}
 
 const BodySchema = z.object({
   assistantId: z.string(),
@@ -73,7 +76,7 @@ export async function POST(req: NextRequest) {
       const encoder = new TextEncoder();
       const send = (obj: any) => controller.enqueue(encoder.encode(sse(obj)));
       try {
-        if (!process.env.TGT_OPENAI_API_KEY) {
+        if (!process.env.TGT_OPENAI_API_KEY && !process.env.OPENAI_API_KEY) {
           send({ type: "message", delta: "Assistants API not configured: missing TGT_OPENAI_API_KEY" });
           send({ type: "done" });
           controller.close();
@@ -82,6 +85,7 @@ export async function POST(req: NextRequest) {
 
         const body = BodySchema.parse(await req.json());
         const { assistantId, message } = body;
+        const client = getClient();
         const thread = body.threadId
           ? { id: body.threadId }
           : await client.beta.threads.create({ messages: [] });
@@ -182,4 +186,3 @@ export async function POST(req: NextRequest) {
     },
   });
 }
-
