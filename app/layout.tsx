@@ -23,17 +23,17 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website'
   },
-<<<<<<< HEAD
+ HEAD
   metadataBase: new URL('https://app.timagreentours.com'),
   icons: { icon: '/favicon.ico' }
-=======
+
   metadataBase: new URL('https://timagreentours.com'),
   icons: {
     icon: ['/favicon.ico', '/logo.png'],
     apple: ['/logo.png'],
     shortcut: ['/favicon.ico']
   }
->>>>>>> 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
+ 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
