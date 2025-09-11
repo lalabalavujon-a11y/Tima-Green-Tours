@@ -45,7 +45,7 @@ export default function MobileNav() {
           <div className="flex items-center justify-between p-6 border-b border-slate-200">
             <div className="flex items-center gap-2 font-semibold text-lg">
               <div className="relative h-8 w-8">
-                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="32px" className="object-contain" />
+                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="32px" className="object-contain" unoptimized />
               </div>
               <span>Tima Green Tours</span>
             </div>

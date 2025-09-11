@@ -31,13 +31,14 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
       
       {/* Main Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl mb-4">
-        <Image 
-          src={images[currentIndex].src} 
-          alt={images[currentIndex].alt} 
-          fill 
+        <Image
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 60vw"
           className="object-cover"
           priority={currentIndex === 0}
+          unoptimized
         />
         
         {/* Navigation Arrows */}

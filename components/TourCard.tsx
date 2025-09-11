@@ -38,6 +38,7 @@ export default function TourCard({ tour }: TourCardProps) {
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
           priority={false}
+          unoptimized
         />
         {/* Price Badge */}
         <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg text-white" style={{ backgroundColor: '#00ee5e' }}>

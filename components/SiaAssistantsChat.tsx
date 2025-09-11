@@ -119,7 +119,7 @@ export default function SiaAssistantsChat() {
     <>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-40 rounded-full shadow-lg text-white w-14 h-14 flex items-center justify-center"
+        className="fixed right-6 md:bottom-6 bottom-24 z-50 rounded-full shadow-lg text-white w-14 h-14 flex items-center justify-center"
         style={{ backgroundColor: '#00ee5e' }}
         aria-label="Open Sia chat (Assistants)"
       >
@@ -127,7 +127,7 @@ export default function SiaAssistantsChat() {
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-6 z-40 w-[92vw] max-w-md h-[70vh] rounded-xl border border-gray-200 bg-white shadow-xl flex flex-col">
+        <div className="fixed right-6 md:bottom-24 bottom-40 z-50 w-[92vw] max-w-md h-[70vh] rounded-xl border border-gray-200 bg-white shadow-xl flex flex-col">
           <div className="px-4 py-3 border-b text-white rounded-t-xl flex items-center justify-between" style={{ background: 'linear-gradient(90deg, #00ee5e, #007707)' }}>
             <div>
               <div className="text-base font-semibold">Sia — Booking Concierge (Assistants)</div>

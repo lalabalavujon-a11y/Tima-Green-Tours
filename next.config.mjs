@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
-      // Add your CDN(s) here
       { protocol: 'https', hostname: '**.cloudinary.com' },
       { protocol: 'https', hostname: '**.imgix.net' },
       { protocol: 'https', hostname: '**.unsplash.com' }
