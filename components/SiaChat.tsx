@@ -105,20 +105,20 @@ export default function SiaChat() {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Bubble Button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-40 rounded-full shadow-lg bg-brand-emerald-600 hover:bg-brand-emerald-700 text-white px-4 py-3 flex items-center gap-2"
+        className="fixed bottom-6 right-6 z-40 rounded-full shadow-lg text-white w-14 h-14 flex items-center justify-center"
+        style={{ backgroundColor: '#00ee5e' }}
         aria-label="Open Sia chat"
       >
-        <span className="font-semibold">Sia</span>
-        <span className="hidden sm:inline">— The Fiji Tour’s Expert</span>
+        <span className="font-semibold">S</span>
       </button>
 
       {/* Panel */}
       {open && (
         <div className="fixed bottom-24 right-6 z-40 w-[92vw] max-w-md h-[70vh] rounded-xl border border-gray-200 bg-white shadow-xl flex flex-col">
-          <div className="px-4 py-3 border-b bg-gradient-to-r from-brand-emerald-600 to-brand-emerald-700 text-white rounded-t-xl flex items-center justify-between">
+          <div className="px-4 py-3 border-b text-white rounded-t-xl flex items-center justify-between" style={{ background: 'linear-gradient(90deg, #00ee5e, #007707)' }}>
             <div>
               <div className="text-base font-semibold">Sia — The Fiji Tour’s Expert</div>
               <div className="text-xs opacity-90">Polite yet witty AI guide for Fiji & Tima Green Tours</div>
@@ -134,10 +134,7 @@ export default function SiaChat() {
           <div ref={scrollerRef} className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
             {messages.map((m, i) => (
               <div key={i} className={m.role === 'user' ? 'text-right' : 'text-left'}>
-                <div className={
-                  'inline-block max-w-[85%] rounded-lg px-3 py-2 text-sm ' +
-                  (m.role === 'user' ? 'bg-emerald-600 text-white' : 'bg-white border')
-                }>
+                <div className={'inline-block max-w-[85%] rounded-lg px-3 py-2 text-sm ' + (m.role === 'user' ? 'text-white' : 'bg-white border')} style={m.role === 'user' ? { backgroundColor: '#007707' } : undefined}>
                   {m.content}
                 </div>
               </div>

@@ -41,11 +41,11 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
           <div className="flex-1">
             <div className="text-sm font-semibold text-slate-900 truncate">{tourName}</div>
             {childPrice ? (
-              <div className="text-lg font-bold text-brand-emerald">
+              <div className="text-lg font-bold" style={{ color: '#007707' }}>
                 Adult {currency} {price} <span className="text-slate-600 text-base">• Child {currency} {childPrice}</span>
               </div>
             ) : (
-              <div className="text-lg font-bold text-brand-emerald">From {currency} {price}</div>
+              <div className="text-lg font-bold" style={{ color: '#007707' }}>From {currency} {price}</div>
             )}
           </div>
           <div className="flex gap-2">
@@ -56,7 +56,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 rel="noopener nofollow"
                 aria-label="Buy Adult ticket via Stripe Checkout"
                 data-cta="buy-adult"
-                className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
+                className="px-4 py-2 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap text-white"
+                style={{ backgroundColor: '#00ee5e' }}
               >
                 Buy Adult{!isPaymentLive ? ' (Test)' : ''}
               </Link>
@@ -66,7 +67,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 title="No Stripe link configured yet. Opens contact form."
                 aria-label="Enquire to buy Adult ticket"
                 data-cta="contact-adult"
-                className="bg-brand-emerald text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/90 transition-colors whitespace-nowrap"
+                className="px-4 py-2 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap text-white"
+                style={{ backgroundColor: '#00ee5e' }}
               >
                 Buy Adult (Contact)
               </Link>
@@ -78,7 +80,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 rel="noopener nofollow"
                 aria-label="Buy Child ticket via Stripe Checkout"
                 data-cta="buy-child"
-                className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
+                className="border px-4 py-2 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap"
+                style={{ borderColor: '#00ee5e', color: '#007707' }}
               >
                 Buy Child{!isPaymentLive ? ' (Test)' : ''}
               </Link>
@@ -88,7 +91,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 title="No Stripe link configured yet. Opens contact form."
                 aria-label="Enquire to buy Child ticket"
                 data-cta="contact-child"
-                className="border border-brand-emerald text-brand-emerald px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-emerald/5 transition-colors whitespace-nowrap"
+                className="border px-4 py-2 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap"
+                style={{ borderColor: '#00ee5e', color: '#007707' }}
               >
                 Buy Child (Contact)
               </Link>
@@ -103,11 +107,11 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
           <div className="text-center mb-4">
             <div className="text-lg font-semibold text-slate-900 mb-1">{tourName}</div>
             {childPrice ? (
-              <div className="text-2xl font-bold text-brand-emerald mb-3">
+              <div className="text-2xl font-bold mb-3" style={{ color: '#007707' }}>
                 Adult {currency} {price} <span className="text-slate-600 text-lg">• Child {currency} {childPrice}</span>
               </div>
             ) : (
-              <div className="text-2xl font-bold text-brand-emerald mb-3">From {currency} {price}</div>
+              <div className="text-2xl font-bold mb-3" style={{ color: '#007707' }}>From {currency} {price}</div>
             )}
             <div className="text-sm text-slate-600">per person</div>
           </div>
@@ -119,7 +123,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 rel="noopener nofollow"
                 aria-label="Buy Adult ticket via Stripe Checkout"
                 data-cta="buy-adult"
-                className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
+                className="w-full text-white py-3 px-6 rounded-xl font-semibold transition-colors text-center block"
+                style={{ backgroundColor: '#00ee5e' }}
               >
                 Buy Adult{!isPaymentLive ? ' (Test)' : ''}
               </Link>
@@ -129,7 +134,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 title="No Stripe link configured yet. Opens contact form."
                 aria-label="Enquire to buy Adult ticket"
                 data-cta="contact-adult"
-                className="w-full bg-brand-emerald text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/90 transition-colors text-center block"
+                className="w-full text-white py-3 px-6 rounded-xl font-semibold transition-colors text-center block"
+                style={{ backgroundColor: '#00ee5e' }}
               >
                 Buy Adult (Contact)
               </Link>
@@ -141,7 +147,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 rel="noopener nofollow"
                 aria-label="Buy Child ticket via Stripe Checkout"
                 data-cta="buy-child"
-                className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
+                className="w-full border-2 py-3 px-6 rounded-xl font-semibold transition-colors text-center block"
+                style={{ borderColor: '#00ee5e', color: '#007707' }}
               >
                 Buy Child{!isPaymentLive ? ' (Test)' : ''}
               </Link>
@@ -151,7 +158,8 @@ export default function StickyBookingCTA({ tourName, price, currency, tourSlug, 
                 title="No Stripe link configured yet. Opens contact form."
                 aria-label="Enquire to buy Child ticket"
                 data-cta="contact-child"
-                className="w-full border-2 border-brand-emerald text-brand-emerald py-3 px-6 rounded-xl font-semibold hover:bg-brand-emerald/5 transition-colors text-center block"
+                className="w-full border-2 py-3 px-6 rounded-xl font-semibold transition-colors text-center block"
+                style={{ borderColor: '#00ee5e', color: '#007707' }}
               >
                 Buy Child (Contact)
               </Link>

@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
 
 const SiaAssistantsChat = dynamic(() => import('@/components/SiaAssistantsChat'), { ssr: false });
+const SiaChat = dynamic(() => import('@/components/SiaChat'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,8 +29,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://app.timagreentours.com'),
   icons: {
-    icon: ['/favicon.ico', '/logo.png'],
-    apple: ['/logo.png'],
+    icon: ['/favicon.ico', '/logo.svg'],
+    apple: ['/logo.svg'],
     shortcut: ['/favicon.ico']
   }
 };
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />
-        {process.env.NEXT_PUBLIC_ENABLE_ASSISTANTS_WIDGET === 'true' ? <SiaAssistantsChat /> : null}
+        {process.env.NEXT_PUBLIC_TGT_ASSISTANT_ID ? <SiaAssistantsChat /> : <SiaChat />}
       </body>
     </html>
   );

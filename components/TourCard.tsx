@@ -40,7 +40,7 @@ export default function TourCard({ tour }: TourCardProps) {
           priority={false}
         />
         {/* Price Badge */}
-        <div className="absolute top-4 right-4 bg-brand-emerald-500 text-brand-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+        <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg text-white" style={{ backgroundColor: '#00ee5e' }}>
           {getFormattedPrice()}
         </div>
         {/* Duration Badge */}
@@ -55,7 +55,7 @@ export default function TourCard({ tour }: TourCardProps) {
         <div className="flex items-start gap-3 mb-4">
           <div className="text-3xl">{getIcon(tour.slug)}</div>
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-brand-black mb-2 group-hover:text-brand-emerald-600 transition-colors">
+            <h3 className="text-xl font-semibold text-brand-black mb-2 transition-colors">
               {tour.name}
             </h3>
             <p className="text-accent-gray-600 text-sm leading-relaxed">
@@ -87,10 +87,7 @@ export default function TourCard({ tour }: TourCardProps) {
           <h4 className="font-medium text-brand-black mb-2">Highlights:</h4>
           <div className="flex flex-wrap gap-1">
             {tour.highlights.slice(0, 3).map((highlight, index) => (
-              <span
-                key={index}
-                className="inline-block bg-brand-emerald-100 text-brand-emerald-700 text-xs px-2 py-1 rounded-full"
-              >
+              <span key={index} className="inline-block text-xs px-2 py-1 rounded-full" style={{ backgroundColor: 'rgba(0, 238, 94, 0.12)', color: '#007707' }}>
                 {highlight}
               </span>
             ))}
@@ -98,10 +95,7 @@ export default function TourCard({ tour }: TourCardProps) {
         </div>
 
         {/* CTA Button */}
-        <Link
-          href={`/tours/${tour.slug}`}
-          className="btn-primary w-full text-center group-hover:bg-brand-emerald-600 transition-colors"
-        >
+        <Link href={`/tours/${tour.slug}`} className="btn-primary w-full text-center">
           View Details →
         </Link>
       </div>

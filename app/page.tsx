@@ -5,7 +5,7 @@ import Section from '@/components/Section';
 import TourCard from '@/components/TourCard';
 import { getRelatedTours } from '@/lib/data';
 import { CONTACT_URL } from '@/lib/config';
-import SiaChat from '@/components/SiaChat';
+// SiaChat is now global via layout
 
 export default function HomePage() {
   const featuredTours = getRelatedTours('biausevu-waterfall-tour');
@@ -22,15 +22,15 @@ export default function HomePage() {
             Indigenous-owned eco‑cultural experiences across Viti Levu. Waterfalls, village hospitality, kava ceremonies, craft workshops, and island getaways.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
+            <Link href="/tours" className="btn-primary">
               Explore Our Tours
             </Link>
-            <Link href={CONTACT_URL} className="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg border-2 border-green-500">
+            <Link href={CONTACT_URL} className="btn-secondary">
               Plan Your Trip
             </Link>
             <a
               href="https://wa.me/6790000000?text=Hi%20Tima%2C%20I%27d%20love%20to%20book%20a%20tour!"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg"
+              className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -81,7 +81,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
+          <Link href="/tours" className="btn-primary">
             View All Tours
           </Link>
         </div>
@@ -141,17 +141,17 @@ export default function HomePage() {
               Join us for an unforgettable journey through the heart of the Pacific.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/tours" className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-6 rounded-lg">
+              <Link href="/tours" className="btn-primary">
                 Browse Tours
               </Link>
-              <Link href={CONTACT_URL} className="bg-transparent hover:bg-brand-emerald-500 text-brand-emerald-600 hover:text-white font-semibold py-3 px-6 rounded-lg border-2 border-brand-emerald-500">
+              <Link href={CONTACT_URL} className="btn-outline">
                 Get in Touch
               </Link>
             </div>
           </div>
         </Container>
       </section>
-      {process.env.NEXT_PUBLIC_ENABLE_ASSISTANTS_WIDGET === 'true' ? null : <SiaChat />}
+      {process.env.NEXT_PUBLIC_ENABLE_ASSISTANTS_WIDGET === 'true' ? null : null}
     </div>
   );
 }

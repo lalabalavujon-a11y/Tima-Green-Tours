@@ -2,6 +2,8 @@ import tours from '@/content/tours.json';
 import type { Tour } from '@/lib/types/tour';
 import { getTourHeroPhoto, getTourGalleryPhotos } from '@/lib/photography';
 import { paymentLinks } from '@/lib/paymentLinks';
+import fs from 'fs';
+import path from 'path';
 
 // Convert the existing tours.json to the new Tour interface format
 function toTour(tour: any): Tour {
@@ -181,15 +183,29 @@ function generateCultureNotes(slug: string): string[] {
 
 const useLocalPhotos = process.env.NEXT_PUBLIC_USE_LOCAL_TOUR_PHOTOS === 'true';
 
+function fileExistsUnderPublic(publicPath: string): boolean {
+  try {
+    const relative = publicPath.startsWith('/') ? publicPath.slice(1) : publicPath;
+    const absolute = path.join(process.cwd(), 'public', relative);
+    return fs.existsSync(absolute);
+  } catch {
+    return false;
+  }
+}
+
 function generateHeroImage(slug: string): any {
   const heroPhoto = getTourHeroPhoto(slug);
   // Use placeholder until real photos are available locally/CDN
   const placeholderSrc = '/tours/placeholder.jpg';
   if (heroPhoto) {
-    // Use local photo when enabled; otherwise fall back if path points to /photos/
-    const src = !useLocalPhotos && heroPhoto.src.startsWith('/photos/')
-      ? placeholderSrc
-      : heroPhoto.src;
+    // Prefer local photo when enabled and present; otherwise fall back to placeholder
+    let src = heroPhoto.src;
+    if (heroPhoto.src.startsWith('/photos/')) {
+      const hasLocalFile = fileExistsUnderPublic(heroPhoto.src);
+      if (!useLocalPhotos || !hasLocalFile) {
+        src = placeholderSrc;
+      }
+    }
     return {
       src,
       alt: heroPhoto.alt,
@@ -211,13 +227,22 @@ function generateGallery(slug: string): any[] {
   const galleryPhotos = getTourGalleryPhotos(slug);
   if (galleryPhotos.length > 0) {
     const placeholderSrc = '/tours/placeholder.jpg';
-    return galleryPhotos.map(photo => ({
-      src: !useLocalPhotos && photo.src.startsWith('/photos/') ? placeholderSrc : photo.src,
-      alt: photo.alt,
-      width: photo.width || 1200,
-      height: photo.height || 800,
-      caption: photo.caption
-    }));
+    return galleryPhotos.map(photo => {
+      let src = photo.src;
+      if (photo.src.startsWith('/photos/')) {
+        const hasLocalFile = fileExistsUnderPublic(photo.src);
+        if (!useLocalPhotos || !hasLocalFile) {
+          src = placeholderSrc;
+        }
+      }
+      return {
+        src,
+        alt: photo.alt,
+        width: photo.width || 1200,
+        height: photo.height || 800,
+        caption: photo.caption
+      };
+    });
   }
   // No gallery photos yet → hide gallery section
   return [];

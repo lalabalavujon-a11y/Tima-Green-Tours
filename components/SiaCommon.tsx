@@ -77,7 +77,8 @@ export function SuggestedTours({ items }: { items: Suggestion[] }) {
                   href={s.paymentLinks.adult}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white rounded-md px-3 py-1"
+                  className="text-xs text-white rounded-md px-3 py-1"
+                  style={{ backgroundColor: '#00ee5e' }}
                 >Book now</a>
               )}
               <a

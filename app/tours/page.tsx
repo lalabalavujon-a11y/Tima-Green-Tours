@@ -37,7 +37,7 @@ export default function ToursPage() {
             <p className="text-xl text-gray-600 mb-8">
               Contact us to customize your perfect Fijian experience.
             </p>
-            <Link href={CONTACT_URL} className="bg-brand-emerald-500 hover:bg-brand-emerald-600 text-white font-semibold py-3 px-8 rounded-lg text-lg">
+            <Link href={CONTACT_URL} className="btn-primary text-lg">
               Get in Touch
             </Link>
           </div>

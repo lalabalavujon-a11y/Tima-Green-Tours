@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <div className="relative w-10 h-10">
-                <Image src="/logo.png" alt="Tima Green Tours" fill sizes="40px" className="object-contain" />
+                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="40px" className="object-contain" />
               </div>
               <span className="text-xl font-bold">Tima Green Tours</span>
             </div>

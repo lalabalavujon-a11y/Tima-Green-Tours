@@ -45,7 +45,7 @@ export default function MobileNav() {
           <div className="flex items-center justify-between p-6 border-b border-slate-200">
             <div className="flex items-center gap-2 font-semibold text-lg">
               <div className="relative h-8 w-8">
-                <Image src="/logo.png" alt="Tima Green Tours" fill sizes="32px" className="object-contain" />
+                <Image src="/logo.svg" alt="Tima Green Tours" fill sizes="32px" className="object-contain" />
               </div>
               <span>Tima Green Tours</span>
             </div>
@@ -104,7 +104,7 @@ export default function MobileNav() {
               <Link
                 href={CONTACT_URL}
                 onClick={toggleMenu}
-                className="block w-full bg-lagoon text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-deepsea transition-colors"
+                className="block w-full btn-primary rounded-xl text-center"
               >
                 Book Your Tour
               </Link>
