@@ -11,7 +11,7 @@ export default function HomePage() {
 
   return (
     <div>
-<<<<<<< HEAD
+ HEAD
       {/* Hero Section with imagery (Gamma-like) */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -27,13 +27,13 @@ export default function HomePage() {
         <div className="container-base text-center text-white py-24 md:py-32">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Discover Fiji with Tima Green Tours
-=======
+
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-brand-emerald-600 via-brand-emerald-700 to-brand-emerald-800 text-white text-center">
         <div className="container-base">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Your Gateway to Fijian Wonders
->>>>>>> 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
+ 1248443 (feat: admin payment links + CRM calendar scaffolding; SEO and UI updates)
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/90">
             Indigenous-owned eco‑cultural experiences across Viti Levu. Waterfalls, village hospitality, kava ceremonies, craft workshops, and island getaways.
