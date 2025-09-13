@@ -10,7 +10,7 @@ interface LogoProps {
 }
 
 export default function Logo({ className, alt = 'Tima Green Tours', sizes = '40px' }: LogoProps) {
-  const [src, setSrc] = useState<string>('/logo.png');
+  const [src, setSrc] = useState<string>('/logo.svg');
   return (
     <div className={className}>
       <Image

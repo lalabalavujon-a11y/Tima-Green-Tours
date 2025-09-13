@@ -4,8 +4,7 @@
   <!-- Inner bright green border -->
   <circle cx="128" cy="128" r="108" stroke="#22c55e" stroke-width="4" fill="none" />
   
-  <!-- White background circle -->
-  <circle cx="128" cy="128" r="100" fill="white" />
+  <!-- Transparent background -->
   
   <!-- Palm tree trunk (dark green) -->
   <path d="M118 180 Q128 160 138 180" stroke="#1a5f3f" stroke-width="8" fill="none" />
