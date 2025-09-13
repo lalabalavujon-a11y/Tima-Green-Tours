@@ -16,14 +16,14 @@ export interface PhotoMetadata {
   tourSlug?: string;
 }
 
-// Sample photography data - replace with real images
+// Photography data using uploaded images
 export const tourPhotos: Record<string, PhotoMetadata[]> = {
-  // Biausevu Waterfall Tour – group at the falls
+  // Biausevu Waterfall Tour – waterfall main image
   'biausevu-waterfall-tour': [
     {
       id: 'bw-001',
-      src: '/photos/biausevu/waterfall-group.jpg',
-      alt: 'Guests at Biausevu Waterfall natural pool',
+      src: '/photos/biausevu/waterfall-main.jpg',
+      alt: 'Biausevu Waterfall natural pool and cascading waters',
       width: 1600,
       height: 900,
       caption: 'Biausevu Waterfall natural pool',
@@ -39,8 +39,8 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
   'sigatoka-valley-lawai-pottery': [
     {
       id: 'sv-001',
-      src: '/photos/sigatoka/valley-overlook.jpg',
-      alt: 'Scenic Sigatoka Valley and river',
+      src: '/photos/sigatoka/valley-scenic.jpg',
+      alt: 'Scenic Sigatoka Valley and river landscape',
       width: 1600,
       height: 900,
       caption: 'The lush Sigatoka Valley',
@@ -66,15 +66,28 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
       dateTaken: '2024-01-20',
       tags: ['horse-riding', 'beach', 'natadola', 'adventure'],
       tourSlug: 'lomawai-salt-natadola-horse-riding'
+    },
+    {
+      id: 'ls-002',
+      src: '/photos/lomawai/salt-making.jpg',
+      alt: 'Traditional salt making at Lomawai Village',
+      width: 1600,
+      height: 900,
+      caption: 'Ancient salt making tradition',
+      location: 'Lomawai Village, Coral Coast',
+      photographer: 'Tima Green Tours',
+      dateTaken: '2024-01-20',
+      tags: ['salt-making', 'tradition', 'village', 'culture'],
+      tourSlug: 'lomawai-salt-natadola-horse-riding'
     }
   ],
 
-  // Sabeto Mud Pool – mud pool group
+  // Sabeto Mud Pool – mud pool image
   'sabeto-mudpool-nadi-temple': [
     {
       id: 'sm-001',
-      src: '/photos/sabeto/mudpool-group.jpg',
-      alt: 'Guests at Sabeto Mud Pool & Hot Spring',
+      src: '/photos/sabeto/mudpool.jpg',
+      alt: 'Sabeto Mud Pool & Hot Spring experience',
       width: 1600,
       height: 900,
       caption: 'Sabeto Mud Pool & Hot Springs',
@@ -86,11 +99,11 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
     }
   ],
 
-  // Shark Diving – shark encounter
+  // Shark Diving – diving image
   'shark-diving-beqa-lagoon': [
     {
       id: 'sd-001',
-      src: '/photos/beqa/shark-diving.jpg',
+      src: '/photos/beqa/diving.jpg',
       alt: 'Shark diving at Beqa Lagoon',
       width: 1600,
       height: 900,
@@ -103,19 +116,19 @@ export const tourPhotos: Record<string, PhotoMetadata[]> = {
     }
   ],
 
-  // Malolo Island Getaway – island jetty
+  // Malolo Island Getaway – beach sunset
   'malolo-island-getaway': [
     {
       id: 'mi-001',
-      src: '/photos/malolo/island-jetty.jpg',
-      alt: 'Island jetty at Malolo Lailai',
+      src: '/photos/malolo/beach-sunset.jpg',
+      alt: 'Beach sunset at Malolo Lailai Island',
       width: 1600,
       height: 900,
-      caption: 'Malolo Lailai Island jetty',
+      caption: 'Malolo Lailai Island beach sunset',
       location: 'Malolo Lailai, Mamanuca Islands',
       photographer: 'Tima Green Tours',
       dateTaken: '2024-05-10',
-      tags: ['island', 'beach', 'jetty', 'mamanuca'],
+      tags: ['island', 'beach', 'sunset', 'mamanuca'],
       tourSlug: 'malolo-island-getaway'
     }
   ]
