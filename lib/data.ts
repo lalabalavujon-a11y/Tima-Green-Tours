@@ -193,6 +193,27 @@ function fileExistsUnderPublic(publicPath: string): boolean {
   }
 }
 
+function isImageFile(publicPath: string): boolean {
+  try {
+    const relative = publicPath.startsWith('/') ? publicPath.slice(1) : publicPath;
+    const absolute = path.join(process.cwd(), 'public', relative);
+    const stats = fs.statSync(absolute);
+    if (!stats.isFile()) {
+      return false;
+    }
+    // Check if file is larger than 1KB (text placeholders are ~94 bytes)
+    if (stats.size < 1000) {
+      return false;
+    }
+    // Basic check for common image file extensions
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+    const ext = path.extname(relative).toLowerCase();
+    return imageExtensions.includes(ext);
+  } catch {
+    return false;
+  }
+}
+
 function generateHeroImage(slug: string): any {
   const heroPhoto = getTourHeroPhoto(slug);
   // Use placeholder until real photos are available locally/CDN
@@ -202,7 +223,9 @@ function generateHeroImage(slug: string): any {
     let src = heroPhoto.src;
     if (heroPhoto.src.startsWith('/photos/')) {
       const hasLocalFile = fileExistsUnderPublic(heroPhoto.src);
-      if (!useLocalPhotos || !hasLocalFile) {
+      // Check if the file is actually an image (not a text placeholder)
+      const isRealImage = hasLocalFile && isImageFile(heroPhoto.src);
+      if (!useLocalPhotos || !hasLocalFile || !isRealImage) {
         src = placeholderSrc;
       }
     }
