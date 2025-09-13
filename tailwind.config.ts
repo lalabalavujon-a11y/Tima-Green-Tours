@@ -27,13 +27,13 @@ export default {
           },
           // Brand palette aligned to requested hues
           emerald: {
-            DEFAULT: '#6fde15', // primary brand green
+            DEFAULT: '#22c55e', // primary brand green
             50: '#f2fde6',
             100: '#e4fbcf',
             200: '#c7f6a1',
             300: '#a9f072',
             400: '#8ceb44',
-            500: '#6fde15', // requested
+            500: '#22c55e', // requested
             600: '#4fb20a', // darker step for hover
             700: '#247141', // requested deep green
             800: '#1d5b34',

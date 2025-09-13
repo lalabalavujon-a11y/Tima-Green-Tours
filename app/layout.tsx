@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://app.timagreentours.com'),
   icons: {
-    icon: ['/favicon.ico', '/logo.svg', '/logo-192.png', '/logo-512.png'],
+    icon: ['/favicon.ico', '/logo.png', '/logo-192.png', '/logo-512.png'],
     apple: ['/apple-touch-icon.png'],
     shortcut: ['/favicon.ico']
   }
