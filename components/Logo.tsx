@@ -10,9 +10,9 @@ interface LogoProps {
 }
 
 export default function Logo({ className, alt = 'Tima Green Tours', sizes = '40px' }: LogoProps) {
-  const [src, setSrc] = useState<string>('/logo.png');
+  const [src, setSrc] = useState<string>('/logo.svg');
   return (
-    <div className={className}>
+    <div className={`${className} rounded-full overflow-hidden`}>
       <Image
         src={src}
         alt={alt}
@@ -20,7 +20,7 @@ export default function Logo({ className, alt = 'Tima Green Tours', sizes = '40p
         sizes={sizes}
         className="object-contain"
         unoptimized
-        onError={() => setSrc('/logo.svg')}
+        onError={() => setSrc('/logo.png')}
       />
     </div>
   );
