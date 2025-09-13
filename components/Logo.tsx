@@ -12,12 +12,12 @@ interface LogoProps {
 export default function Logo({ className, alt = 'Tima Green Tours', sizes = '40px' }: LogoProps) {
   const [src, setSrc] = useState<string>('/logo.png');
   return (
-    <div className={`${className} rounded-full overflow-hidden bg-white`}>
+    <div className={className}>
       <Image
         src={src}
         alt={alt}
-        fill
-        sizes={sizes}
+        width={40}
+        height={40}
         className="object-contain"
         unoptimized
         onError={() => setSrc('/logo-192.png')}
