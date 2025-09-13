@@ -1,5 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
-  <circle cx="128" cy="128" r="120" stroke="#118a7e" stroke-width="16" />
-  <path d="M64 160c40-80 88-80 128 0" stroke="#118a7e" stroke-width="16" fill="none"/>
-  <path d="M90 150c24-48 52-48 76 0" stroke="#17a2a0" stroke-width="10" fill="none"/>
+  <!-- Outer dark green border -->
+  <circle cx="128" cy="128" r="120" stroke="#1a5f3f" stroke-width="16" fill="none" />
+  <!-- Inner bright green border -->
+  <circle cx="128" cy="128" r="108" stroke="#22c55e" stroke-width="4" fill="none" />
+  
+  <!-- White background circle -->
+  <circle cx="128" cy="128" r="100" fill="white" />
+  
+  <!-- Palm tree trunk (dark green) -->
+  <path d="M118 180 Q128 160 138 180" stroke="#1a5f3f" stroke-width="8" fill="none" />
+  <!-- Palm tree trunk segments -->
+  <path d="M120 175 Q128 165 136 175" stroke="#1a5f3f" stroke-width="2" fill="none" />
+  <path d="M122 170 Q128 160 134 170" stroke="#1a5f3f" stroke-width="2" fill="none" />
+  <path d="M124 165 Q128 155 132 165" stroke="#1a5f3f" stroke-width="2" fill="none" />
+  
+  <!-- Palm fronds (bright green) -->
+  <path d="M128 160 Q100 120 80 140" stroke="#22c55e" stroke-width="6" fill="none" />
+  <path d="M128 160 Q110 100 90 120" stroke="#22c55e" stroke-width="6" fill="none" />
+  <path d="M128 160 Q130 100 150 120" stroke="#22c55e" stroke-width="6" fill="none" />
+  <path d="M128 160 Q150 120 170 140" stroke="#22c55e" stroke-width="6" fill="none" />
+  <path d="M128 160 Q140 110 160 130" stroke="#22c55e" stroke-width="6" fill="none" />
+  
+  <!-- Palm frond connection point -->
+  <circle cx="128" cy="160" r="3" fill="#1a5f3f" />
+  
+  <!-- Waves at bottom (bright green) -->
+  <path d="M60 200 Q80 190 100 200 Q120 210 140 200 Q160 190 180 200 Q200 210 220 200" stroke="#22c55e" stroke-width="4" fill="none" />
+  <path d="M70 210 Q90 200 110 210 Q130 220 150 210 Q170 200 190 210 Q210 220 230 210" stroke="#22c55e" stroke-width="3" fill="none" />
+  
+  <!-- Company name text (dark green) -->
+  <text x="128" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1a5f3f" transform="rotate(-15 128 240)">
+    <tspan x="128" dy="0">TIMA GREEN TOURS</tspan>
+  </text>
 </svg>
