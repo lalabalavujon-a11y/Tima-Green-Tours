@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import Container from '@/components/Container';
 import SEOHead from '@/components/SEOHead';
+import IslandConnector from '@/components/IslandConnector';
+import MultilingualConcierge from '@/components/MultilingualConcierge';
 import { getTransferZones, getTransferRoutes, getTransferServices } from '@/lib/transfers';
 import type { TransferZone, TransferRoute, TransferService, TransferQuote } from '@/lib/types/transfer';
 
@@ -25,6 +27,8 @@ export default function TransfersPage() {
   const [quote, setQuote] = useState<TransferQuote | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const [selectedIslandConnector, setSelectedIslandConnector] = useState<any>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
 
   // Filter routes based on selected zones
   const availableRoutes = routes.filter(route => 
@@ -80,6 +84,13 @@ export default function TransfersPage() {
       setLoading(false);
     }
   }, [availableRoutes, selectedService, passengers, children, infants, luggage, childSeats, selectedDate, selectedTime]);
+
+  // Reset selected service when route changes
+  useEffect(() => {
+    if (selectedService && !availableServices.some(service => service.type === selectedService)) {
+      setSelectedService('');
+    }
+  }, [availableServices, selectedService]);
 
   // Calculate quote when parameters change
   useEffect(() => {
@@ -206,16 +217,28 @@ export default function TransfersPage() {
                 <select
                   value={selectedService}
                   onChange={(e) => setSelectedService(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-emerald focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   disabled={!availableServices.length}
                 >
-                  <option value="">Select service</option>
+                  <option value="">
+                    {!selectedFromZone || !selectedToZone 
+                      ? "Select pickup and destination first" 
+                      : !availableServices.length 
+                        ? "No services available for this route" 
+                        : "Select service"
+                    }
+                  </option>
                   {availableServices.map((service) => (
                     <option key={service.id} value={service.type}>
                       {service.name}
                     </option>
                   ))}
                 </select>
+                {!selectedFromZone || !selectedToZone ? (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Please select both pickup location and destination to see available services
+                  </p>
+                ) : null}
               </div>
 
               {/* Date */}
@@ -350,6 +373,27 @@ export default function TransfersPage() {
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
                 <p className="text-red-800">{error}</p>
+              </div>
+            )}
+
+            {/* Multilingual Concierge */}
+            {selectedService && (
+              <div className="mb-6">
+                <MultilingualConcierge
+                  onLanguageSelect={setSelectedLanguage}
+                  selectedLanguage={selectedLanguage}
+                  showDriverInfo={selectedService === 'premium'}
+                />
+              </div>
+            )}
+
+            {/* Island Connector Add-on */}
+            {(selectedToZone === 'denarau-marina' || selectedFromZone === 'denarau-marina') && (
+              <div className="mb-6">
+                <IslandConnector
+                  onSelectConnector={setSelectedIslandConnector}
+                  selectedConnector={selectedIslandConnector}
+                />
               </div>
             )}
 

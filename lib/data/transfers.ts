@@ -172,6 +172,87 @@ export const transferZones: TransferZone[] = [
     isResort: true,
     isCity: false,
     amenities: ['resort-cluster', 'cultural-sites', 'fishing']
+  },
+  {
+    id: 'momi-bay',
+    name: 'Momi Bay',
+    description: 'Luxury resort area with Marriott and other properties',
+    coordinates: { lat: -17.8000, lng: 177.3500 },
+    radius: 3,
+    isAirport: false,
+    isResort: true,
+    isCity: false,
+    amenities: ['luxury-resorts', 'beach-access', 'golf-course']
+  },
+
+  // Vanua Levu Island Zones
+  {
+    id: 'savusavu-town',
+    name: 'Savusavu Town',
+    description: 'Charming coastal town and commercial center of Vanua Levu',
+    coordinates: { lat: -16.8000, lng: 179.3500 },
+    radius: 5,
+    isAirport: false,
+    isResort: false,
+    isCity: true,
+    amenities: ['shopping', 'markets', 'restaurants', 'banks', 'marina']
+  },
+  {
+    id: 'savusavu-resorts',
+    name: 'Savusavu Resorts',
+    description: 'Luxury resorts and accommodations around Savusavu Bay',
+    coordinates: { lat: -16.7833, lng: 179.3333 },
+    radius: 8,
+    isAirport: false,
+    isResort: true,
+    isCity: false,
+    amenities: ['luxury-resorts', 'diving', 'fishing', 'spa-services']
+  },
+  {
+    id: 'labasa-town',
+    name: 'Labasa Town',
+    description: 'Sugar industry center and largest town in Vanua Levu',
+    coordinates: { lat: -16.4333, lng: 179.3667 },
+    radius: 6,
+    isAirport: false,
+    isResort: false,
+    isCity: true,
+    amenities: ['shopping', 'markets', 'industrial', 'sugar-mills']
+  },
+  {
+    id: 'labasa-resorts',
+    name: 'Labasa Resorts',
+    description: 'Resort accommodations in the Labasa region',
+    coordinates: { lat: -16.4000, lng: 179.3500 },
+    radius: 10,
+    isAirport: false,
+    isResort: true,
+    isCity: false,
+    amenities: ['resort-cluster', 'cultural-sites', 'fishing']
+  },
+
+  // Taveuni Island Zones
+  {
+    id: 'taveuni-resorts',
+    name: 'Taveuni Resorts',
+    description: 'Garden Island luxury resorts and eco-lodges',
+    coordinates: { lat: -16.8000, lng: -179.9000 },
+    radius: 12,
+    isAirport: false,
+    isResort: true,
+    isCity: false,
+    amenities: ['luxury-resorts', 'eco-lodges', 'diving', 'hiking', 'waterfalls']
+  },
+  {
+    id: 'taveuni-town',
+    name: 'Taveuni Town',
+    description: 'Main town center on Garden Island',
+    coordinates: { lat: -16.8167, lng: -179.9167 },
+    radius: 3,
+    isAirport: false,
+    isResort: false,
+    isCity: true,
+    amenities: ['shopping', 'markets', 'restaurants', 'banks']
   }
 ];
 
@@ -283,6 +364,24 @@ export const transferRoutes: TransferRoute[] = [
     operatingHours: {
       start: '06:00',
       end: '20:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+  {
+    id: 'nadi-airport-momi-bay',
+    name: 'Nadi Airport to Momi Bay',
+    fromZone: 'nadi-airport',
+    toZone: 'momi-bay',
+    distance: 35,
+    estimatedDuration: 45,
+    isActive: true,
+    isShared: false,
+    isPrivate: true,
+    isPremium: true,
+    isAccessible: true,
+    operatingHours: {
+      start: '05:00',
+      end: '23:00',
       days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     }
   },
@@ -415,6 +514,116 @@ export const transferRoutes: TransferRoute[] = [
       end: '19:00',
       days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     }
+  },
+  {
+    id: 'taveuni-airport-town',
+    name: 'Matei Airport to Taveuni Town',
+    fromZone: 'taveuni-airport',
+    toZone: 'taveuni-town',
+    distance: 8,
+    estimatedDuration: 15,
+    isActive: true,
+    isShared: false,
+    isPrivate: true,
+    isPremium: false,
+    isAccessible: true,
+    operatingHours: {
+      start: '07:00',
+      end: '19:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+  {
+    id: 'savusavu-airport-resorts',
+    name: 'Savusavu Airport to Resorts',
+    fromZone: 'savusavu-airport',
+    toZone: 'savusavu-resorts',
+    distance: 15,
+    estimatedDuration: 25,
+    isActive: true,
+    isShared: false,
+    isPrivate: true,
+    isPremium: true,
+    isAccessible: true,
+    operatingHours: {
+      start: '07:00',
+      end: '19:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+  {
+    id: 'labasa-airport-resorts',
+    name: 'Labasa Airport to Resorts',
+    fromZone: 'labasa-airport',
+    toZone: 'labasa-resorts',
+    distance: 20,
+    estimatedDuration: 30,
+    isActive: true,
+    isShared: false,
+    isPrivate: true,
+    isPremium: false,
+    isAccessible: true,
+    operatingHours: {
+      start: '07:00',
+      end: '19:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+
+  // Island Connector Routes
+  {
+    id: 'coral-coast-port-denarau',
+    name: 'Coral Coast to Port Denarau (Island Connector)',
+    fromZone: 'coral-coast',
+    toZone: 'denarau-marina',
+    distance: 55,
+    estimatedDuration: 70,
+    isActive: true,
+    isShared: true,
+    isPrivate: false,
+    isPremium: false,
+    isAccessible: true,
+    operatingHours: {
+      start: '08:00',
+      end: '16:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+  {
+    id: 'pacific-harbour-port-denarau',
+    name: 'Pacific Harbour to Port Denarau (Island Connector)',
+    fromZone: 'pacific-harbour',
+    toZone: 'denarau-marina',
+    distance: 80,
+    estimatedDuration: 90,
+    isActive: true,
+    isShared: true,
+    isPrivate: false,
+    isPremium: false,
+    isAccessible: true,
+    operatingHours: {
+      start: '08:00',
+      end: '15:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
+  },
+  {
+    id: 'suva-port-denarau',
+    name: 'Suva to Port Denarau (Island Connector)',
+    fromZone: 'suva',
+    toZone: 'denarau-marina',
+    distance: 120,
+    estimatedDuration: 120,
+    isActive: true,
+    isShared: true,
+    isPrivate: false,
+    isPremium: false,
+    isAccessible: true,
+    operatingHours: {
+      start: '07:00',
+      end: '14:00',
+      days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
   }
 ];
 
@@ -477,20 +686,20 @@ export const transferServices: TransferService[] = [
   {
     id: 'premium-luxury',
     name: 'Premium Luxury Transfer',
-    description: 'Premium transfer with Land Cruiser/Prado and enhanced amenities',
+    description: 'Premium transfer with Land Cruiser/Prado, Wi-Fi, chilled towels, and enhanced amenities',
     type: 'premium',
     vehicleType: 'luxury',
-    amenities: ['air-conditioning', 'bottled-water', 'meet-greet', 'wifi', 'lei-greeting', 'premium-service'],
-    features: ['Premium vehicle', 'Professional driver', 'Wi-Fi included', 'Lei greeting', 'Flight tracking', '24/7 support', 'Cultural commentary'],
+    amenities: ['air-conditioning', 'bottled-water', 'meet-greet', 'wifi', 'lei-greeting', 'premium-service', 'chilled-towels', 'priority-exit'],
+    features: ['Premium Land Cruiser/Prado', 'Professional driver', 'Wi-Fi included', 'Chilled towels', 'Lei greeting', 'Priority exit', 'Flight tracking', '24/7 support', 'Cultural commentary', 'Work & WhatsApp on the road'],
     isWifiIncluded: true,
     isMeetAndGreet: true,
     isLeiGreeting: true,
     isBottledWater: true,
     isChildSeatAvailable: true,
     isAccessible: false,
-    languages: ['English', 'Fijian', 'Hindi', 'French', 'German', 'Japanese'],
+    languages: ['English', 'Fijian', 'Hindi', 'French', 'German', 'Japanese', 'Mandarin', 'Korean'],
     cancellationPolicy: 'Free cancellation up to 24 hours before transfer',
-    bookingAdvanceRequired: 4
+    bookingAdvanceRequired: 6
   },
   {
     id: 'shared-shuttle',
@@ -527,20 +736,38 @@ export const transferServices: TransferService[] = [
     languages: ['English', 'Fijian', 'Hindi'],
     cancellationPolicy: 'Free cancellation up to 24 hours before transfer',
     bookingAdvanceRequired: 4
+  },
+  {
+    id: 'island-connector-coach',
+    name: 'Island Connector Coach',
+    description: 'Coach transfer to Port Denarau for island ferry connections',
+    type: 'shared',
+    vehicleType: 'coach',
+    amenities: ['air-conditioning', 'bottled-water', 'ferry-connection', 'luggage-assistance'],
+    features: ['Timed to ferry departures', 'Luggage assistance', 'Professional driver', 'South Sea Cruises connection', 'Through-ticketing available'],
+    isWifiIncluded: false,
+    isMeetAndGreet: false,
+    isLeiGreeting: false,
+    isBottledWater: true,
+    isChildSeatAvailable: true,
+    isAccessible: true,
+    languages: ['English', 'Fijian'],
+    cancellationPolicy: 'Free cancellation up to 12 hours before transfer',
+    bookingAdvanceRequired: 2
   }
 ];
 
 // Transfer Pricing based on recce report pricing intelligence
 export const transferPricing: TransferPricing[] = [
-  // Nadi Airport to Denarau
+  // Nadi Airport to Denarau - Updated to match Rosie Holidays benchmark
   {
     routeId: 'nadi-airport-denarau',
     serviceType: 'private',
-    basePrice: 45,
+    basePrice: 130,
     currency: 'FJD',
     pricingRules: {
       afterHoursSurcharge: 20,
-      publicHolidaySurcharge: 20,
+      publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10,
       groupDiscount: {
@@ -550,18 +777,18 @@ export const transferPricing: TransferPricing[] = [
     },
     capacity: {
       minPassengers: 1,
-      maxPassengers: 4,
+      maxPassengers: 3,
       maxLuggage: 4
     }
   },
   {
     routeId: 'nadi-airport-denarau',
     serviceType: 'shared',
-    basePrice: 25,
+    basePrice: 29,
     currency: 'FJD',
     pricingRules: {
       afterHoursSurcharge: 20,
-      publicHolidaySurcharge: 20,
+      publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
     },
@@ -574,10 +801,10 @@ export const transferPricing: TransferPricing[] = [
   {
     routeId: 'nadi-airport-denarau',
     serviceType: 'premium',
-    basePrice: 75,
+    basePrice: 220,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
@@ -589,14 +816,14 @@ export const transferPricing: TransferPricing[] = [
     }
   },
 
-  // Nadi Airport to Coral Coast
+  // Nadi Airport to Coral Coast - Updated to match Rosie Holidays benchmark
   {
     routeId: 'nadi-airport-coral-coast',
     serviceType: 'private',
-    basePrice: 85,
+    basePrice: 299,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10,
@@ -607,17 +834,17 @@ export const transferPricing: TransferPricing[] = [
     },
     capacity: {
       minPassengers: 1,
-      maxPassengers: 4,
+      maxPassengers: 6,
       maxLuggage: 4
     }
   },
   {
     routeId: 'nadi-airport-coral-coast',
     serviceType: 'shared',
-    basePrice: 45,
+    basePrice: 79,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
@@ -631,10 +858,10 @@ export const transferPricing: TransferPricing[] = [
   {
     routeId: 'nadi-airport-coral-coast',
     serviceType: 'premium',
-    basePrice: 125,
+    basePrice: 350,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
@@ -646,95 +873,15 @@ export const transferPricing: TransferPricing[] = [
     }
   },
 
-  // Nadi Airport to Pacific Harbour
+  // Nadi Airport to Momi Bay (Marriott etc.) - New route from competitor recon
   {
-    routeId: 'nadi-airport-pacific-harbour',
+    routeId: 'nadi-airport-momi-bay',
     serviceType: 'private',
-    basePrice: 150,
-    currency: 'FJD',
-    pricingRules: {
-      afterHoursSurcharge: 30,
-      publicHolidaySurcharge: 30,
-      childSeatSurcharge: 15,
-      luggageSurcharge: 10,
-      groupDiscount: {
-        minPassengers: 4,
-        discountPercent: 20
-      }
-    },
-    capacity: {
-      minPassengers: 1,
-      maxPassengers: 4,
-      maxLuggage: 4
-    }
-  },
-  {
-    routeId: 'nadi-airport-pacific-harbour',
-    serviceType: 'premium',
-    basePrice: 200,
-    currency: 'FJD',
-    pricingRules: {
-      afterHoursSurcharge: 30,
-      publicHolidaySurcharge: 30,
-      childSeatSurcharge: 15,
-      luggageSurcharge: 10
-    },
-    capacity: {
-      minPassengers: 1,
-      maxPassengers: 4,
-      maxLuggage: 6
-    }
-  },
-
-  // Nadi Airport to Suva
-  {
-    routeId: 'nadi-airport-suva',
-    serviceType: 'private',
-    basePrice: 180,
-    currency: 'FJD',
-    pricingRules: {
-      afterHoursSurcharge: 30,
-      publicHolidaySurcharge: 30,
-      childSeatSurcharge: 15,
-      luggageSurcharge: 10,
-      groupDiscount: {
-        minPassengers: 4,
-        discountPercent: 20
-      }
-    },
-    capacity: {
-      minPassengers: 1,
-      maxPassengers: 4,
-      maxLuggage: 4
-    }
-  },
-  {
-    routeId: 'nadi-airport-suva',
-    serviceType: 'premium',
-    basePrice: 250,
-    currency: 'FJD',
-    pricingRules: {
-      afterHoursSurcharge: 30,
-      publicHolidaySurcharge: 30,
-      childSeatSurcharge: 15,
-      luggageSurcharge: 10
-    },
-    capacity: {
-      minPassengers: 1,
-      maxPassengers: 4,
-      maxLuggage: 6
-    }
-  },
-
-  // Nadi Airport to Lautoka
-  {
-    routeId: 'nadi-airport-lautoka',
-    serviceType: 'private',
-    basePrice: 55,
+    basePrice: 189,
     currency: 'FJD',
     pricingRules: {
       afterHoursSurcharge: 20,
-      publicHolidaySurcharge: 20,
+      publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10,
       groupDiscount: {
@@ -744,18 +891,41 @@ export const transferPricing: TransferPricing[] = [
     },
     capacity: {
       minPassengers: 1,
-      maxPassengers: 4,
+      maxPassengers: 6,
+      maxLuggage: 4
+    }
+  },
+
+  // Nadi Airport to Pacific Harbour - Updated pricing
+  {
+    routeId: 'nadi-airport-pacific-harbour',
+    serviceType: 'private',
+    basePrice: 369,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10,
+      groupDiscount: {
+        minPassengers: 4,
+        discountPercent: 20
+      }
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 6,
       maxLuggage: 4
     }
   },
   {
-    routeId: 'nadi-airport-lautoka',
+    routeId: 'nadi-airport-pacific-harbour',
     serviceType: 'shared',
-    basePrice: 30,
+    basePrice: 109,
     currency: 'FJD',
     pricingRules: {
       afterHoursSurcharge: 20,
-      publicHolidaySurcharge: 20,
+      publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
     },
@@ -766,12 +936,12 @@ export const transferPricing: TransferPricing[] = [
     }
   },
   {
-    routeId: 'nadi-airport-lautoka',
+    routeId: 'nadi-airport-pacific-harbour',
     serviceType: 'premium',
-    basePrice: 85,
+    basePrice: 450,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
@@ -783,35 +953,109 @@ export const transferPricing: TransferPricing[] = [
     }
   },
 
-  // Nadi Airport to Rakiraki
+  // Nadi Airport to Suva - Updated pricing
   {
-    routeId: 'nadi-airport-rakiraki',
+    routeId: 'nadi-airport-suva',
+    serviceType: 'private',
+    basePrice: 449,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10,
+      groupDiscount: {
+        minPassengers: 4,
+        discountPercent: 20
+      }
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 6,
+      maxLuggage: 4
+    }
+  },
+  {
+    routeId: 'nadi-airport-suva',
+    serviceType: 'shared',
+    basePrice: 129,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 1,
+      maxLuggage: 2
+    }
+  },
+  {
+    routeId: 'nadi-airport-suva',
+    serviceType: 'premium',
+    basePrice: 550,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 4,
+      maxLuggage: 6
+    }
+  },
+
+  // Nadi Airport to Lautoka - Updated pricing
+  {
+    routeId: 'nadi-airport-lautoka',
     serviceType: 'private',
     basePrice: 120,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10,
       groupDiscount: {
         minPassengers: 4,
-        discountPercent: 15
+        discountPercent: 10
       }
     },
     capacity: {
       minPassengers: 1,
-      maxPassengers: 4,
+      maxPassengers: 3,
       maxLuggage: 4
     }
   },
   {
-    routeId: 'nadi-airport-rakiraki',
-    serviceType: 'premium',
-    basePrice: 160,
+    routeId: 'nadi-airport-lautoka',
+    serviceType: 'shared',
+    basePrice: 35,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 1,
+      maxLuggage: 2
+    }
+  },
+  {
+    routeId: 'nadi-airport-lautoka',
+    serviceType: 'premium',
+    basePrice: 150,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10
@@ -823,14 +1067,14 @@ export const transferPricing: TransferPricing[] = [
     }
   },
 
-  // Secondary Routes
+  // Nadi Airport to Rakiraki - Updated pricing
   {
-    routeId: 'denarau-coral-coast',
+    routeId: 'nadi-airport-rakiraki',
     serviceType: 'private',
-    basePrice: 95,
+    basePrice: 440,
     currency: 'FJD',
     pricingRules: {
-      afterHoursSurcharge: 25,
+      afterHoursSurcharge: 20,
       publicHolidaySurcharge: 25,
       childSeatSurcharge: 15,
       luggageSurcharge: 10,
@@ -841,7 +1085,47 @@ export const transferPricing: TransferPricing[] = [
     },
     capacity: {
       minPassengers: 1,
+      maxPassengers: 6,
+      maxLuggage: 4
+    }
+  },
+  {
+    routeId: 'nadi-airport-rakiraki',
+    serviceType: 'premium',
+    basePrice: 550,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
       maxPassengers: 4,
+      maxLuggage: 6
+    }
+  },
+
+  // Secondary Routes - Denarau to Coral Coast
+  {
+    routeId: 'denarau-coral-coast',
+    serviceType: 'private',
+    basePrice: 260,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10,
+      groupDiscount: {
+        minPassengers: 4,
+        discountPercent: 15
+      }
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 6,
       maxLuggage: 4
     }
   },
@@ -1006,6 +1290,127 @@ export const transferPricing: TransferPricing[] = [
       minPassengers: 1,
       maxPassengers: 4,
       maxLuggage: 6
+    }
+  },
+  {
+    routeId: 'taveuni-airport-town',
+    serviceType: 'private',
+    basePrice: 25,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 15,
+      publicHolidaySurcharge: 15,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 4,
+      maxLuggage: 4
+    }
+  },
+  {
+    routeId: 'savusavu-airport-resorts',
+    serviceType: 'private',
+    basePrice: 45,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 15,
+      publicHolidaySurcharge: 15,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 4,
+      maxLuggage: 4
+    }
+  },
+  {
+    routeId: 'savusavu-airport-resorts',
+    serviceType: 'premium',
+    basePrice: 65,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 15,
+      publicHolidaySurcharge: 15,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 4,
+      maxLuggage: 6
+    }
+  },
+  {
+    routeId: 'labasa-airport-resorts',
+    serviceType: 'private',
+    basePrice: 50,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 15,
+      publicHolidaySurcharge: 15,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 4,
+      maxLuggage: 4
+    }
+  },
+
+  // Island Connector Pricing
+  {
+    routeId: 'coral-coast-port-denarau',
+    serviceType: 'shared',
+    basePrice: 45,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 1,
+      maxLuggage: 2
+    }
+  },
+  {
+    routeId: 'pacific-harbour-port-denarau',
+    serviceType: 'shared',
+    basePrice: 65,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 1,
+      maxLuggage: 2
+    }
+  },
+  {
+    routeId: 'suva-port-denarau',
+    serviceType: 'shared',
+    basePrice: 85,
+    currency: 'FJD',
+    pricingRules: {
+      afterHoursSurcharge: 20,
+      publicHolidaySurcharge: 25,
+      childSeatSurcharge: 15,
+      luggageSurcharge: 10
+    },
+    capacity: {
+      minPassengers: 1,
+      maxPassengers: 1,
+      maxLuggage: 2
     }
   }
 ];
@@ -1225,6 +1630,124 @@ export const resortTransfers: ResortTransfer[] = [
       {
         serviceType: 'premium',
         discountPercent: 20
+      }
+    ]
+  },
+
+  // Taveuni Island Resorts
+  {
+    resortId: 'paradise-taveuni',
+    resortName: 'Paradise Taveuni',
+    zone: 'taveuni-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/paradise-taveuni',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'premium',
+        discountPercent: 15
+      }
+    ]
+  },
+  {
+    resortId: 'taveuni-palace',
+    resortName: 'Taveuni Palms Resort',
+    zone: 'taveuni-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/taveuni-palace',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'premium',
+        discountPercent: 15
+      }
+    ]
+  },
+  {
+    resortId: 'maravu-taveuni',
+    resortName: 'Maravu Taveuni Lodge',
+    zone: 'taveuni-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/maravu-taveuni',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'private',
+        discountPercent: 10
+      }
+    ]
+  },
+
+  // Savusavu Resorts
+  {
+    resortId: 'namale-resort',
+    resortName: 'Namale Resort & Spa',
+    zone: 'savusavu-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/namale-resort',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'premium',
+        discountPercent: 20
+      }
+    ]
+  },
+  {
+    resortId: 'koro-sun-resort',
+    resortName: 'Koro Sun Resort & Rainforest Spa',
+    zone: 'savusavu-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/koro-sun-resort',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'premium',
+        discountPercent: 15
+      }
+    ]
+  },
+  {
+    resortId: 'dolphin-bay-divers',
+    resortName: 'Dolphin Bay Divers Retreat',
+    zone: 'savusavu-resorts',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/dolphin-bay-divers',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'private',
+        discountPercent: 10
+      }
+    ]
+  },
+
+  // Labasa Resorts
+  {
+    resortId: 'labasa-town-hotel',
+    resortName: 'Labasa Town Hotel',
+    zone: 'labasa-town',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/labasa-town-hotel',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'private',
+        discountPercent: 10
+      }
+    ]
+  },
+  {
+    resortId: 'northern-inn',
+    resortName: 'Northern Inn',
+    zone: 'labasa-town',
+    isPreferredPartner: true,
+    qrCodeUrl: '/qr/northern-inn',
+    digitalDeskActive: true,
+    specialRates: [
+      {
+        serviceType: 'private',
+        discountPercent: 10
       }
     ]
   }

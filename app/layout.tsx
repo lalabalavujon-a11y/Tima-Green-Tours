@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />
-        <ChatMount />
+        {process.env.NEXT_PUBLIC_ENABLE_ASSISTANTS_WIDGET === 'true' && <ChatMount />}
       </body>
     </html>
   );
