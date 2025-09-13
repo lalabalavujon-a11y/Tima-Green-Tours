@@ -21,15 +21,16 @@
     "assistants:sync": "tsx scripts/sync-assistants.ts"
   },
   "dependencies": {
-    "clsx": "2.1.1",
     "@langchain/core": "^0.2.23",
     "@langchain/openai": "^0.2.8",
+    "clsx": "2.1.1",
     "next": "14.2.5",
     "openai": "^4.59.0",
-    "yaml": "^2.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "resend": "3.4.0",
+    "stripe": "^18.5.0",
+    "yaml": "^2.6.0",
     "zod": "3.23.8"
   },
   "devDependencies": {

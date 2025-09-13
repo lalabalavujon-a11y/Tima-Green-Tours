@@ -15,6 +15,7 @@ export default function Navbar() {
         
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link href="/tours" className="text-brand-black hover:text-brand-emerald-600 transition-colors">Tours</Link>
+          <Link href="/transfers" className="text-brand-black hover:text-brand-emerald-600 transition-colors">Transfers</Link>
           <Link href="/about" className="text-brand-black hover:text-brand-emerald-600 transition-colors">About</Link>
           {process.env.NEXT_PUBLIC_SHOW_ADMIN_LINKS === 'true' && (
             <>

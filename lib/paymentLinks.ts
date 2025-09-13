@@ -29,3 +29,102 @@ export const paymentLinks: PaymentLinks = {
     child: 'https://buy.stripe.com/test_aFa5kEe8o2Hg00lewL5kk00',
   },
 };
+
+// Transfer Payment Links - Comprehensive coverage of all routes and services
+export type TransferPaymentLinks = Record<string, { 
+  private?: string; 
+  shared?: string; 
+  premium?: string; 
+}>;
+
+export const transferPaymentLinks: TransferPaymentLinks = {
+  // Nadi Airport to Denarau
+  'nadi-airport-denarau': {
+    private: 'https://buy.stripe.com/test_nadi_denarau_private',
+    shared: 'https://buy.stripe.com/test_nadi_denarau_shared',
+    premium: 'https://buy.stripe.com/test_nadi_denarau_premium',
+  },
+
+  // Nadi Airport to Coral Coast
+  'nadi-airport-coral-coast': {
+    private: 'https://buy.stripe.com/test_nadi_coral_private',
+    shared: 'https://buy.stripe.com/test_nadi_coral_shared',
+    premium: 'https://buy.stripe.com/test_nadi_coral_premium',
+  },
+
+  // Nadi Airport to Pacific Harbour
+  'nadi-airport-pacific-harbour': {
+    private: 'https://buy.stripe.com/test_nadi_pacific_private',
+    premium: 'https://buy.stripe.com/test_nadi_pacific_premium',
+  },
+
+  // Nadi Airport to Suva
+  'nadi-airport-suva': {
+    private: 'https://buy.stripe.com/test_nadi_suva_private',
+    premium: 'https://buy.stripe.com/test_nadi_suva_premium',
+  },
+
+  // Nadi Airport to Lautoka
+  'nadi-airport-lautoka': {
+    private: 'https://buy.stripe.com/test_nadi_lautoka_private',
+    shared: 'https://buy.stripe.com/test_nadi_lautoka_shared',
+    premium: 'https://buy.stripe.com/test_nadi_lautoka_premium',
+  },
+
+  // Nadi Airport to Rakiraki
+  'nadi-airport-rakiraki': {
+    private: 'https://buy.stripe.com/test_nadi_rakiraki_private',
+    premium: 'https://buy.stripe.com/test_nadi_rakiraki_premium',
+  },
+
+  // Secondary Routes
+  'denarau-coral-coast': {
+    private: 'https://buy.stripe.com/test_denarau_coral_private',
+  },
+  'coral-coast-suva': {
+    private: 'https://buy.stripe.com/test_coral_suva_private',
+  },
+  'lautoka-nadi-town': {
+    private: 'https://buy.stripe.com/test_lautoka_nadi_private',
+    shared: 'https://buy.stripe.com/test_lautoka_nadi_shared',
+  },
+
+  // Island Routes
+  'suva-airport-suva': {
+    private: 'https://buy.stripe.com/test_suva_airport_private',
+    shared: 'https://buy.stripe.com/test_suva_airport_shared',
+  },
+  'savusavu-airport-savusavu': {
+    private: 'https://buy.stripe.com/test_savusavu_private',
+  },
+  'labasa-airport-labasa': {
+    private: 'https://buy.stripe.com/test_labasa_private',
+  },
+  'taveuni-airport-resorts': {
+    private: 'https://buy.stripe.com/test_taveuni_private',
+    premium: 'https://buy.stripe.com/test_taveuni_premium',
+  },
+};
+
+// Surcharge Payment Links
+export type SurchargePaymentLinks = Record<string, string>;
+
+export const surchargePaymentLinks: SurchargePaymentLinks = {
+  'after-hours-surcharge': 'https://buy.stripe.com/test_after_hours_surcharge',
+  'public-holiday-surcharge': 'https://buy.stripe.com/test_public_holiday_surcharge',
+  'child-seat-surcharge': 'https://buy.stripe.com/test_child_seat_surcharge',
+  'extra-luggage-surcharge': 'https://buy.stripe.com/test_extra_luggage_surcharge',
+};
+
+// Helper function to get transfer payment link
+export function getTransferPaymentLink(
+  routeId: string, 
+  serviceType: 'private' | 'shared' | 'premium'
+): string | null {
+  return transferPaymentLinks[routeId]?.[serviceType] || null;
+}
+
+// Helper function to get surcharge payment link
+export function getSurchargePaymentLink(surchargeType: string): string | null {
+  return surchargePaymentLinks[surchargeType] || null;
+}
