@@ -17,6 +17,18 @@ const nextConfig = {
   experimental: {
     typedRoutes: false
   },
+  // Exclude the separate API directory from Next.js build
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    return config;
+  },
   // Add compression and caching headers
   async headers() {
     return [
