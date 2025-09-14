@@ -11,7 +11,7 @@ interface OrderModalProps {
       amount: number;
       currency: string;
     };
-  };
+  } | null;
   paymentProvider?: 'duffel' | 'stripe';
 }
 
@@ -39,7 +39,7 @@ function useProfiles() {
   return { profiles, saveAll };
 }
 
-function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; offer: any; paymentProvider: 'duffel'|'stripe' }) {
+function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; offer: any | null; paymentProvider: 'duffel'|'stripe' }) {
   const { profiles, saveAll } = useProfiles();
   const [travellers, setTravellers] = React.useState<any[]>(profiles.length ? profiles : [{ given_name: '', family_name: '', born_on: '', type: 'adult', seat: 'any', bags: 1 }]);
   const [contact, setContact] = React.useState<any>({ email: '', phone: '' });
@@ -49,6 +49,10 @@ function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; o
   const totalBags = travellers.reduce((n, t) => n + Number(t.bags || 0), 0);
   const baggageFee = 0; // set to a fee if you price bags locally; otherwise bags priced by carrier
   const grand = Number(offer?.price?.amount ?? 0) + totalBags * baggageFee;
+
+  if (!offer) {
+    return <div className="p-4 text-center text-gray-500">No offer selected</div>;
+  }
 
   function addTraveller() { setTravellers(t => [...t, { given_name: '', family_name: '', born_on: '', type: 'adult', seat: 'any', bags: 0 }]); }
   function removeTraveller(idx: number) { setTravellers(t => t.filter((_, i) => i !== idx)); }
