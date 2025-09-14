@@ -15,6 +15,8 @@ import bookingsRoutes from './routes/bookings.route';
 import webhooksRoutes from './routes/webhooks.route';
 import metaRoutes from './routes/meta.route';
 import adminRoute from './routes/admin.route';
+import paymentsRoute from './routes/payments.route';
+import ordersRoute from './routes/orders.route';
 
 // Import OpenAPI spec
 import swaggerUi from 'swagger-ui-express';
@@ -95,6 +97,8 @@ export function createApp(): express.Application {
   app.use('/', bookingsRoutes);
   app.use('/', webhooksRoutes);
   app.use('/', metaRoutes);
+  app.use('/', paymentsRoute);
+  app.use('/', ordersRoute);
   app.use(adminRoute);
 
   // Root endpoint
@@ -111,6 +115,9 @@ export function createApp(): express.Application {
         bookings: '/v1/bookings',
         webhooks: '/v1/webhooks',
         meta: '/v1/meta',
+        payments: '/v1/payments',
+        orders: '/v1/orders',
+        offers: '/v1/offers',
       },
       timestamp: new Date().toISOString(),
       requestId: req.headers['x-request-id'],

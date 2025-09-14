@@ -55,3 +55,71 @@ export async function searchFlights(body: FlightSearchBody): Promise<FlightOffer
   const data = await response.json();
   return data.data || [];
 }
+
+export interface PaymentIntentRequest {
+  amount: number;
+  currency?: string;
+  metadata?: Record<string, string>;
+}
+
+export interface PaymentIntentResponse {
+  success: boolean;
+  clientSecret: string;
+  paymentIntentId: string;
+}
+
+export async function createPaymentIntent(
+  body: PaymentIntentRequest,
+  idempotencyKey: string
+): Promise<PaymentIntentResponse> {
+  const response = await fetch(`${API_BASE}/v1/payments/create-intent`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Idempotency-Key': idempotencyKey,
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await response.json();
+  if (!data.success) {
+    throw new Error(data.message || 'Payment intent creation failed');
+  }
+  return data;
+}
+
+export interface OrderCreateRequest {
+  offerId: string;
+  contact: {
+    email: string;
+    phone: string;
+  };
+  passengers: Array<{
+    title?: 'mr' | 'ms' | 'mrs' | 'mx';
+    given_name: string;
+    family_name: string;
+    born_on: string;
+    type: 'adult' | 'child' | 'infant';
+  }>;
+}
+
+export interface OrderCreateResponse {
+  success: boolean;
+  data?: any;
+  message?: string;
+}
+
+export async function createOrder(
+  body: OrderCreateRequest,
+  idempotencyKey: string
+): Promise<OrderCreateResponse> {
+  const response = await fetch(`${API_BASE}/v1/orders/create`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Idempotency-Key': idempotencyKey,
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await response.json();
+  return data;
+}
