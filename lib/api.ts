@@ -152,48 +152,6 @@ export async function createPaymentIntent(
   return data;
 }
 
-export interface OrderCreateRequest {
-  offerId: string;
-  contact: {
-    email: string;
-    phone: string;
-  };
-  passengers: Array<{
-    title?: 'mr' | 'ms' | 'mrs' | 'mx';
-    given_name: string;
-    family_name: string;
-    born_on: string;
-    type: 'adult' | 'child' | 'infant';
-  }>;
-}
-
-export interface OrderCreateResponse {
-  success: boolean;
-  data?: any;
-  message?: string;
-}
-
-export async function createOrder(
-  body: OrderCreateRequest,
-  idempotencyKey?: string
-): Promise<OrderCreateResponse> {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-  };
-  
-  if (idempotencyKey) {
-    headers['Idempotency-Key'] = idempotencyKey;
-  }
-
-  const response = await fetch(`${API_BASE}/v1/orders/create`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(body),
-  });
-  const data = await response.json();
-  return data;
-}
-
 export interface DuffelPaySessionRequest {
   amount: number;
   currency?: string;
