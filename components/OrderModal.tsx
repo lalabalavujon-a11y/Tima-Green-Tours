@@ -1,17 +1,11 @@
 'use client';
 import React from 'react';
-import { createOrder } from '@/lib/api';
+import { createOrder, type FlightOffer } from '@/lib/api';
 
 interface OrderModalProps {
   open: boolean;
   onClose: () => void;
-  offer: {
-    id: string;
-    price: {
-      amount: number;
-      currency: string;
-    };
-  } | null;
+  offer: FlightOffer | null;
   paymentProvider?: 'duffel' | 'stripe';
 }
 
@@ -39,7 +33,16 @@ function useProfiles() {
   return { profiles, saveAll };
 }
 
-function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; offer: any | null; paymentProvider: 'duffel'|'stripe' }) {
+function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; offer: FlightOffer | null; paymentProvider: 'duffel'|'stripe' }) {
+  if (!offer) {
+    return (
+      <div className="p-4 text-center">
+        <p className="text-red-600">No offer selected</p>
+        <button onClick={onClose} className="mt-2 px-4 py-2 bg-gray-200 rounded">Close</button>
+      </div>
+    );
+  }
+
   const { profiles, saveAll } = useProfiles();
   const [travellers, setTravellers] = React.useState<any[]>(profiles.length ? profiles : [{ given_name: '', family_name: '', born_on: '', type: 'adult', seat: 'any', bags: 1 }]);
   const [contact, setContact] = React.useState<any>({ email: '', phone: '' });
