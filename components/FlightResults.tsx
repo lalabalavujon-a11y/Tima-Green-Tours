@@ -70,11 +70,13 @@ export default function FlightResults({ results }: FlightResultsProps) {
         </div>
       ))}
       
-      <OrderModal 
-        open={open} 
-        onClose={() => setOpen(false)} 
-        offer={selected} 
-      />
+      {selected && (
+        <OrderModal 
+          open={open} 
+          onClose={() => setOpen(false)} 
+          offer={selected} 
+        />
+      )}
     </div>
   );
 }
