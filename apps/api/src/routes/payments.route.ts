@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createPaymentIntent, getPaymentIntent } from '../controllers/payments.controller';
+import { createPaymentIntent, getPaymentIntent, createDuffelPaySession } from '../controllers/payments.controller';
 import { requireIdempotency } from '../middleware/idempotency.middleware';
 import { validate } from '../middleware/validation.middleware';
 import { z } from 'zod';
@@ -15,6 +15,14 @@ const createPaymentIntentSchema = z.object({
   })
 });
 
+const createDuffelPaySessionSchema = z.object({
+  body: z.object({
+    amount: z.number().positive('Amount must be positive'),
+    currency: z.string().optional().default('USD'),
+    offerId: z.string().min(1, 'Offer ID is required')
+  })
+});
+
 // Routes
 router.post('/v1/payments/create-intent', 
   requireIdempotency, 
@@ -23,5 +31,11 @@ router.post('/v1/payments/create-intent',
 );
 
 router.get('/v1/payments/:paymentIntentId', getPaymentIntent);
+
+router.post('/v1/payments/duffel/session',
+  requireIdempotency,
+  validate(createDuffelPaySessionSchema),
+  createDuffelPaySession
+);
 
 export default router;

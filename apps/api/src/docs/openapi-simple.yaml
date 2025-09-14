@@ -134,6 +134,43 @@ paths:
                       amount: { type: number }
                       currency: { type: string }
                       metadata: { type: object }
+  /v1/payments/duffel/session:
+    post:
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [amount, offerId]
+              properties:
+                amount: { type: number, minimum: 0 }
+                currency: { type: string, default: USD }
+                offerId: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  data:
+                    type: object
+                    properties:
+                      provider: { type: string, enum: [duffel] }
+                      clientToken: { type: string }
+                      redirectUrl: { type: string }
+        '400':
+          description: Bad Request
+        '409':
+          description: Duplicate Request
   /v1/offers/select:
     post:
       parameters:

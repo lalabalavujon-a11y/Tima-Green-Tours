@@ -1,46 +1,35 @@
 import { Request, Response, NextFunction } from 'express';
 import { config } from '../config';
-import { getCacheClient } from '../utils/cache';
-import { logger } from '../logger';
+import { cacheGet, cacheSet } from '../utils/cache';
+import crypto from 'crypto';
 
-const TTL = Number(process.env.IDEMPOTENCY_TTL_SECONDS ?? 86400);
-
-export async function requireIdempotency(req: Request, res: Response, next: NextFunction) {
-  const key = req.header('Idempotency-Key');
+export function requireIdempotency(req: Request, res: Response, next: NextFunction) {
+  const idempotencyKey = req.headers['idempotency-key'] as string;
   
-  if (!key) {
-    return res.status(400).json({ 
-      success: false, 
-      message: 'Idempotency-Key header required' 
+  if (!idempotencyKey) {
+    return res.status(400).json({
+      success: false,
+      message: 'Idempotency-Key header is required'
     });
   }
-
-  const cacheKey = `idem:${key}`;
-  const cache = getCacheClient();
   
-  try {
-    const exists = await cache.exists(cacheKey);
-    if (exists) {
-      logger.warn({ idempotencyKey: key }, 'Duplicate request detected');
-      return res.status(409).json({ 
-        success: false, 
-        message: 'Duplicate request' 
-      });
+  // Check if we've already processed this request
+  const cacheKey = `idempotency:${idempotencyKey}`;
+  
+  cacheGet(cacheKey).then((cached) => {
+    if (cached) {
+      // Return cached response
+      return res.json(cached);
     }
     
-    // Set the idempotency key in cache
-    await cache.set(cacheKey, '1', TTL);
+    // Store original res.json to intercept response
+    const originalJson = res.json.bind(res);
+    res.json = function(body: any) {
+      // Cache the response for idempotency
+      cacheSet(cacheKey, body, parseInt(config.IDEMPOTENCY_TTL_SECONDS || '86400', 10));
+      return originalJson(body);
+    };
     
-    // Attach the key to the request for use in controllers
-    (req as any).__idem_key = key;
-    
-    logger.debug({ idempotencyKey: key }, 'Idempotency key registered');
     next();
-  } catch (error) {
-    logger.error({ error, idempotencyKey: key }, 'Idempotency check failed');
-    // If cache fails, we still allow the request to proceed
-    // The Stripe API will handle idempotency on its end
-    (req as any).__idem_key = key;
-    next();
-  }
+  }).catch(next);
 }

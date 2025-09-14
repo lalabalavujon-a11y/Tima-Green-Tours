@@ -12,11 +12,11 @@ import healthRoutes from './routes/health.route';
 import airportsRoutes from './routes/airports.route';
 import flightsRoutes from './routes/flights.route';
 import bookingsRoutes from './routes/bookings.route';
+import ordersRoutes from './routes/orders.route';
 import webhooksRoutes from './routes/webhooks.route';
+import duffelWebhooksRoutes from './routes/duffel.webhooks.route';
 import metaRoutes from './routes/meta.route';
 import adminRoute from './routes/admin.route';
-import paymentsRoute from './routes/payments.route';
-import ordersRoute from './routes/orders.route';
 
 // Import OpenAPI spec
 import swaggerUi from 'swagger-ui-express';
@@ -97,8 +97,8 @@ export function createApp(): express.Application {
   app.use('/', bookingsRoutes);
   app.use('/', webhooksRoutes);
   app.use('/', metaRoutes);
-  app.use('/', paymentsRoute);
-  app.use('/', ordersRoute);
+  app.use('/', ordersRoutes);
+  app.use('/', duffelWebhooksRoutes);
   app.use(adminRoute);
 
   // Root endpoint

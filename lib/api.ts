@@ -110,15 +110,57 @@ export interface OrderCreateResponse {
 
 export async function createOrder(
   body: OrderCreateRequest,
-  idempotencyKey: string
+  idempotencyKey?: string
 ): Promise<OrderCreateResponse> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+  
+  if (idempotencyKey) {
+    headers['Idempotency-Key'] = idempotencyKey;
+  }
+
   const response = await fetch(`${API_BASE}/v1/orders/create`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Idempotency-Key': idempotencyKey,
-    },
+    headers,
     body: JSON.stringify(body),
+  });
+  const data = await response.json();
+  return data;
+}
+
+export interface DuffelPaySessionRequest {
+  amount: number;
+  currency?: string;
+  offerId: string;
+}
+
+export interface DuffelPaySessionResponse {
+  success: boolean;
+  data?: {
+    provider: 'duffel';
+    clientToken?: string;
+    redirectUrl?: string;
+  };
+  message?: string;
+}
+
+export async function createDuffelPaySession(
+  params: DuffelPaySessionRequest,
+  idempotencyKey?: string
+): Promise<DuffelPaySessionResponse> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+  
+  if (idempotencyKey) {
+    headers['Idempotency-Key'] = idempotencyKey;
+  }
+
+  const response = await fetch(`${API_BASE}/v1/payments/duffel/session`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(params),
   });
   const data = await response.json();
   return data;
