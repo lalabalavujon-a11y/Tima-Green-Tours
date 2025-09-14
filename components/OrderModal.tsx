@@ -34,6 +34,12 @@ function useProfiles() {
 }
 
 function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; offer: FlightOffer | null; paymentProvider: 'duffel'|'stripe' }) {
+  const { profiles, saveAll } = useProfiles();
+  const [travellers, setTravellers] = React.useState<any[]>(profiles.length ? profiles : [{ given_name: '', family_name: '', born_on: '', type: 'adult', seat: 'any', bags: 1 }]);
+  const [contact, setContact] = React.useState<any>({ email: '', phone: '' });
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string|undefined>();
+
   if (!offer) {
     return (
       <div className="p-4 text-center">
@@ -42,12 +48,6 @@ function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; o
       </div>
     );
   }
-
-  const { profiles, saveAll } = useProfiles();
-  const [travellers, setTravellers] = React.useState<any[]>(profiles.length ? profiles : [{ given_name: '', family_name: '', born_on: '', type: 'adult', seat: 'any', bags: 1 }]);
-  const [contact, setContact] = React.useState<any>({ email: '', phone: '' });
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string|undefined>();
 
   const totalBags = travellers.reduce((n, t) => n + Number(t.bags || 0), 0);
   const baggageFee = 0; // set to a fee if you price bags locally; otherwise bags priced by carrier
