@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: TGT Flight API
+  version: 0.2.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      responses:
+        '200': { description: OK }
+  /v1/meta/providers:
+    get:
+      responses:
+        '200': { description: OK }
+  /v1/airports/search:
+    get:
+      parameters:
+        - in: query
+          name: query
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Airport'
+  /v1/flights/search:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/FlightSearchRequest' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FlightOffer'
+  /v1/bookings/create:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BookingCreate' }
+      responses:
+        '200': { description: OK }
+  /v1/admin/cache/purge:
+    post:
+      parameters:
+        - in: header
+          name: x-staff-key
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { key: { type: string } }
+      responses:
+        '200': { description: OK }
+components:
+  schemas:
+    Airport:
+      type: object
+      properties:
+        iata: { type: string }
+        name: { type: string }
+        city: { type: string }
+        country: { type: string }
+    FlightSearchRequest:
+      type: object
+      required: [origin, destination, departDate, adults]
+      properties:
+        origin: { type: string }
+        destination: { type: string }
+        departDate: { type: string, format: date }
+        returnDate: { type: string, format: date }
+        cabin: { type: string, enum: [economy, premium_economy, business, first] }
+        adults: { type: integer, minimum: 1 }
+        children: { type: integer, minimum: 0 }
+        infants: { type: integer, minimum: 0 }
+    FlightOffer:
+      type: object
+      properties:
+        id: { type: string }
+        carrier: { type: string }
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              from: { type: string }
+              to: { type: string }
+              departAt: { type: string, format: date-time }
+              arriveAt: { type: string, format: date-time }
+              carrier: { type: string }
+        price:
+          type: object
+          properties:
+            amount: { type: number }
+            currency: { type: string }
+        refundable: { type: boolean }
+        changeable: { type: boolean }
+        baggage: { type: string }
+        deepLink: { type: string }
+    BookingCreate:
+      type: object
+      properties:
+        offerId: { type: string }
+        contactEmail: { type: string, format: email }
