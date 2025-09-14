@@ -51,7 +51,7 @@ function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; o
 
   const totalBags = travellers.reduce((n, t) => n + Number(t.bags || 0), 0);
   const baggageFee = 0; // set to a fee if you price bags locally; otherwise bags priced by carrier
-  const grand = Number(offer?.price?.amount ?? 0) + totalBags * baggageFee;
+  const grand = Number(offer!.price.amount) + totalBags * baggageFee;
 
   if (!offer) {
     return <div className="p-4 text-center text-gray-500">No offer selected</div>;
@@ -76,7 +76,7 @@ function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; o
       const seats = travellers.map((t, i) => ({ paxId: `pax_${i+1}`, preference: t.seat }));
       const baggage = travellers.map((t, i) => ({ paxId: `pax_${i+1}`, pieces: Number(t.bags || 0), weightKg: 23 }));
 
-      const orderRes = await createOrder({ offerId: offer.id, contact, passengers: pax });
+      const orderRes = await createOrder({ offerId: offer!.id, contact, passengers: pax });
       saveAll(travellers);
       alert(orderRes?.data ? 'Order created. Next: complete payment per instructions.' : 'Order failed');
       onClose();
@@ -130,7 +130,7 @@ function OrderForm({ onClose, offer, paymentProvider }: { onClose: () => void; o
 
       <div className="flex items-center justify-between">
         <div className="text-sm text-slate-600">Baggage fee est.: {totalBags} × $ {baggageFee} (if applicable)</div>
-        <div className="font-semibold">Estimated total: {Intl.NumberFormat(undefined, { style: 'currency', currency: offer?.price?.currency ?? 'USD' }).format(grand)}</div>
+        <div className="font-semibold">Estimated total: {Intl.NumberFormat(undefined, { style: 'currency', currency: offer!.price.currency }).format(grand)}</div>
       </div>
 
       <div className="flex justify-end gap-2">
