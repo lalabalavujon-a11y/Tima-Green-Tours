@@ -8,10 +8,24 @@ export default function FlightDemoPage() {
   // Mock flight offer for demonstration
   const mockOffer = {
     id: 'off_0000A3tQM8R4W98LtH5Z0k',
+    carrier: 'FJ',
+    segments: [
+      {
+        from: 'NAN',
+        to: 'LAX',
+        departAt: '2024-03-15T10:00:00Z',
+        arriveAt: '2024-03-15T06:00:00Z',
+        carrier: 'FJ'
+      }
+    ],
     price: {
       amount: 450.00,
       currency: 'USD'
-    }
+    },
+    refundable: false,
+    changeable: true,
+    baggage: '1 checked bag included',
+    deepLink: undefined
   };
 
   return (
