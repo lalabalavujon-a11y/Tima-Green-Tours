@@ -56,6 +56,71 @@ export async function searchFlights(body: FlightSearchBody): Promise<FlightOffer
   return data.data || [];
 }
 
+export interface OrderCreateRequest {
+  offerId: string;
+  contact: {
+    email: string;
+    phone: string;
+  };
+  passengers: Array<{
+    title?: 'mr' | 'ms' | 'mrs' | 'mx';
+    given_name: string;
+    family_name: string;
+    born_on: string;
+    type: 'adult' | 'child' | 'infant';
+  }>;
+  seats?: any[];
+  baggage?: Array<{
+    paxId: string;
+    pieces: number;
+    weightKg?: number;
+  }>;
+  payment?: {
+    provider: 'duffel';
+    paymentToken?: string;
+  };
+}
+
+export interface OrderResponse {
+  success: boolean;
+  data?: any;
+  error?: string;
+}
+
+export async function selectOffer(offerId: string, token?: string): Promise<OrderResponse> {
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+  };
+  
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  
+  const response = await fetch(`${API_BASE}/v1/offers/select`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ offerId }),
+  });
+  
+  return response.json();
+}
+
+export async function createOrder(payload: OrderCreateRequest): Promise<OrderResponse> {
+  // Generate a unique idempotency key
+  const idempotencyKey = `order_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+  
+  const response = await fetch(`${API_BASE}/v1/orders/create`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Idempotency-Key': idempotencyKey,
+    },
+    body: JSON.stringify(payload),
+  });
+  
+  return response.json();
+}
+
 export interface PaymentIntentRequest {
   amount: number;
   currency?: string;
