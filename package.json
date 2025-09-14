@@ -22,8 +22,8 @@
     "gen:client": "openapi-typescript apps/api/src/docs/openapi-simple.yaml -o lib/api-types.ts"
   },
   "dependencies": {
-    "@langchain/core": "^0.2.23",
-    "@langchain/openai": "^0.2.8",
+    "@langchain/core": "^0.3.75",
+    "@langchain/openai": "^0.6.11",
     "@stripe/react-stripe-js": "^2.7.1",
     "@stripe/stripe-js": "^3.4.1",
     "clsx": "2.1.1",
@@ -42,18 +42,18 @@
     "@types/react-dom": "18.2.22",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "autoprefixer": "10.4.19",
+    "autoprefixer": "10.4.21",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "postcss": "8.4.38",
+    "postcss": "8.5.6",
     "prettier": "^3.6.2",
     "tailwindcss": "3.4.7",
     "tsx": "^4.19.0",
-    "typescript": "5.4.5",
+    "typescript": "5.9.2",
     "openapi-typescript": "^6.7.4"
   }
 }
